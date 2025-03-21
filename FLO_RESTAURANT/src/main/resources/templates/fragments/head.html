@@ -1,0 +1,88 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
+    <!-- My CSS -->
+    <link rel="stylesheet" href="@{/style-admin.css}">
+    <link rel="icon"
+          type="image/png"
+          href="@{/images/logo.png}">
+
+    <!-- Chart -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Item Name', 'Sales'],
+                <!-- Render data for chart from Java -->
+                /* Thymeleaf will loop through the sales data */
+                <span th:each="sale : ${mostSoldItems}">
+              ['<span th:text="${sale.itemName}"></span>', <span th:text="${sale.totalQty}"></span>],
+          </span>
+            ]);
+
+            var options = {
+                title: 'Most Sold Items',
+                pieHole: 0.4,
+                fontName: 'Poppins',
+                fontSize: 12,
+                titleTextStyle: {
+                    color: "Grey",
+                    fontName: "Poppins",
+                    fontSize: 16,
+                    bold: false,
+                    italic: false
+                },
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('donutchart_msi'));
+            chart.draw(data, options);
+        }
+    </script>
+
+    <!-- Chart End -->
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['bar']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Time' , 'Sales'],
+                <!-- Render sales by hour data from Java -->
+                <span th:each="saleByHour : ${salesByHour}">
+              ['<span th:text="${saleByHour.hname}"></span>', <span th:text="${saleByHour.totalSales}"></span>],
+          </span>
+            ]);
+
+            var options =
+                {
+                    hAxis:
+                        {
+                            title: 'Time', titleTextStyle:
+                                {
+                                    color: 'Black'
+                                }
+                        },
+                    colors: ['#eb2f06','green'],
+
+                    chart:
+                        {
+                            title: 'Sales By Hour',
+                        }
+                };
+
+            var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+    </script>
+
+
+    <title>Robo Cafe Admin</title>
+</head>

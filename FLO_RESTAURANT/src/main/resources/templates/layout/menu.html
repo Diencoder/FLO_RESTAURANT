@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/header}"></head>
+<body>
+<!-- Content Section Start -->
+<div class="container">
+    <h1 class="my-4">Menu</h1>
+
+    <div class="row">
+        <!-- Duyệt qua danh sách món ăn -->
+        <div th:each="food : ${foods}" class="col-lg-3">
+            <div class="card">
+                <!-- Hiển thị hình ảnh của món ăn -->
+                <img th:src="@{/images/food/{image}(image=${food.imageName})}" class="card-img-top" alt="Food Image">
+                <div class="card-body text-center">
+                    <!-- Tiêu đề món ăn -->
+                    <h5 class="card-title" th:text="${food.title}">Food Title</h5>
+                    <!-- Giá món ăn -->
+                    <p class="card-text" th:text="${food.price + ' VND'}">Price</p>
+
+                    <!-- Form thêm món ăn vào giỏ hàng -->
+                    <form th:action="@{/addToCart}" method="POST">
+                        <button type="submit" class="btn btn-primary btn-sm">Thêm Vào Giỏ Hàng</button>
+
+                        <!-- Thêm các input ẩn để truyền thông tin món ăn -->
+                        <input type="hidden" name="foodId" th:value="${food.id}">
+                        <input type="hidden" name="itemName" th:value="${food.title}">
+                        <input type="hidden" name="price" th:value="${food.price}">
+                        <input type="hidden" name="quantity" value="1">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Content Section End -->
+
+<div th:replace="~{layout/footer}"></div>
+</body>
+
+</html>
