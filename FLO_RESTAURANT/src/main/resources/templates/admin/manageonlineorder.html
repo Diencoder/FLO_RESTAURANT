@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header}"></head>
+<body>
+<div th:replace="~{fragments/sidebar}"></div>
+<div th:replace="~{fragments/content}"></div>
+
+<!-- Ví dụ về hiển thị dữ liệu -->
+<h1>Quản Lý Đơn Hàng Online</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Mã Đơn Hàng</th>
+        <th>Tên Khách Hàng</th>
+        <th>Trạng Thái</th>
+        <th>Thao Tác</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.id}"></td>
+        <td th:text="${order.customerName}"></td>
+        <td th:text="${order.status}"></td>
+        <td>
+            <a th:href="@{/manageonlineorder/{id}(id=${order.id})}">Chi tiết</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
