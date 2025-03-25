@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/header}"></head>  <!-- Nhúng header từ layout/header.html -->
+<body>
+<!-- Nội dung giỏ hàng của bạn -->
+<div class="container">
+    <h1>Your Cart</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Action</th>
+        </tr>
+        <tr th:each="item : ${cart.items}">
+            <td th:text="${item.food.title}"></td>
+            <td th:text="${item.quantity}"></td>
+            <td th:text="${item.food.price}"></td>
+            <td th:text="${item.getTotalPrice()}"></td>
+            <td>
+                <form th:action="@{/removeFromCart}" method="post">
+                    <input type="hidden" name="foodId" th:value="${item.food.id}">
+                    <button type="submit">Remove</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <p th:text="'Total: ' + ${totalAmount}"></p>
+</div>
+
+<!-- Nhúng footer từ layout/footer.html -->
+<div th:replace="~{layout/footer}"></div>
+</body>
+</html>

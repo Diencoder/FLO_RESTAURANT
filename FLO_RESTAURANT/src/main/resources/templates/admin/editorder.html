@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chỉnh Sửa Đơn Hàng</title>
+
+    <!-- Nhúng Bootstrap CSS từ CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Nhúng phần Header -->
+    <div th:replace="~{fragments/header}"></div>
+</head>
+<body>
+
+<!-- Nhúng phần Sidebar -->
+<div th:replace="~{fragments/sidebar}"></div>
+
+<!-- CONTENT -->
+<section id="content">
+    <!-- Nhúng phần Navbar -->
+    <div th:replace="~{fragments/navbar}"></div>
+
+    <div class="container mt-4">
+        <div class="head-title">
+            <div class="left">
+                <h1 class="text-primary">Chỉnh Sửa Đơn Hàng</h1>
+            </div>
+        </div>
+
+        <!-- Form chỉnh sửa đơn hàng với Bootstrap -->
+        <form th:action="@{/admin/orders}" th:object="${order}" method="post">
+            <input type="hidden" th:field="*{id}" />
+
+            <div class="mb-3">
+                <label for="transactionId" class="form-label">Mã Giao Dịch:</label>
+                <input type="text" th:field="*{transactionId}" id="transactionId" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label for="customerName" class="form-label">Tên Khách Hàng:</label>
+                <input type="text" th:field="*{customerName}" id="customerName" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label for="customerContact" class="form-label">Số Điện Thoại Khách Hàng:</label>
+                <input type="text" th:field="*{customerContact}" id="customerContact" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label for="customerEmail" class="form-label">Email Khách Hàng:</label>
+                <input type="email" th:field="*{customerEmail}" id="customerEmail" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label for="customerAddress" class="form-label">Địa Chỉ Khách Hàng:</label>
+                <input type="text" th:field="*{customerAddress}" id="customerAddress" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label for="orderDate" class="form-label">Ngày Đặt Hàng:</label>
+                <input type="text" th:field="*{orderDate}" id="orderDate" class="form-control" disabled />
+            </div>
+
+            <div class="mb-3">
+                <label for="status" class="form-label">Trạng Thái:</label>
+                <select th:field="*{status}" id="status" class="form-select">
+                    <option value="Pending" th:text="${'Chờ Xử Lý'}">Chờ Xử Lý</option>
+                    <option value="Completed" th:text="${'Đã Hoàn Thành'}">Đã Hoàn Thành</option>
+                    <option value="Cancelled" th:text="${'Đã Hủy'}">Đã Hủy</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="total" class="form-label">Tổng Tiền:</label>
+                <input type="number" th:field="*{total}" id="total" class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Lưu</button>
+        </form>
+    </div>
+</section>
+<!-- CONTENT -->
+
+<!-- Nhúng phần Footer -->
+<div th:replace="~{fragments/footer}"></div>
+
+<!-- Nhúng Bootstrap JS từ CDN -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

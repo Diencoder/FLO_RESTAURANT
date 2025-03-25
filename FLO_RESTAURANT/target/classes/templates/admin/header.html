@@ -1,0 +1,23 @@
+<!-- navbar.html -->
+<nav>
+    <div class="navbar-container">
+        <a href="#" class="logo">
+            <img th:src="@{/images/logo.png}" width="80px" alt="Logo">
+        </a>
+        <form action="#" class="search-form">
+            <input type="search" placeholder="Search...">
+            <button type="submit" class="search-btn"><i class="bx bx-search"></i></button>
+        </form>
+        <div class="navbar-right">
+            <input type="checkbox" id="switch-mode" hidden>
+            <label for="switch-mode" class="switch-mode"></label>
+            <div class="notification">
+                <i class="bx bxs-bell"></i>
+                <span th:text="${notificationCount}"></span> <!-- Hiển thị số lượng thông báo -->
+            </div>
+            <div class="profile">
+                <i class="bx bx-user-circle"></i> <!-- Icon ảnh đại diện -->
+            </div>
+        </div>
+    </div>
+</nav>
