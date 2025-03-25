@@ -41,7 +41,7 @@ public class LoginController {
             if ("admin".equals(user.getRole())) {
                 return "redirect:/admin";  // Nếu là admin, chuyển tới trang quản trị
             } else {
-                return "redirect:/home";  // Nếu là người dùng bình thường, chuyển tới trang chính
+                return "redirect:/index";  // Nếu là người dùng bình thường, chuyển tới trang chính
             }
         } else {
             // Thêm thông báo lỗi vào model

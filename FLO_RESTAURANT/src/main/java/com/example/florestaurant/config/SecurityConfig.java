@@ -4,8 +4,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.access.AccessDeniedHandler;
-import org.springframework.security.web.access.AccessDeniedHandlerImpl;
+import org.springframework.security.web.authentication.logout.LogoutFilter;
+import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
+import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 
 @Configuration
@@ -25,19 +26,16 @@ public class SecurityConfig {
                         .permitAll()  // Cho phép tất cả người dùng truy cập trang login
                 )
                 .logout(logout -> logout
+                        .logoutUrl("/logout")  // Đảm bảo URL của đăng xuất
+                        .logoutSuccessUrl("/index")  // Chuyển đến trang chủ sau khi đăng xuất thành công
+                        .invalidateHttpSession(true)  // Xóa session khi đăng xuất
+                        .clearAuthentication(true)  // Xóa xác thực người dùng khi đăng xuất
                         .permitAll()  // Cho phép tất cả người dùng đăng xuất
                 )
-                .exceptionHandling()
-                .accessDeniedHandler(accessDeniedHandler()); // Đảm bảo sử dụng handler cho lỗi 403
+                .exceptionHandling(exceptions ->
+                        exceptions.accessDeniedPage("/error")  // Đưa trang lỗi tùy chỉnh khi gặp lỗi 403
+                );
 
         return http.build();
-    }
-
-    // Cung cấp AccessDeniedHandler tùy chỉnh
-    @Bean
-    public AccessDeniedHandler accessDeniedHandler() {
-        AccessDeniedHandlerImpl handler = new AccessDeniedHandlerImpl();
-        handler.setErrorPage("/error");  // Chuyển đến trang lỗi khi gặp lỗi 403
-        return handler;
     }
 }

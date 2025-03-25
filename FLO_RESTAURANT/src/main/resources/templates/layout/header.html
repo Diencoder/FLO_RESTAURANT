@@ -49,7 +49,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto py-0 pe-4">
-                <a href="/" class="nav-item nav-link" th:classappend="${pageTitle == 'Trang chủ'} ? 'active' : ''">Trang chủ</a>
+                <a href="/index" class="nav-item nav-link" th:classappend="${pageTitle == 'Trang chủ'} ? 'active' : ''">Trang chủ</a>
                 <a href="/about" class="nav-item nav-link" th:classappend="${pageTitle == 'Giới thiệu'} ? 'active' : ''">Giới thiệu</a>
                 <a href="/menu" class="nav-item nav-link" th:classappend="${pageTitle == 'Thực đơn'} ? 'active' : ''">Thực đơn</a>
                 <a href="/reservation" class="nav-item nav-link" th:classappend="${pageTitle == 'Đặt bàn'} ? 'active' : ''">Đặt bàn</a>
@@ -63,9 +63,24 @@
                 <a href="/contact" class="nav-item nav-link" th:classappend="${pageTitle == 'Liên hệ'} ? 'active' : ''">Liên hệ</a>
             </div>
 
+            <!-- Giỏ hàng -->
             <a href="/mycart" class="btn btn-primary py-2 px-4">
                 <i class="fas fa-shopping-cart"></i><span> Giỏ hàng [[${count}]]</span>
             </a>
+
+            <!-- Kiểm tra nếu người dùng đã đăng nhập -->
+            <div th:if="${session.user != null}">
+                <!-- Nếu người dùng đã đăng nhập, hiển thị nút Đăng xuất -->
+                <a href="/logout" class="btn btn-secondary py-2 px-4">
+                    Đăng xuất
+                </a>
+            </div>
+            <div th:if="${session.user == null}">
+                <!-- Nếu người dùng chưa đăng nhập, hiển thị nút Đăng nhập -->
+                <a href="/login" class="btn btn-success py-2 px-4">
+                    Đăng nhập
+                </a>
+            </div>
         </div>
     </nav>
 

@@ -57,7 +57,7 @@ public class AdminController {
     }
 
     // Trang Đăng xuất
-    @GetMapping("/logout")
+    @GetMapping("/admin/logout")
     public String logout() {
         return "layout/login"; // Trả về trang login.html (hoặc trang khác nếu cần)
     }
