@@ -14,6 +14,7 @@ public interface FoodRepository extends JpaRepository<Food, Long> {
 
     // Truy vấn món ăn có trạng thái 'Active'
     List<Food> findByActive(String active);
+    @Query("SELECT f.id FROM Food f WHERE f.title = :title")
     Long findIdByTitle(String title);
     // Giảm số lượng kho của món ăn theo tên món
     @Modifying

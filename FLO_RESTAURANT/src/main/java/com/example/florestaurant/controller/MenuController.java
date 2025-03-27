@@ -2,17 +2,26 @@ package com.example.florestaurant.controller;
 
 import com.example.florestaurant.model.Cart;
 import com.example.florestaurant.model.Food;
+import com.example.florestaurant.service.CartService;
 import com.example.florestaurant.service.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.servlet.http.HttpSession;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class MenuController {
+    @Autowired
+    private CartService cartService;  // Tiêm CartService vào Controller
 
     @Autowired
     private FoodService foodService;
@@ -69,6 +78,41 @@ public class MenuController {
         model.addAttribute("totalAmount", totalAmount);
         return "/layout/mycart";  // Trả về view giỏ hàng
     }
+    @PostMapping("/updateCart")
+    @ResponseBody
+    public ResponseEntity<Map<String, Object>> updateCart(@RequestParam Long foodId,
+                                                          @RequestParam int quantity,
+                                                          HttpSession session) {
+        // Lấy giỏ hàng từ session
+        List<Map<String, Object>> cart = (List<Map<String, Object>>) session.getAttribute("cart");
+
+        if (cart != null) {
+            // Cập nhật số lượng của món trong giỏ
+            for (Map<String, Object> item : cart) {
+                if (item.get("Id").equals(foodId)) {
+                    item.put("Quantity", quantity);
+                    break;
+                }
+            }
+
+            // Tính lại tổng tiền sau khi cập nhật giỏ hàng
+            double totalAmount = cartService.calculateTotalAmount(cart); // Sử dụng phương thức calculateTotalAmount
+
+            // Lưu tổng tiền vào session
+            session.setAttribute("totalAmount", totalAmount);
+
+            // Trả về tổng tiền mới
+            Map<String, Object> response = new HashMap<>();
+            response.put("totalAmount", totalAmount);
+
+            return ResponseEntity.ok(response);
+        }
+
+        // Trả về lỗi nếu giỏ hàng không tồn tại
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+    }
+
+
 
     // Xóa món ăn khỏi giỏ hàng
     @PostMapping("/removeFromCart")

@@ -2,10 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{layout/header}"></head>
 <body>
-<div class="container">
+<div class="container mt-5">
     <h1>Your Cart</h1>
 
-    <table>
+    <table class="table table-bordered">
+        <thead>
         <tr>
             <th>Name</th>
             <th>Quantity</th>
@@ -13,36 +14,71 @@
             <th>Total</th>
             <th>Action</th>
         </tr>
+        </thead>
+        <tbody>
         <tr th:each="item : ${cart.items}">
             <td th:text="${item.food.title}"></td>
-            <td th:text="${item.quantity}"></td>
+            <td>
+                <!-- Input for changing quantity -->
+                <input type="number" th:value="${item.quantity}" name="quantity" class="form-control" min="1" required
+                       th:attr="onchange='updateCart(${item.food.id}, this.value)'">
+
+            </td>
             <td th:text="${item.food.price}"></td>
             <td th:text="${item.getTotalPrice()}"></td>
             <td>
                 <form th:action="@{/removeFromCart}" method="post">
                     <input type="hidden" name="foodId" th:value="${item.food.id}">
-                    <button type="submit">Remove</button>
+                    <button type="submit" class="btn btn-danger">Remove</button>
                 </form>
             </td>
         </tr>
+        </tbody>
     </table>
 
-    <p th:text="'Total: ' + ${totalAmount}"></p>
+    <p id="totalAmount" th:text="'Total: ' + ${totalAmount}"></p>
 
-    <!-- 🔘 Nút Thanh toán -->
     <h3>Thông tin khách hàng</h3>
     <form th:action="@{/purchase}" method="post">
-        <input type="text" name="tran_id" placeholder="Mã giao dịch" required>
-        <input type="text" name="username" placeholder="Tên đăng nhập" required>
-        <input type="text" name="cus_name" placeholder="Tên khách hàng" required>
-        <input type="email" name="cus_email" placeholder="Email" required>
-        <input type="text" name="cus_add1" placeholder="Địa chỉ" required>
-        <input type="text" name="cus_city" placeholder="Thành phố" required>
-        <input type="text" name="cus_phone" placeholder="Số điện thoại" required>
+        <!-- Tạo mã giao dịch ngẫu nhiên với 6 chữ số -->
+        <input type="text" name="tran_id" th:value="${T(java.lang.Math).random() * 1000000}" class="form-control" placeholder="Mã giao dịch" readonly required>
+
+        <!-- Tự động điền thông tin người dùng từ session -->
+        <input type="text" name="username" th:value="${session.username}" class="form-control" placeholder="Tên đăng nhập" readonly required>
+        <input type="text" name="cus_name" th:value="${session.cus_name}" class="form-control" placeholder="Tên khách hàng" required>
+        <input type="email" name="cus_email" th:value="${session.cus_email}" class="form-control" placeholder="Email" required>
+        <input type="text" name="cus_add1" th:value="${session.cus_add1}" class="form-control" placeholder="Địa chỉ" required>
+        <input type="text" name="cus_city" th:value="${session.cus_city}" class="form-control" placeholder="Thành phố" required>
+        <input type="text" name="cus_phone" th:value="${session.cus_phone}" class="form-control" placeholder="Số điện thoại" required>
+
         <br><br>
         <button type="submit" class="btn btn-success">🛒 Thanh Toán</button>
     </form>
 </div>
+
+<!-- Thêm Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Function to update cart when quantity is changed
+    function updateCart(foodId, quantity) {
+        // Send the updated quantity to the server via AJAX
+        fetch(`/updateCart?foodId=${foodId}&quantity=${quantity}`, {
+            method: 'POST',
+        })
+            .then(response => response.json())
+            .then(data => {
+                // Update the displayed total amount
+                document.getElementById('totalAmount').innerText = 'Total: ' + data.totalAmount;
+
+                // Optionally, you could update the quantity and total in the table dynamically here
+            })
+            .catch(error => {
+                console.error('Error updating cart:', error);
+            });
+    }
+</script>
 
 <div th:replace="~{layout/footer}"></div>
 </body>

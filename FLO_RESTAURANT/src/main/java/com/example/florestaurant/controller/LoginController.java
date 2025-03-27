@@ -35,6 +35,12 @@ public class LoginController {
 
         if (user != null) {
             // Lưu thông tin người dùng vào session
+            session.setAttribute("username", user.getUsername());
+            session.setAttribute("cus_name", user.getName());
+            session.setAttribute("cus_email", user.getEmail());
+            session.setAttribute("cus_add1", user.getAdd1());
+            session.setAttribute("cus_city", user.getCity());
+            session.setAttribute("cus_phone", user.getPhone());
             session.setAttribute("user", user);
 
             // Kiểm tra vai trò của người dùng
