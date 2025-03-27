@@ -30,29 +30,35 @@ public class MenuController {
     @PostMapping("/addToCart")
     public String addToCart(@RequestParam("foodId") Long foodId,
                             @RequestParam("quantity") int quantity,
-                            HttpSession session) {
+                            HttpSession session,
+                            Model model) {
         // Lấy giỏ hàng từ session, nếu chưa có thì khởi tạo mới
-        Cart cart = (Cart) session.getAttribute("cart");
+        Cart cart = (Cart) session.getAttribute("mycart");
         if (cart == null) {
-            cart = new Cart();  // Khởi tạo giỏ hàng nếu chưa có
-            session.setAttribute("cart", cart);
+            cart = new Cart();
+            session.setAttribute("mycart", cart);
         }
 
-        // Lấy thông tin món ăn từ cơ sở dữ liệu
+        // Lấy thông tin món ăn từ DB
         Food food = foodService.getFoodById(foodId);
-
         if (food != null) {
-            // Thêm món ăn vào giỏ hàng
             cart.addItem(food, quantity);
         }
 
-        return "redirect:/cart";  // Chuyển hướng đến trang giỏ hàng
+        // Load lại thực đơn và hiển thị thông báo
+        List<Food> foods = foodService.getActiveFoods();
+        model.addAttribute("foods", foods);
+        model.addAttribute("message", "✅ Đã thêm món vào giỏ hàng!");
+        model.addAttribute("cartSize", cart.getItems().size()); // để hiển thị ở header
+
+        return "layout/menu"; // Giữ lại trang menu
     }
 
+
     // Hiển thị giỏ hàng
-    @GetMapping("/cart")
+    @GetMapping("/mycart")
     public String showCart(HttpSession session, Model model) {
-        Cart cart = (Cart) session.getAttribute("cart");
+        Cart cart = (Cart) session.getAttribute("mycart");
         double totalAmount = 0;
 
         if (cart != null) {
@@ -67,12 +73,12 @@ public class MenuController {
     // Xóa món ăn khỏi giỏ hàng
     @PostMapping("/removeFromCart")
     public String removeFromCart(@RequestParam("foodId") Long foodId, HttpSession session) {
-        Cart cart = (Cart) session.getAttribute("cart");
+        Cart cart = (Cart) session.getAttribute("mycart");
 
         if (cart != null) {
             cart.removeItem(foodId);  // Xóa món ăn khỏi giỏ
         }
 
-        return "redirect:/cart";  // Chuyển hướng lại trang giỏ hàng
+        return "redirect:/mycart";  // Chuyển hướng lại trang giỏ hàng
     }
 }

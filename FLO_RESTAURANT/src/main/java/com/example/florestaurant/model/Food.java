@@ -9,6 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Food {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,14 +19,18 @@ public class Food {
     private String imageName;
     private String active;
 
+    // Thêm thuộc tính stock
+    private Integer stock;  // Số lượng món ăn trong kho
+
     // Constructor mặc định
     public Food() {}
 
     // Constructor với các tham số
-    public Food(String title, Double price, String imageName, String active) {
+    public Food(String title, Double price, String imageName, String active, Integer stock) {
         this.title = title;
         this.price = price;
         this.imageName = imageName;
         this.active = active;
+        this.stock = stock;
     }
 }

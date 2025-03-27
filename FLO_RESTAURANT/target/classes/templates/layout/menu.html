@@ -4,6 +4,11 @@
 <body>
 <!-- Content Section Start -->
 <div class="container">
+    <!-- ✅ Hiển thị thông báo nếu có -->
+    <div th:if="${message}" class="alert alert-success text-center">
+        <span th:text="${message}"></span>
+    </div>
+
     <h1 class="my-4">Menu</h1>
 
     <div class="row">

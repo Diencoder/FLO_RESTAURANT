@@ -1,0 +1,107 @@
+package com.example.florestaurant.service.impl;
+
+import com.example.florestaurant.model.*;
+import com.example.florestaurant.repository.*;
+import com.example.florestaurant.service.OrderService;
+import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+@Service
+public class OrderServiceImpl implements OrderService {
+
+    @Autowired
+    private AamarpayRepository aamarpayRepository;
+    @Autowired
+    private OrderManagerRepository orderManagerRepository;
+    @Autowired
+    private OrderItemRepository orderItemRepository;
+    @Autowired
+    private OrderHistoryRepository orderHistoryRepository;
+    @Autowired
+    private FoodRepository foodRepository;
+    @Autowired
+    private UserRepository userRepository;
+
+    @Override
+    @Transactional
+    public void processOrder(String tranId, String username, String cusName, String cusEmail,
+                             String cusAdd1, String cusCity, String cusPhone,
+                             double totalAmount, double discountAmount,
+                             List<Map<String, Object>> cartItems) {
+
+        // Save payment to aamarpay
+        Aamarpay payment = new Aamarpay();
+        payment.setCusName(cusName);
+        payment.setAmount(totalAmount);
+        payment.setStatus("Pending");
+        payment.setTransactionId(tranId);
+        payment.setCardType("Card");
+        aamarpayRepository.save(payment);  // Lưu vào bảng aamarpay
+
+        // Save order to order_manager
+        OrderManager order = new OrderManager();
+        order.setUsername(username);
+        order.setCusName(cusName);
+        order.setCusEmail(cusEmail);
+        order.setCusAdd1(cusAdd1);
+        order.setCusCity(cusCity);
+        order.setCusPhone(Long.valueOf(cusPhone));
+        order.setPaymentStatus("Pending");
+        order.setOrderStatus("Pending");
+        order.setOrderDate(new Date());
+        order.setTotalAmount(totalAmount);
+        order.setAamarpay(payment);  // Liên kết với transaction_id trong bảng aamarpay
+        orderManagerRepository.save(order);  // Lưu vào bảng order_manager
+
+        // Save each order item and update stock
+        for (Map<String, Object> item : cartItems) {
+            String itemName = (String) item.get("Item_Name");
+            double price = (double) item.get("Price");
+            int quantity = (int) item.get("Quantity");
+
+            if (discountAmount > 0) {
+                price -= (discountAmount / cartItems.size());
+            }
+
+            OrderItem orderItem = new OrderItem(order, itemName, price, quantity);
+            orderItemRepository.save(orderItem);
+
+            foodRepository.reduceStockByTitle(itemName, quantity);
+
+            // Save order history
+            Long userId = userRepository.findIdByUsername(username);
+            Long foodId = foodRepository.findIdByTitle(itemName);
+            OrderHistory history = new OrderHistory(userId, foodId, quantity, LocalDateTime.now());
+            orderHistoryRepository.save(history);
+        }
+    }
+
+    @Override
+    public List<OrderManager> getAllOrders() {
+        return orderManagerRepository.findAll();  // Lấy tất cả đơn hàng từ database
+    }
+
+    @Override
+    public OrderManager getOrderById(Long id) {
+        return orderManagerRepository.findById(id).orElse(null);  // Nếu không tìm thấy đơn hàng trả về null
+    }
+
+
+    @Override
+    public OrderManager saveOrder(OrderManager orderManager) {
+        return orderManagerRepository.save(orderManager);  // Lưu hoặc cập nhật đơn hàng vào database
+    }
+
+
+    @Override
+    public void deleteOrder(Long id) {
+        orderManagerRepository.deleteById(id);  // Xóa đơn hàng theo ID từ database
+    }
+
+}

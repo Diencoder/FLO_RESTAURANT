@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layout/header}"></head>  <!-- Nhúng header từ layout/header.html -->
+<head th:replace="~{layout/header}"></head>
 <body>
-<!-- Nội dung giỏ hàng của bạn -->
 <div class="container">
     <h1>Your Cart</h1>
+
     <table>
         <tr>
             <th>Name</th>
@@ -26,10 +26,24 @@
             </td>
         </tr>
     </table>
+
     <p th:text="'Total: ' + ${totalAmount}"></p>
+
+    <!-- 🔘 Nút Thanh toán -->
+    <h3>Thông tin khách hàng</h3>
+    <form th:action="@{/purchase}" method="post">
+        <input type="text" name="tran_id" placeholder="Mã giao dịch" required>
+        <input type="text" name="username" placeholder="Tên đăng nhập" required>
+        <input type="text" name="cus_name" placeholder="Tên khách hàng" required>
+        <input type="email" name="cus_email" placeholder="Email" required>
+        <input type="text" name="cus_add1" placeholder="Địa chỉ" required>
+        <input type="text" name="cus_city" placeholder="Thành phố" required>
+        <input type="text" name="cus_phone" placeholder="Số điện thoại" required>
+        <br><br>
+        <button type="submit" class="btn btn-success">🛒 Thanh Toán</button>
+    </form>
 </div>
 
-<!-- Nhúng footer từ layout/footer.html -->
 <div th:replace="~{layout/footer}"></div>
 </body>
 </html>
