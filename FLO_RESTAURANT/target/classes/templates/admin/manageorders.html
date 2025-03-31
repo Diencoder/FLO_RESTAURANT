@@ -33,7 +33,7 @@
             <table class="table table-striped table-bordered">
                 <thead class="table-dark">
                 <tr>
-                    <th scope="col">Mã Giao Dịch</th>
+                    <th scope="col">Mã Đơn Hàng</th> <!-- Cập nhật tên cột -->
                     <th scope="col">Tên Khách Hàng</th>
                     <th scope="col">Tổng Tiền</th>
                     <th scope="col">Trạng Thái</th>
@@ -42,13 +42,13 @@
                 </thead>
                 <tbody>
                 <tr th:each="order : ${orders}">
-                    <td th:text="${order.transactionId}"></td>
-                    <td th:text="${order.customerName}"></td>
-                    <td th:text="${order.total}"></td>
-                    <td th:text="${order.status}"></td>
+                    <td th:text="${order.orderId}"></td> <!-- Sửa từ transactionId thành orderId -->
+                    <td th:text="${order.cusName}"></td> <!-- Sửa từ customerName thành cusName -->
+                    <td th:text="${order.totalAmount}"></td> <!-- Sửa từ total thành totalAmount -->
+                    <td th:text="${order.orderStatus}"></td> <!-- Sửa từ status thành orderStatus -->
                     <td>
-                        <a th:href="@{/admin/orders/{id}(id=${order.id})}" class="btn btn-warning btn-sm">Chỉnh Sửa</a> |
-                        <a th:href="@{/admin/orders/delete/{id}(id=${order.id})}" class="btn btn-danger btn-sm">Xóa</a>
+                        <a th:href="@{/admin/orders/{id}(id=${order.orderId})}" class="btn btn-warning btn-sm">Chỉnh Sửa</a> |
+                        <a th:href="@{/admin/orders/delete/{id}(id=${order.orderId})}" class="btn btn-danger btn-sm">Xóa</a>
                     </td>
                 </tr>
                 </tbody>

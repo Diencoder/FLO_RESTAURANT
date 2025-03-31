@@ -95,8 +95,18 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderManager saveOrder(OrderManager orderManager) {
-        return orderManagerRepository.save(orderManager);  // Lưu hoặc cập nhật đơn hàng vào database
+        // Nếu order_date là null, giữ nguyên giá trị cũ từ cơ sở dữ liệu
+        if (orderManager.getOrderDate() == null) {
+            OrderManager existingOrder = orderManagerRepository.findById(orderManager.getOrderId()).orElse(null);
+            if (existingOrder != null) {
+                orderManager.setOrderDate(existingOrder.getOrderDate()); // Giữ nguyên order_date nếu không thay đổi
+            }
+        }
+
+        // Lưu hoặc cập nhật đơn hàng
+        return orderManagerRepository.save(orderManager);
     }
+
 
 
     @Override

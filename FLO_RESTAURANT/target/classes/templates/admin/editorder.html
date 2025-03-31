@@ -30,31 +30,31 @@
 
         <!-- Form chỉnh sửa đơn hàng với Bootstrap -->
         <form th:action="@{/admin/orders}" th:object="${order}" method="post">
-            <input type="hidden" th:field="*{id}" />
+            <input type="hidden" th:field="*{orderId}" /> <!-- Cập nhật từ id thành orderId -->
 
             <div class="mb-3">
-                <label for="transactionId" class="form-label">Mã Giao Dịch:</label>
-                <input type="text" th:field="*{transactionId}" id="transactionId" class="form-control" />
+                <label for="orderId" class="form-label">Mã Đơn Hàng:</label>
+                <input type="text" th:field="*{orderId}" id="orderId" class="form-control" disabled />
             </div>
 
             <div class="mb-3">
-                <label for="customerName" class="form-label">Tên Khách Hàng:</label>
-                <input type="text" th:field="*{customerName}" id="customerName" class="form-control" />
+                <label for="cusName" class="form-label">Tên Khách Hàng:</label>
+                <input type="text" th:field="*{cusName}" id="cusName" class="form-control" />
             </div>
 
             <div class="mb-3">
-                <label for="customerContact" class="form-label">Số Điện Thoại Khách Hàng:</label>
-                <input type="text" th:field="*{customerContact}" id="customerContact" class="form-control" />
+                <label for="cusPhone" class="form-label">Số Điện Thoại Khách Hàng:</label>
+                <input type="text" th:field="*{cusPhone}" id="cusPhone" class="form-control" />
             </div>
 
             <div class="mb-3">
-                <label for="customerEmail" class="form-label">Email Khách Hàng:</label>
-                <input type="email" th:field="*{customerEmail}" id="customerEmail" class="form-control" />
+                <label for="cusEmail" class="form-label">Email Khách Hàng:</label>
+                <input type="email" th:field="*{cusEmail}" id="cusEmail" class="form-control" />
             </div>
 
             <div class="mb-3">
-                <label for="customerAddress" class="form-label">Địa Chỉ Khách Hàng:</label>
-                <input type="text" th:field="*{customerAddress}" id="customerAddress" class="form-control" />
+                <label for="cusAdd1" class="form-label">Địa Chỉ Khách Hàng:</label>
+                <input type="text" th:field="*{cusAdd1}" id="cusAdd1" class="form-control" />
             </div>
 
             <div class="mb-3">
@@ -63,8 +63,8 @@
             </div>
 
             <div class="mb-3">
-                <label for="status" class="form-label">Trạng Thái:</label>
-                <select th:field="*{status}" id="status" class="form-select">
+                <label for="orderStatus" class="form-label">Trạng Thái:</label>
+                <select th:field="*{orderStatus}" id="orderStatus" class="form-select">
                     <option value="Pending" th:text="${'Chờ Xử Lý'}">Chờ Xử Lý</option>
                     <option value="Completed" th:text="${'Đã Hoàn Thành'}">Đã Hoàn Thành</option>
                     <option value="Cancelled" th:text="${'Đã Hủy'}">Đã Hủy</option>
@@ -72,8 +72,8 @@
             </div>
 
             <div class="mb-3">
-                <label for="total" class="form-label">Tổng Tiền:</label>
-                <input type="number" th:field="*{total}" id="total" class="form-control" />
+                <label for="totalAmount" class="form-label">Tổng Tiền:</label>
+                <input type="number" th:field="*{totalAmount}" id="totalAmount" class="form-control" />
             </div>
 
             <button type="submit" class="btn btn-primary">Lưu</button>

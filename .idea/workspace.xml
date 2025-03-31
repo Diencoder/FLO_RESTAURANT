@@ -4,21 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c1c74aa-e7ef-4943-a9d8-27019accd5cc" name="Changes" comment="cart">
-      <change afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/layout/confirmation.html" afterDir="false" />
+    <list default="true" id="8c1c74aa-e7ef-4943-a9d8-27019accd5cc" name="Changes" comment="mycart change">
+      <change afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/admin/orders.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/PurchaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/PurchaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/repository/FoodRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/repository/FoodRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/layout/mycart.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/layout/mycart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/com/example/florestaurant/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/com/example/florestaurant/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/com/example/florestaurant/controller/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/com/example/florestaurant/controller/MenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/com/example/florestaurant/repository/FoodRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/com/example/florestaurant/repository/FoodRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/com/example/florestaurant/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/com/example/florestaurant/repository/UserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/templates/layout/mycart.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/templates/layout/mycart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/FoodServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/FoodServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/admin/editorder.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/admin/editorder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/admin/manageorderdetails.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/admin/manageorders.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/admin/manageorders.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/fragments/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/fragments/sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/com/example/florestaurant/model/Cart.class" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/com/example/florestaurant/model/Cart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/com/example/florestaurant/service/impl/FoodServiceImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/templates/admin/editorder.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/templates/admin/editorder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/templates/admin/manageorderdetails.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/templates/admin/manageorders.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/templates/admin/manageorders.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/templates/fragments/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/templates/fragments/sidebar.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,18 +37,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Diencoder"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Diencoder&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Diencoder/FLO_RESTAURANT.git",
-    "accountId": "4b4639bc-1fed-4e88-94e9-f48860c6f5d3"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Diencoder/FLO_RESTAURANT.git&quot;,
+    &quot;accountId&quot;: &quot;4b4639bc-1fed-4e88-94e9-f48860c6f5d3&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -150,7 +150,9 @@
       <workItem from="1742979677880" duration="250000" />
       <workItem from="1743001492437" duration="9311000" />
       <workItem from="1743042941493" duration="2638000" />
-      <workItem from="1743069097402" duration="18976000" />
+      <workItem from="1743069097402" duration="19177000" />
+      <workItem from="1743256568204" duration="764000" />
+      <workItem from="1743425514577" duration="8396000" />
     </task>
     <task id="LOCAL-00001" summary="cart">
       <option name="closed" value="true" />
@@ -192,14 +194,34 @@
       <option name="project" value="LOCAL" />
       <updated>1743083170522</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="mycart change">
+      <option name="closed" value="true" />
+      <created>1743093248025</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1743093248026</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="cart" />
-    <option name="LAST_COMMIT_MESSAGE" value="cart" />
+    <MESSAGE value="mycart change" />
+    <option name="LAST_COMMIT_MESSAGE" value="mycart change" />
   </component>
 </project>

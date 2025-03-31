@@ -1,4 +1,4 @@
-package com.example.florestaurant.service.impl;
+package com.example.florestaurant.service;
 
 import com.example.florestaurant.model.Food;
 import com.example.florestaurant.service.FoodService;
