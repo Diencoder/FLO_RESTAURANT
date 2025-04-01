@@ -3,9 +3,9 @@ package com.example.florestaurant.controller;
 import com.example.florestaurant.model.Cart;
 import com.example.florestaurant.model.Food;
 import com.example.florestaurant.service.CartService;
+import com.example.florestaurant.service.CartItemService;
 import com.example.florestaurant.service.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,8 +20,12 @@ import java.util.Map;
 
 @Controller
 public class MenuController {
+
     @Autowired
-    private CartService cartService;  // Tiêm CartService vào Controller
+    private CartService cartService;  // Service quản lý giỏ hàng
+
+    @Autowired
+    private CartItemService cartItemService;  // Service quản lý các món trong giỏ hàng
 
     @Autowired
     private FoodService foodService;
@@ -40,88 +44,64 @@ public class MenuController {
     public String addToCart(@RequestParam("foodId") Long foodId,
                             @RequestParam("quantity") int quantity,
                             HttpSession session,
-                            Model model) {
+                            RedirectAttributes redirectAttributes) {
         // Lấy giỏ hàng từ session, nếu chưa có thì khởi tạo mới
-        Cart cart = (Cart) session.getAttribute("mycart");
-        if (cart == null) {
-            cart = new Cart();
-            session.setAttribute("mycart", cart);
-        }
+        Cart cart = cartService.getCart(session);
 
-        // Lấy thông tin món ăn từ DB
+        // Lấy thông tin món ăn từ DB và thêm vào giỏ
         Food food = foodService.getFoodById(foodId);
         if (food != null) {
-            cart.addItem(food, quantity);
+            cartItemService.addItemToCart(cart, food, quantity);  // Gọi service để thêm món vào giỏ hàng
         }
 
-        // Load lại thực đơn và hiển thị thông báo
-        List<Food> foods = foodService.getActiveFoods();
-        model.addAttribute("foods", foods);
-        model.addAttribute("message", "✅ Đã thêm món vào giỏ hàng!");
-        model.addAttribute("cartSize", cart.getItems().size()); // để hiển thị ở header
+        // Thêm thông báo và cập nhật số lượng giỏ hàng trong session
+        redirectAttributes.addFlashAttribute("message", "✅ Đã thêm món vào giỏ hàng!");
+        redirectAttributes.addFlashAttribute("cartSize", cart.getItems().size());
 
-        return "layout/menu"; // Giữ lại trang menu
+        return "redirect:/menu";  // Quay lại trang menu sau khi thêm món
     }
-
 
     // Hiển thị giỏ hàng
     @GetMapping("/mycart")
     public String showCart(HttpSession session, Model model) {
-        Cart cart = (Cart) session.getAttribute("mycart");
-        double totalAmount = 0;
-
-        if (cart != null) {
-            totalAmount = cart.getTotalPrice();
-        }
+        Cart cart = cartService.getCart(session);
+        double totalAmount = cartService.calculateTotalAmount(cart);
 
         model.addAttribute("cart", cart);
         model.addAttribute("totalAmount", totalAmount);
-        return "/layout/mycart";  // Trả về view giỏ hàng
+        return "layout/mycart";  // Trả về view giỏ hàng
     }
+
+    // Cập nhật giỏ hàng
     @PostMapping("/updateCart")
     @ResponseBody
     public ResponseEntity<Map<String, Object>> updateCart(@RequestParam Long foodId,
                                                           @RequestParam int quantity,
                                                           HttpSession session) {
-        // Lấy giỏ hàng từ session
-        List<Map<String, Object>> cart = (List<Map<String, Object>>) session.getAttribute("cart");
+        Cart cart = cartService.getCart(session);
+        cartItemService.updateItemQuantity(cart, foodId, quantity);  // Cập nhật số lượng món trong giỏ hàng
 
-        if (cart != null) {
-            // Cập nhật số lượng của món trong giỏ
-            for (Map<String, Object> item : cart) {
-                if (item.get("Id").equals(foodId)) {
-                    item.put("Quantity", quantity);
-                    break;
-                }
-            }
+        // Tính lại tổng tiền sau khi cập nhật giỏ hàng
+        double totalAmount = cartService.calculateTotalAmount(cart);
 
-            // Tính lại tổng tiền sau khi cập nhật giỏ hàng
-            double totalAmount = cartService.calculateTotalAmount(cart); // Sử dụng phương thức calculateTotalAmount
+        // Lưu tổng tiền vào session
+        session.setAttribute("totalAmount", totalAmount);
 
-            // Lưu tổng tiền vào session
-            session.setAttribute("totalAmount", totalAmount);
+        // Trả về tổng tiền mới dưới dạng JSON
+        Map<String, Object> response = new HashMap<>();
+        response.put("totalAmount", totalAmount);  // Đảm bảo `totalAmount` có giá trị
 
-            // Trả về tổng tiền mới
-            Map<String, Object> response = new HashMap<>();
-            response.put("totalAmount", totalAmount);
-
-            return ResponseEntity.ok(response);
-        }
-
-        // Trả về lỗi nếu giỏ hàng không tồn tại
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        return ResponseEntity.ok(response);  // Trả về JSON với `totalAmount`
     }
+
 
 
 
     // Xóa món ăn khỏi giỏ hàng
     @PostMapping("/removeFromCart")
     public String removeFromCart(@RequestParam("foodId") Long foodId, HttpSession session) {
-        Cart cart = (Cart) session.getAttribute("mycart");
-
-        if (cart != null) {
-            cart.removeItem(foodId);  // Xóa món ăn khỏi giỏ
-        }
+        Cart cart = cartService.getCart(session);
+        cartItemService.removeItemFromCart(cart, foodId);  // Xóa món ăn khỏi giỏ
 
         return "redirect:/mycart";  // Chuyển hướng lại trang giỏ hàng
     }

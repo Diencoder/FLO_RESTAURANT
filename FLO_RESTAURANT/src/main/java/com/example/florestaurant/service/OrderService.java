@@ -1,6 +1,6 @@
 package com.example.florestaurant.service;
 
-import com.example.florestaurant.model.Order;
+import com.example.florestaurant.model.Aamarpay;
 import com.example.florestaurant.model.OrderManager;
 
 import java.util.List;
@@ -24,4 +24,18 @@ public interface OrderService {
 
     // Xóa đơn hàng
     void deleteOrder(Long id);
+
+    // Phương thức để lưu thanh toán
+    Aamarpay savePayment(String tranId, String cusName, double totalAmount);
+
+    // Phương thức để lưu đơn hàng
+    OrderManager saveOrderDetails(String username, String cusName, String cusEmail,
+                                  String cusAdd1, String cusCity, String cusPhone,
+                                  double totalAmount, Aamarpay payment);
+
+    // Phương thức để lưu các mục trong giỏ hàng
+    void saveOrderItems(List<Map<String, Object>> cartItems, OrderManager order, double discountAmount);
+
+    // Phương thức để lưu lịch sử đơn hàng
+    void saveOrderHistory(String username, List<Map<String, Object>> cartItems);
 }

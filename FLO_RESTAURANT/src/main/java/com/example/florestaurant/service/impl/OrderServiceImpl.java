@@ -35,7 +35,21 @@ public class OrderServiceImpl implements OrderService {
                              double totalAmount, double discountAmount,
                              List<Map<String, Object>> cartItems) {
 
-        // Save payment to aamarpay
+        // Lưu thanh toán
+        Aamarpay payment = savePayment(tranId, cusName, totalAmount);
+
+        // Lưu thông tin đơn hàng
+        OrderManager order = saveOrderDetails(username, cusName, cusEmail, cusAdd1, cusCity, cusPhone, totalAmount, payment);
+
+        // Lưu các mục trong giỏ hàng và cập nhật tồn kho
+        saveOrderItems(cartItems, order, discountAmount);
+
+        // Lưu lịch sử đơn hàng
+        saveOrderHistory(username, cartItems);
+    }
+
+    @Override
+    public Aamarpay savePayment(String tranId, String cusName, double totalAmount) {
         Aamarpay payment = new Aamarpay();
         payment.setCusName(cusName);
         payment.setAmount(totalAmount);
@@ -43,8 +57,13 @@ public class OrderServiceImpl implements OrderService {
         payment.setTransactionId(tranId);
         payment.setCardType("Card");
         aamarpayRepository.save(payment);  // Lưu vào bảng aamarpay
+        return payment;
+    }
 
-        // Save order to order_manager
+    @Override
+    public OrderManager saveOrderDetails(String username, String cusName, String cusEmail,
+                                         String cusAdd1, String cusCity, String cusPhone,
+                                         double totalAmount, Aamarpay payment) {
         OrderManager order = new OrderManager();
         order.setUsername(username);
         order.setCusName(cusName);
@@ -57,9 +76,11 @@ public class OrderServiceImpl implements OrderService {
         order.setOrderDate(new Date());
         order.setTotalAmount(totalAmount);
         order.setAamarpay(payment);  // Liên kết với transaction_id trong bảng aamarpay
-        orderManagerRepository.save(order);  // Lưu vào bảng order_manager
+        return orderManagerRepository.save(order);  // Lưu vào bảng order_manager
+    }
 
-        // Save each order item and update stock
+    @Override
+    public void saveOrderItems(List<Map<String, Object>> cartItems, OrderManager order, double discountAmount) {
         for (Map<String, Object> item : cartItems) {
             String itemName = (String) item.get("Item_Name");
             double price = (double) item.get("Price");
@@ -72,11 +93,18 @@ public class OrderServiceImpl implements OrderService {
             OrderItem orderItem = new OrderItem(order, itemName, price, quantity);
             orderItemRepository.save(orderItem);
 
+            // Cập nhật số lượng tồn kho của món ăn
             foodRepository.reduceStockByTitle(itemName, quantity);
+        }
+    }
 
-            // Save order history
-            Long userId = userRepository.findIdByUsername(username);
+    @Override
+    public void saveOrderHistory(String username, List<Map<String, Object>> cartItems) {
+        Long userId = userRepository.findIdByUsername(username);
+        for (Map<String, Object> item : cartItems) {
+            String itemName = (String) item.get("Item_Name");
             Long foodId = foodRepository.findIdByTitle(itemName);
+            int quantity = (int) item.get("Quantity");
             OrderHistory history = new OrderHistory(userId, foodId, quantity, LocalDateTime.now());
             orderHistoryRepository.save(history);
         }
@@ -92,7 +120,6 @@ public class OrderServiceImpl implements OrderService {
         return orderManagerRepository.findById(id).orElse(null);  // Nếu không tìm thấy đơn hàng trả về null
     }
 
-
     @Override
     public OrderManager saveOrder(OrderManager orderManager) {
         // Nếu order_date là null, giữ nguyên giá trị cũ từ cơ sở dữ liệu
@@ -107,11 +134,8 @@ public class OrderServiceImpl implements OrderService {
         return orderManagerRepository.save(orderManager);
     }
 
-
-
     @Override
     public void deleteOrder(Long id) {
         orderManagerRepository.deleteById(id);  // Xóa đơn hàng theo ID từ database
     }
-
 }
