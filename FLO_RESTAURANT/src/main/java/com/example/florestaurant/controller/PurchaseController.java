@@ -1,7 +1,6 @@
 package com.example.florestaurant.controller;
 
-import com.example.florestaurant.model.CartItem;
-import com.example.florestaurant.model.User;
+import com.example.florestaurant.model.Food;
 import com.example.florestaurant.service.CartService;
 import com.example.florestaurant.service.OrderService;
 import com.example.florestaurant.service.UserService;
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import com.example.florestaurant.model.Cart;
+import com.example.florestaurant.model.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,6 +27,7 @@ public class PurchaseController {
     @Autowired
     private UserService userService;
 
+    // Xử lý thanh toán
     @PostMapping("/purchase")
     public String processPurchase(@RequestParam String tran_id,
                                   @RequestParam String cus_name,
@@ -39,38 +39,39 @@ public class PurchaseController {
                                   RedirectAttributes redirectAttributes) {
 
         // Kiểm tra người dùng đã đăng nhập chưa
-        if (session.getAttribute("user") == null) {
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
             redirectAttributes.addFlashAttribute("message", "Vui lòng đăng nhập để thanh toán!");
             return "redirect:/login";  // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
         }
 
-        // Lấy thông tin người dùng từ session
-        String username = ((User) session.getAttribute("user")).getUsername();
-
         // Lấy giỏ hàng từ session
-        Cart cart = (Cart) session.getAttribute("mycart");
-        if (cart == null || cart.getItems().isEmpty()) {
+        List<Food> cart = cartService.getCart(session);
+        if (cart == null || cart.isEmpty()) {
             redirectAttributes.addFlashAttribute("message", "Giỏ hàng trống!");
             return "redirect:/menu";  // Nếu giỏ hàng trống, chuyển hướng về menu
         }
 
-        // Chuyển đổi giỏ hàng thành List<Map<String, Object>> để gửi vào processOrder
+        // Chuyển giỏ hàng thành List<Map<String, Object>> để gửi vào processOrder
         List<Map<String, Object>> cartItems = new ArrayList<>();
-        for (CartItem cartItem : cart.getItems()) {
+        for (Food food : cart) {
             Map<String, Object> item = new HashMap<>();
-            item.put("Item_Name", cartItem.getFood().getTitle());
-            item.put("Price", cartItem.getFood().getPrice());
-            item.put("Quantity", cartItem.getQuantity());
+            item.put("Item_Name", food.getTitle());
+            item.put("Price", food.getPrice());
+            item.put("Quantity", food.getQuantity());  // Lưu cả số lượng vào danh sách item
             cartItems.add(item);
         }
 
         // Tính tổng tiền và áp dụng giảm giá (nếu có)
-        double totalAmount = cart.getTotalPrice();
-        double discountAmount = session.getAttribute("discount_amount") != null ? (double) session.getAttribute("discount_amount") : 0.0;
-        double totalAfterDiscount = session.getAttribute("total_after_discount") != null ? (double) session.getAttribute("total_after_discount") : totalAmount;
+        double totalAmount = cartService.calculateTotalAmount(cart);  // Tính tổng tiền giỏ hàng
+        double discountAmount = (session.getAttribute("discount_amount") != null) ?
+                (double) session.getAttribute("discount_amount") : 0.0;
+        double totalAfterDiscount = (session.getAttribute("total_after_discount") != null) ?
+                (double) session.getAttribute("total_after_discount") : totalAmount;
 
         // Xử lý thanh toán và lưu đơn hàng vào cơ sở dữ liệu
-        orderService.processOrder(tran_id, username, cus_name, cus_email, cus_add1, cus_city, cus_phone, totalAfterDiscount, discountAmount, cartItems);
+        orderService.processOrder(tran_id, user.getUsername(), cus_name, cus_email, cus_add1, cus_city, cus_phone,
+                totalAfterDiscount, discountAmount, cartItems);
 
         // Xóa giỏ hàng sau khi thanh toán thành công
         session.removeAttribute("mycart");
