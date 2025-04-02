@@ -15,17 +15,16 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller
 public class MenuController {
 
     @Autowired
-    private CartService cartService;  // Service quản lý giỏ hàng
+    private CartService cartService;
 
     @Autowired
-    private CartItemService cartItemService;  // Service quản lý các món trong giỏ hàng
+    private CartItemService cartItemService;
 
     @Autowired
     private FoodService foodService;
@@ -33,10 +32,9 @@ public class MenuController {
     // Hiển thị các món ăn trong thực đơn
     @GetMapping("/menu")
     public String showMenu(Model model) {
-        List<Food> foods = foodService.getActiveFoods();  // Lấy tất cả món ăn có trạng thái 'Yes'
-        model.addAttribute("foods", foods);
+        model.addAttribute("foods", foodService.getActiveFoods());
         model.addAttribute("pageTitle", "Thực đơn");
-        return "layout/menu";  // Trả về template "menu.html"
+        return "layout/menu";
     }
 
     // Thêm món ăn vào giỏ hàng
@@ -45,20 +43,14 @@ public class MenuController {
                             @RequestParam("quantity") int quantity,
                             HttpSession session,
                             RedirectAttributes redirectAttributes) {
-        // Lấy giỏ hàng từ session, nếu chưa có thì khởi tạo mới
-        Cart cart = cartService.getCart(session);
-
-        // Lấy thông tin món ăn từ DB và thêm vào giỏ
-        Food food = foodService.getFoodById(foodId);
-        if (food != null) {
-            cartItemService.addItemToCart(cart, food, quantity);  // Gọi service để thêm món vào giỏ hàng
-        }
+        cartService.addItemToCart(foodId, quantity, session);
 
         // Thêm thông báo và cập nhật số lượng giỏ hàng trong session
+        Cart cart = cartService.getCart(session);
         redirectAttributes.addFlashAttribute("message", "✅ Đã thêm món vào giỏ hàng!");
         redirectAttributes.addFlashAttribute("cartSize", cart.getItems().size());
 
-        return "redirect:/menu";  // Quay lại trang menu sau khi thêm món
+        return "redirect:/menu";
     }
 
     // Hiển thị giỏ hàng
@@ -69,7 +61,7 @@ public class MenuController {
 
         model.addAttribute("cart", cart);
         model.addAttribute("totalAmount", totalAmount);
-        return "layout/mycart";  // Trả về view giỏ hàng
+        return "layout/mycart";
     }
 
     // Cập nhật giỏ hàng
@@ -89,20 +81,17 @@ public class MenuController {
 
         // Trả về tổng tiền mới dưới dạng JSON
         Map<String, Object> response = new HashMap<>();
-        response.put("totalAmount", totalAmount);  // Đảm bảo `totalAmount` có giá trị
+        response.put("totalAmount", totalAmount);
 
         return ResponseEntity.ok(response);  // Trả về JSON với `totalAmount`
     }
 
 
 
-
     // Xóa món ăn khỏi giỏ hàng
     @PostMapping("/removeFromCart")
     public String removeFromCart(@RequestParam("foodId") Long foodId, HttpSession session) {
-        Cart cart = cartService.getCart(session);
-        cartItemService.removeItemFromCart(cart, foodId);  // Xóa món ăn khỏi giỏ
-
-        return "redirect:/mycart";  // Chuyển hướng lại trang giỏ hàng
+        cartService.removeItemFromCart(foodId, session);
+        return "redirect:/mycart";
     }
 }
