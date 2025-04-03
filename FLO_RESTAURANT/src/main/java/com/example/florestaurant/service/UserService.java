@@ -29,4 +29,8 @@ public class UserService {
     public boolean existsByPhone(String phone) {
         return userRepository.existsByPhone(phone);
     }
+
+    public User findUserByDetails(String customerName, String customerEmail, String customerPhone) {
+                    return null;
+    }
 }
