@@ -1,32 +1,33 @@
 package com.example.florestaurant.service;
 
 import com.example.florestaurant.model.User;
-import com.example.florestaurant.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-@Service
-public class UserService {
+import java.util.List;
+import java.util.Optional;
 
-    @Autowired
-    private UserRepository userRepository;
-    public void save(User user) {
-        userRepository.save(user); // Lưu người dùng vào cơ sở dữ liệu
-    }
-    public User validateUser(String username, String password) {
-        // Giả sử bạn đang lưu mật khẩu ở dạng plain-text, nếu không thì cần mã hóa mật khẩu
-        return userRepository.findByUsernameAndPassword(username, password);
-    }
+public interface UserService {
 
-    public boolean existsByEmail(String email) {
-        return userRepository.existsByEmail(email);
-    }
+    // Lưu hoặc cập nhật người dùng
+    void save(User user);
 
-    public boolean existsByUsername(String username) {
-        return userRepository.existsByUsername(username);
-    }
+    // Xác thực người dùng với username và mật khẩu
+    User validateUser(String username, String password);
 
-    public boolean existsByPhone(String phone) {
-        return userRepository.existsByPhone(phone);
-    }
+    // Kiểm tra sự tồn tại của email
+    boolean existsByEmail(String email);
+
+    // Kiểm tra sự tồn tại của username
+    boolean existsByUsername(String username);
+
+    // Kiểm tra sự tồn tại của phone
+    boolean existsByPhone(String phone);
+
+    // Lấy danh sách tất cả người dùng
+    List<User> getAllUsers();
+
+    // Lấy người dùng theo ID
+    Optional<User> getUserById(Long id);
+
+    // Xóa người dùng theo ID
+    void deleteUser(Long id);
 }

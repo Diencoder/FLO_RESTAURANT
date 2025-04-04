@@ -14,7 +14,7 @@ public interface CartService {
     double calculateTotalAmount(List<Food> cart);
 
     // Thêm món ăn vào giỏ hàng
-    void addItemToCart(List<Food> cart, Food food);
+    void addItemToCart(List<Food> cart, Food food, int quantity);
 
     // Xóa món ăn khỏi giỏ hàng
     void removeItemFromCart(List<Food> cart, Long foodId);

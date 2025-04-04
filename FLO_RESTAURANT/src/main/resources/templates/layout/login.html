@@ -1,28 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Đăng Nhập</title>
     <link rel="stylesheet" href="css/login-front.css">
 </head>
 <body>
 
 <div class="container">
     <div class="brand-logo"></div>
-    <div class="brand-title">User Login</div>
+    <div class="brand-title">Đăng Nhập Người Dùng</div>
 
     <form action="#" th:action="@{/login}" method="POST">
-        <label>Username</label>
+        <label>Tên đăng nhập</label>
         <input type="text" name="username" required>
-        <label>Password</label>
+        <label>Mật khẩu</label>
         <input type="password" name="password" required>
         <br>
 
-        <p>Chưa có tài khoản? <a href="/register">Tạo tài khoản</a></p>
+        <p>Chưa có tài khoản? <a href="/register">Tạo tài khoản mới</a></p>
 
-        <button type="submit">Login</button>
+        <button type="submit">Đăng Nhập</button>
     </form>
 
     <div th:if="${error}">

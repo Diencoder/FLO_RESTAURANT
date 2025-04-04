@@ -41,15 +41,11 @@ public class MenuController {
                             @RequestParam("quantity") int quantity,
                             HttpSession session,
                             RedirectAttributes redirectAttributes) {
-        // Lấy giỏ hàng từ session
-        List<Food> cart = cartService.getCart(session);
+        List<Food> cart = cartService.getCart(session);  // Lấy giỏ hàng từ session
         Food food = foodService.getFoodById(foodId);  // Lấy thông tin món ăn từ DB
 
-        // Nếu món ăn tồn tại và số lượng hợp lệ, thêm món vào giỏ
         if (food != null && quantity > 0) {
-            // Lưu số lượng và thêm món ăn vào giỏ
-            food.setQuantity(quantity);  // Lưu số lượng vào món ăn
-            cartService.addItemToCart(cart, food);  // Thêm món ăn vào giỏ
+            cartService.addItemToCart(cart, food, quantity);  // Thêm món vào giỏ
 
             redirectAttributes.addFlashAttribute("message", "✅ Đã thêm món vào giỏ hàng!");
             redirectAttributes.addFlashAttribute("cartSize", cart.size());  // Cập nhật số món trong giỏ
@@ -99,13 +95,6 @@ public class MenuController {
                     .body(Collections.singletonMap("error", "Cập nhật giỏ hàng thất bại"));
         }
     }
-
-
-
-
-
-
-
 
 
     // Xóa món ăn khỏi giỏ hàng

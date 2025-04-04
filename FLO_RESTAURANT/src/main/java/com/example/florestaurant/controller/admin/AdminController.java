@@ -21,19 +21,6 @@ public class AdminController {
         return "admin/manageadmin"; // Trả về trang manageadmin.html
     }
 
-    // Trang Quản lý Đơn hàng Online
-    @GetMapping("/manageonlineorder")
-    public String showManageOnlineOrder(Model model) {
-        model.addAttribute("breadcrumb", "Quản Lý Đơn Hàng Online");
-        return "admin/manageonlineorder"; // Trả về trang manageonlineorder.html
-    }
-
-    // Trang Quản lý Đơn hàng Tại Quán
-    @GetMapping("/manageeiorder")
-    public String showManageEiOrder(Model model) {
-        model.addAttribute("breadcrumb", "Quản Lý Đơn Hàng Tại Quán");
-        return "admin/manageeiorder"; // Trả về trang manageeiorder.html
-    }
 
     // Trang Quản lý Danh mục
     @GetMapping("/admin/managecategory")
@@ -47,13 +34,6 @@ public class AdminController {
     public String showManageFood(Model model) {
         model.addAttribute("breadcrumb", "Quản Lý Thực Đơn");
         return "admin/managefood"; // Trả về trang managefood.html
-    }
-
-    // Trang Kho Hàng
-    @GetMapping("/inventory")
-    public String showInventory(Model model) {
-        model.addAttribute("breadcrumb", "Kho Hàng");
-        return "admin/inventory"; // Trả về trang inventory.html
     }
 
     // Trang Đăng xuất

@@ -32,16 +32,19 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public void addItemToCart(List<Food> cart, Food food) {
-        // Kiểm tra xem món ăn đã có trong giỏ hay chưa
+    public void addItemToCart(List<Food> cart, Food food, int quantity) {
+        boolean itemFound = false;
         for (Food cartItem : cart) {
             if (cartItem.getId().equals(food.getId())) {
-                cartItem.setQuantity(cartItem.getQuantity() + 1);  // Tăng số lượng nếu món ăn đã có trong giỏ
-                return;
+                cartItem.setQuantity(cartItem.getQuantity() + quantity);  // Cập nhật số lượng
+                itemFound = true;
+                break;
             }
         }
-        // Nếu món ăn chưa có, thêm mới vào giỏ
-        cart.add(food);
+        if (!itemFound) {
+            food.setQuantity(quantity);
+            cart.add(food);  // Nếu món ăn chưa có, thêm mới vào giỏ
+        }
     }
 
     @Override
