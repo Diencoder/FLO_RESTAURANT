@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface FoodRepository extends JpaRepository<Food, Long> {
-    List<Food> findByActive(String active);  // Truy vấn món ăn có trạng thái 'Yes'
+    List<Food> findByActive(String active);  // Query to find foods with active status 'yes'
 }

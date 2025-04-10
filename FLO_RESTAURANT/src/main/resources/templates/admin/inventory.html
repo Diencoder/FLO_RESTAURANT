@@ -1,83 +1,92 @@
 <!DOCTYPE html>
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <!-- Thay thế phần head từ tệp fragments/header.html -->
-    <div th:replace="~{fragments/header}"></div>
+    <meta charset="UTF-8">
+    <title>Quản Lý Kho Hàng</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Ensure the table takes up full width */
+        .table {
+            width: 100%; /* Make the table span the full width */
+            table-layout: fixed; /* Ensure the table layout is fixed for even spacing */
+        }
+
+        /* Optional: Make each column have enough space */
+        .table th, .table td {
+            text-align: center; /* Center text */
+            padding: 10px; /* Add padding for better readability */
+            overflow: hidden; /* Prevent overflow */
+        }
+
+        /* Ensure stock numbers are black */
+
+    </style>
 </head>
 <body>
 
-<!-- Thay thế phần sidebar từ tệp fragments/sidebar.html -->
+<!-- Header -->
+<div th:replace="~{fragments/header}"></div>
+
+<!-- Sidebar -->
 <div th:replace="~{fragments/sidebar}"></div>
 
-<!-- CONTENT -->
 <section id="content">
-    <!-- Thay thế phần navbar từ tệp fragments/navbar.html -->
     <div th:replace="~{fragments/navbar}"></div>
 
-    <!-- MAIN -->
     <main>
+        <!-- Header Section -->
         <div class="head-title">
             <div class="left">
                 <h1>Kho</h1>
                 <ul class="breadcrumb">
-                    <li><a href="@{/admin}">Dashboard</a></li>
+                    <li><a href="/admin/admin">Dashboard</a></li>
                     <li><i class="bx bx-chevron-right"></i></li>
-                    <li><a class="active" href="@{/inventory}">Kho</a></li>
+                    <li><a class="active" href="/admin/inventory">Kho</a></li>
                 </ul>
             </div>
         </div>
 
         <br/>
 
+        <!-- Add Product Button and Title -->
+        <div class="d-flex justify-content-between mb-4">
+            <h3>Danh sách Mặt hàng Kho</h3>
+            <a href="/admin/addfood" class="btn btn-success">Thêm Sản phẩm</a>
+        </div>
+
+        <!-- Product Inventory Table -->
         <div class="table-data">
             <div class="order">
                 <div class="head">
-                    <h3>Danh sách Mặt hàng Kho</h3>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Tên món ăn</th>
+                            <th>Tồn kho</th>
+                            <th>Giá</th>
+                            <th>Hành động</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="food : ${foods}">
+                            <td th:text="${food.title}">Món ăn</td>
+                            <td><span class="status" th:text="${food.stock}" style="color: black;"></span></td>
+                            <td><span class="price" th:text="${food.price}"></span></td>
+                            <td>
+                                <a th:href="@{/admin/editfood/{id}(id=${food.id})}" class="btn btn-warning">Sửa</a>
+                                <a th:href="@{/admin/deletefood/{id}(id=${food.id})}" class="btn btn-danger" role="button" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')">Xóa</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <table class="inventory-table">
-                    <thead>
-                    <tr>
-                        <th>Tên sản phẩm</th>
-                        <th>Hình ảnh</th>
-                        <th>Tồn kho</th>
-                        <th>Hành động</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <!-- Dữ liệu mẫu -->
-                    <tr>
-                        <td>Sản phẩm 1</td>
-                        <td><img th:src="@{/images/food/item1.jpg}" width="100px" alt="Item 1"></td>
-                        <td><span class="status process">80</span></td>
-                        <td><a href="@{/update-inventory/1}" class="button-5" role="button">Cập nhật</a></td>
-                    </tr>
-                    <tr>
-                        <td>Sản phẩm 2</td>
-                        <td><img th:src="@{/images/food/item2.jpg}" width="100px" alt="Item 2"></td>
-                        <td><span class="status pending">40</span></td>
-                        <td><a href="@{/update-inventory/2}" class="button-5" role="button">Cập nhật</a></td>
-                    </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
     </main>
-    <!-- MAIN -->
 </section>
-<!-- CONTENT -->
 
-<!-- Thay thế phần footer từ tệp fragments/footer.html -->
+<!-- Footer -->
 <div th:replace="~{fragments/footer}"></div>
-
-<script>
-    // Hàm điều khiển cho việc thu nhỏ và mở rộng sidebar
-    function toggleSidebar() {
-        const sidebar = document.getElementById('sidebar');
-        const content = document.getElementById('content');
-        sidebar.classList.toggle('collapsed');
-        content.classList.toggle('shifted');
-    }
-</script>
 
 </body>
 </html>

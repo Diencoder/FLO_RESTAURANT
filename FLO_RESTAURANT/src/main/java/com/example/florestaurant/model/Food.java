@@ -14,18 +14,20 @@ public class Food {
     private Long id;
 
     private String title;
-    private Double price;
+    private String description;
+    private double price;
     private String imageName;
+    private Long categoryId;
+    private String featured;
     private String active;
+    private int stock;  // Represents the stock count
 
-    // Constructor mặc định
-    public Food() {}
+    // Getter and Setter
+    public int getStock() {
+        return stock;
+    }
 
-    // Constructor với các tham số
-    public Food(String title, Double price, String imageName, String active) {
-        this.title = title;
-        this.price = price;
-        this.imageName = imageName;
-        this.active = active;
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 }
