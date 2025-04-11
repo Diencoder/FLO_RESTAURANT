@@ -26,7 +26,7 @@ public class AdminController {
     @Autowired
     private CategoryService categoryService;
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+
     @GetMapping({"/admin/admin","/admin"})
     public String showDashboard(Model model) {
         model.addAttribute("breadcrumb", "Dashboard");
@@ -112,7 +112,8 @@ public class AdminController {
                 existingFood.setImageName(imageName);
                 // Lưu ảnh vào thư mục uploads
                 try {
-                    Path path = Paths.get("uploads/" + imageName);
+                    Path path = Paths.get("D:/PROJECTJAVA/FLO_RESTAURANT/src/main/resources/static/images/" + imageName);
+
                     Files.write(path, image.getBytes());
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -148,17 +149,18 @@ public class AdminController {
                           @RequestParam("active") String active,
                           @RequestParam("featured") String featured,
                           @RequestParam("image") MultipartFile image) {
-        // Kiểm tra nếu hình ảnh không được tải lên, gán hình ảnh mặc định
-        String imageName = image.isEmpty() ? "default.jpg" : image.getOriginalFilename();
 
         try {
-            // Nếu có hình ảnh được tải lên, lưu vào thư mục static/images
+            // Xử lý tên ảnh
+            String imageName = image.isEmpty() ? "default.jpg" : image.getOriginalFilename();
+
+            // Nếu có ảnh thì lưu vào đường dẫn tuyệt đối bạn chỉ định
             if (!image.isEmpty()) {
-                Path path = Paths.get("src/main/resources/static/images/" + imageName);
+                Path path = Paths.get("D:/PROJECTJAVA/FLO_RESTAURANT/src/main/resources/static/images/" + imageName);
                 Files.copy(image.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
             }
 
-            // Tạo đối tượng Food và lưu vào database
+            // Tạo đối tượng món ăn và gán thông tin
             Food food = new Food();
             food.setTitle(title);
             food.setPrice(price);
@@ -167,12 +169,16 @@ public class AdminController {
             food.setCategoryId(categoryId);
             food.setActive(active);
             food.setFeatured(featured);
-            food.setImageName(imageName); // Gán tên hình ảnh vào Food
+            food.setImageName(imageName); // dùng ảnh vừa upload hoặc default
+
+            // Lưu món ăn vào DB
             foodService.addFood(food);
 
         } catch (IOException e) {
             e.printStackTrace();
+            // Bạn có thể thêm RedirectAttributes để báo lỗi khi cần
         }
+
         return "redirect:/admin/inventory";
     }
 

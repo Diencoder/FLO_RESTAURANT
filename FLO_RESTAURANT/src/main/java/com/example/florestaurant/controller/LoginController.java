@@ -2,22 +2,17 @@ package com.example.florestaurant.controller;
 
 import com.example.florestaurant.model.User;
 import com.example.florestaurant.service.UserService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import jakarta.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -28,34 +23,54 @@ public class LoginController {
     private UserService userService;
 
     @GetMapping("/login")
-    public String showLoginPage() {
-        return "layout/login";  // Trả về trang đăng nhập
+    public String showLoginPage(@RequestParam(value = "logout", required = false) String logout,
+                                Model model) {
+        if (logout != null) {
+            model.addAttribute("message", "Bạn đã đăng xuất thành công.");
+        }
+        return "layout/login";  // layout/login.html
     }
 
     @PostMapping("/login")
     public String handleLogin(@RequestParam("username") String username,
                               @RequestParam("password") String password,
-                              HttpSession session, Model model, RedirectAttributes redirectAttributes) {
+                              HttpSession session,
+                              Model model) {
 
-        // Kiểm tra tài khoản và mật khẩu
         User user = userService.validateUser(username, password);
 
         if (user != null) {
-            // Lưu thông tin người dùng vào HttpSession
-            session.setAttribute("role", user.getRole());
             session.setAttribute("user", user);
+            session.setAttribute("role", user.getRole());
+
+            List<SimpleGrantedAuthority> authorities = List.of(
+                    new SimpleGrantedAuthority(user.getRole()) // ROLE_ADMIN
+            );
+
+            Authentication auth = new UsernamePasswordAuthenticationToken(
+                    user.getUsername(), null, authorities
+            );
+
+            SecurityContextHolder.getContext().setAuthentication(auth);
+
+            // ❗❗ FIX QUAN TRỌNG ❗❗
+            session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
+
 
             if ("ROLE_ADMIN".equals(user.getRole())) {
-                return "redirect:/admin/admin";  // Quay lại trang admin nếu người dùng có vai trò admin
-            } else if ("USER".equals(user.getRole())) {
-                return "redirect:/";  // Quay lại trang chính nếu người dùng có vai trò user
+                return "redirect:/admin/admin";
             } else {
-                model.addAttribute("error", "Unknown role!");
-                return "layout/login";  // Quay lại trang đăng nhập nếu vai trò không xác định
+                return "redirect:/";
             }
         } else {
-            model.addAttribute("error", "Wrong Username or Password");
-            return "layout/login";  // Quay lại trang đăng nhập nếu thông tin sai
+            model.addAttribute("error", "Sai tên đăng nhập hoặc mật khẩu");
+            return "layout/login";
         }
+    }
+
+
+    @ModelAttribute("user")
+    public User user() {
+        return new User();
     }
 }

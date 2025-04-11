@@ -37,7 +37,7 @@ public class User {
         this.phone = phone;
         this.username = username;
         this.password = password;
-        this.role = (role != null) ? role : "USER";
+        this.role = (role != null) ? role : "ROLE_USER";
     }
 
 
