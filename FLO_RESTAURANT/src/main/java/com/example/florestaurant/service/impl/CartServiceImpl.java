@@ -1,58 +1,66 @@
 package com.example.florestaurant.service.impl;
 
-import com.example.florestaurant.model.Cart;
 import com.example.florestaurant.model.Food;
 import com.example.florestaurant.service.CartService;
-import com.example.florestaurant.service.CartItemService;
-import com.example.florestaurant.service.FoodService;
 import org.springframework.stereotype.Service;
 
 import jakarta.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CartServiceImpl implements CartService {
 
-    private final CartItemService cartItemService;
-    private final FoodService foodService;
-
-    public CartServiceImpl(CartItemService cartItemService, FoodService foodService) {
-        this.cartItemService = cartItemService;
-        this.foodService = foodService;
-    }
-
     @Override
-    public Cart getCart(HttpSession session) {
-        Cart cart = (Cart) session.getAttribute("mycart");
+    public List<Food> getCart(HttpSession session) {
+        // Lấy giỏ hàng từ session, nếu chưa có thì khởi tạo mới
+        List<Food> cart = (List<Food>) session.getAttribute("mycart");
         if (cart == null) {
-            cart = new Cart();
-            session.setAttribute("mycart", cart);
+            cart = new ArrayList<>();  // Tạo giỏ hàng mới nếu không có
+            session.setAttribute("mycart", cart);  // Lưu giỏ hàng vào session
         }
         return cart;
     }
 
     @Override
-    public double calculateTotalAmount(Cart cart) {
-        return cart.getTotalPrice(); // Tính tổng tiền giỏ hàng
+    public double calculateTotalAmount(List<Food> cart) {
+        double totalAmount = 0;
+        for (Food food : cart) {
+            totalAmount += food.getTotalPrice();  // Tính tổng tiền giỏ hàng theo số lượng của mỗi món ăn
+        }
+        return totalAmount;
     }
 
     @Override
-    public void addItemToCart(Long foodId, int quantity, HttpSession session) {
-        Cart cart = getCart(session);
-        Food food = foodService.getFoodById(foodId);
-        if (food != null) {
-            cartItemService.addItemToCart(cart, food, quantity);  // Thêm món vào giỏ
+    public void addItemToCart(List<Food> cart, Food food, int quantity) {
+        boolean itemFound = false;
+        for (Food cartItem : cart) {
+            if (cartItem.getId().equals(food.getId())) {
+                cartItem.setQuantity(cartItem.getQuantity() + quantity);  // Cập nhật số lượng
+                itemFound = true;
+                break;
+            }
+        }
+        if (!itemFound) {
+            food.setQuantity(quantity);
+            cart.add(food);  // Nếu món ăn chưa có, thêm mới vào giỏ
         }
     }
 
     @Override
-    public void updateItemQuantity(Long foodId, int quantity, HttpSession session) {
-        Cart cart = getCart(session);
-        cartItemService.updateItemQuantity(cart, foodId, quantity);  // Cập nhật số lượng món ăn
+    public void removeItemFromCart(List<Food> cart, Long foodId) {
+        // Xóa món ăn khỏi giỏ hàng theo foodId
+        cart.removeIf(food -> food.getId().equals(foodId));
     }
 
     @Override
-    public void removeItemFromCart(Long foodId, HttpSession session) {
-        Cart cart = getCart(session);
-        cartItemService.removeItemFromCart(cart, foodId);  // Xóa món ăn khỏi giỏ
+    public void updateItemQuantity(List<Food> cart, Long foodId, int quantity) {
+        // Cập nhật số lượng món ăn trong giỏ hàng
+        for (Food food : cart) {
+            if (food.getId().equals(foodId)) {
+                food.setQuantity(quantity);  // Cập nhật số lượng
+                return;
+            }
+        }
     }
 }

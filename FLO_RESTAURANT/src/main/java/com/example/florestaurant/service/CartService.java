@@ -1,22 +1,24 @@
 package com.example.florestaurant.service;
 
-import com.example.florestaurant.model.Cart;
+import com.example.florestaurant.model.Food;
 import jakarta.servlet.http.HttpSession;
+
+import java.util.List;
 
 public interface CartService {
 
-    // Lấy giỏ hàng từ session
-    Cart getCart(HttpSession session);
+    // Lấy giỏ hàng từ session, nếu chưa có thì khởi tạo mới
+    List<Food> getCart(HttpSession session);
 
-    // Tính tổng tiền giỏ hàng
-    double calculateTotalAmount(Cart cart);
+    // Tính tổng giá trị của giỏ hàng
+    double calculateTotalAmount(List<Food> cart);
 
-    // Thêm món ăn vào giỏ
-    void addItemToCart(Long foodId, int quantity, HttpSession session);
+    // Thêm món ăn vào giỏ hàng
+    void addItemToCart(List<Food> cart, Food food, int quantity);
 
-    // Cập nhật số lượng món ăn trong giỏ
-    void updateItemQuantity(Long foodId, int quantity, HttpSession session);
+    // Xóa món ăn khỏi giỏ hàng
+    void removeItemFromCart(List<Food> cart, Long foodId);
 
-    // Xóa món ăn khỏi giỏ
-    void removeItemFromCart(Long foodId, HttpSession session);
+    // Cập nhật số lượng món ăn trong giỏ hàng (nếu cần)
+    void updateItemQuantity(List<Food> cart, Long foodId, int quantity);
 }

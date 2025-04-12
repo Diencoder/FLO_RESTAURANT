@@ -11,7 +11,7 @@ public class LogoutController {
     public String logout(HttpSession session) {
         // Invalidate session to clear user data
 //        session.invalidate();
-          session.removeAttribute("user");
+        session.removeAttribute("user");
         return "redirect:/index";  // Chuyển hướng về trang chủ sau khi đăng xuất
     }
 }

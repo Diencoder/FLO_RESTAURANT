@@ -1,6 +1,5 @@
 package com.example.florestaurant.controller.admin;
 
-import com.example.florestaurant.model.Order;
 import com.example.florestaurant.model.OrderManager;
 import com.example.florestaurant.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,11 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
-
 @Controller
 @RequestMapping("/admin")
-public class OrderController {
+public class AdminOrderController {
 
     @Autowired
     private OrderService orderService;
