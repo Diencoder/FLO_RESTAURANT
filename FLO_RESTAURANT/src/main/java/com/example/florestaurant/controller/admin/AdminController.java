@@ -76,117 +76,11 @@ public class AdminController {
         return "layout/login";
     }
 
-    @GetMapping("/admin/editfood/{id}")
-    public String showEditFood(@PathVariable Long id, Model model) {
-        // Lấy thông tin món ăn cần chỉnh sửa
-        Food food = foodService.getFoodById(id);
 
-        // Lấy tất cả các danh mục
-        List<Category> categories = categoryService.getAllCategories();
-
-        // Truyền dữ liệu vào model
-        model.addAttribute("food", food);
-        model.addAttribute("categories", categories);
-
-        return "admin/editfood";  // Trả về trang chỉnh sửa món ăn
-    }
-
-    @PostMapping("/admin/editfood/{id}")
-    public String updateFood(@PathVariable Long id,
-                             @ModelAttribute Food food,
-                             @RequestParam("image") MultipartFile image,
-                             @RequestParam("category_id") Long categoryId) {
-        Food existingFood = foodService.getFoodById(id);
-
-        if (existingFood != null) {
-            // Cập nhật các trường của món ăn
-            existingFood.setTitle(food.getTitle());
-            existingFood.setPrice(food.getPrice());
-            existingFood.setStock(food.getStock());
-            existingFood.setDescription(food.getDescription());
-            existingFood.setCategoryId(categoryId);  // Cập nhật danh mục
-
-            // Nếu người dùng thay đổi ảnh, lưu ảnh mới
-            if (!image.isEmpty()) {
-                String imageName = image.getOriginalFilename();
-                existingFood.setImageName(imageName);
-                // Lưu ảnh vào thư mục uploads
-                try {
-                    Path path = Paths.get("D:/PROJECTJAVA/FLO_RESTAURANT/src/main/resources/static/images/" + imageName);
-
-                    Files.write(path, image.getBytes());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            existingFood.setActive(food.getActive()); // Cập nhật trạng thái (có sẵn hay không)
-            foodService.updateFood(existingFood); // Cập nhật món ăn trong cơ sở dữ liệu
-        }
-
-        return "redirect:/admin/inventory"; // Chuyển hướng về trang quản lý món ăn
-    }
-
-    @GetMapping("/admin/deletefood/{id}")
-    public String deleteFood(@PathVariable Long id) {
-        foodService.deleteFood(id);
-        return "redirect:/admin/inventory";
-    }
-    @GetMapping("/admin/addfood")
-    public String showAddFoodForm(Model model) {
-        model.addAttribute("food", new Food());  // Tạo đối tượng Food rỗng để binding dữ liệu
-        model.addAttribute("categories", categoryService.getAllCategories());  // Lấy tất cả danh mục
-        return "admin/addfood";  // Trả về trang addfood.html
-    }
-
-    // Xử lý thêm món ăn vào cơ sở dữ liệu
-    @PostMapping("/admin/addfood")
-    public String addFood(@RequestParam("title") String title,
-                          @RequestParam("price") double price,
-                          @RequestParam("stock") int stock,
-                          @RequestParam("description") String description,
-                          @RequestParam("categoryId") Long categoryId,
-                          @RequestParam("active") String active,
-                          @RequestParam("featured") String featured,
-                          @RequestParam("image") MultipartFile image) {
-
-        try {
-            // Xử lý tên ảnh
-            String imageName = image.isEmpty() ? "default.jpg" : image.getOriginalFilename();
-
-            // Nếu có ảnh thì lưu vào đường dẫn tuyệt đối bạn chỉ định
-            if (!image.isEmpty()) {
-                Path path = Paths.get("D:/PROJECTJAVA/FLO_RESTAURANT/src/main/resources/static/images/" + imageName);
-                Files.copy(image.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-            }
-
-            // Tạo đối tượng món ăn và gán thông tin
-            Food food = new Food();
-            food.setTitle(title);
-            food.setPrice(price);
-            food.setStock(stock);
-            food.setDescription(description);
-            food.setCategoryId(categoryId);
-            food.setActive(active);
-            food.setFeatured(featured);
-            food.setImageName(imageName); // dùng ảnh vừa upload hoặc default
-
-            // Lưu món ăn vào DB
-            foodService.addFood(food);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            // Bạn có thể thêm RedirectAttributes để báo lỗi khi cần
-        }
-
-        return "redirect:/admin/inventory";
-    }
-    @Controller
-    public class ErrorController {
 
         @GetMapping("/layout/403")
         public String error403() {
             return "layout/403"; // trả về file templates/error/403.html
         }
-    }
+
 }

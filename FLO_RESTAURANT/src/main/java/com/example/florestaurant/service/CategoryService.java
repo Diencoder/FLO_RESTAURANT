@@ -1,40 +1,22 @@
 package com.example.florestaurant.service;
 
 import com.example.florestaurant.model.Category;
-import com.example.florestaurant.repository.CategoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 
-@Service
-public class CategoryService {
-
-    @Autowired
-    private CategoryRepository categoryRepository;
+public interface CategoryService {
 
     // Lấy tất cả danh mục
-    public List<Category> getAllCategories() {
-        return categoryRepository.findAll();
-    }
+    List<Category> getAllCategories();
 
     // Lấy danh mục theo ID
-    public Category getCategoryById(Long id) {
-        return categoryRepository.findById(id).orElse(null);
-    }
+    Category getCategoryById(Long id);
 
     // Thêm danh mục mới
-    public void addCategory(Category category) {
-        categoryRepository.save(category);
-    }
+    void addCategory(Category category);
 
     // Cập nhật danh mục
-    public void updateCategory(Category category) {
-        categoryRepository.save(category);
-    }
+    void updateCategory(Category category);
 
     // Xóa danh mục theo ID
-    public void deleteCategory(Long id) {
-        categoryRepository.deleteById(id);
-    }
+    void deleteCategory(Long id);
 }

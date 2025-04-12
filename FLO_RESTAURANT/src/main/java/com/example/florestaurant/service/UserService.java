@@ -1,81 +1,14 @@
 package com.example.florestaurant.service;
 
 import com.example.florestaurant.model.User;
-import com.example.florestaurant.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Service;
+import jakarta.servlet.http.HttpSession;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.List;
-
-@Service
-public class UserService {
-
-    @Autowired
-    private UserRepository userRepository;
-
-    // Phương thức mã hóa mật khẩu bằng MD5
-    private String encodeMD5(String password) throws NoSuchAlgorithmException {
-        MessageDigest md = MessageDigest.getInstance("MD5");
-        md.update(password.getBytes());
-        byte[] digest = md.digest();
-
-        StringBuilder sb = new StringBuilder();
-        for (byte b : digest) {
-            sb.append(String.format("%02x", b));  // Chuyển mỗi byte thành chuỗi hex
-        }
-
-        return sb.toString();  // Trả về mật khẩu đã mã hóa dạng MD5
-    }
-
-    // Phương thức đăng ký người dùng (mã hóa mật khẩu trước khi lưu)
-    public void save(User user) {
-        try {
-            // Mã hóa mật khẩu trước khi lưu vào cơ sở dữ liệu
-            String encodedPassword = encodeMD5(user.getPassword());
-            user.setPassword(encodedPassword); // Cập nhật mật khẩu đã mã hóa cho user
-            userRepository.save(user); // Lưu người dùng vào cơ sở dữ liệu
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // Phương thức xác thực người dùng khi đăng nhập
-    public User validateUser(String username, String password) {
-        User user = userRepository.findByUsername(username);
-
-        try {
-            // Kiểm tra mật khẩu đã mã hóa với mật khẩu nhập vào
-            if (user != null && user.getPassword().equals(encodeMD5(password))) {
-                return user;  // Nếu mật khẩu đúng, trả về đối tượng User
-            }
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-
-        return null;  // Nếu mật khẩu sai hoặc người dùng không tồn tại, trả về null
-    }
-    // Kiểm tra email đã tồn tại
-    public boolean existsByEmail(String email) {
-        return userRepository.existsByEmail(email);
-    }
-
-    // Kiểm tra username đã tồn tại
-    public boolean existsByUsername(String username) {
-        return userRepository.existsByUsername(username);
-    }
-
-    // Kiểm tra số điện thoại đã tồn tại
-    public boolean existsByPhone(String phone) {
-        return userRepository.existsByPhone(phone);
-    }
-
-
+public interface UserService {
+    void save(User user);
+    User validateUser(String username, String password);
+    boolean existsByEmail(String email);
+    boolean existsByUsername(String username);
+    boolean existsByPhone(String phone);
+    void authenticateUser(User user, HttpSession session);  // Khai báo phương thức authenticateUser
 
 }
