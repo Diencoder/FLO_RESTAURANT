@@ -181,6 +181,12 @@ public class AdminController {
 
         return "redirect:/admin/inventory";
     }
+    @Controller
+    public class ErrorController {
 
-
+        @GetMapping("/layout/403")
+        public String error403() {
+            return "layout/403"; // trả về file templates/error/403.html
+        }
+    }
 }

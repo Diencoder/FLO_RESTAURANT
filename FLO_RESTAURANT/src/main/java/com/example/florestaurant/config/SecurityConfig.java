@@ -33,7 +33,13 @@ public class SecurityConfig {
                         .permitAll()
                 )
                 .exceptionHandling(ex -> ex
-                        .accessDeniedPage("/error")
+                        .authenticationEntryPoint((request, response, authException) -> {
+                            response.sendRedirect("/login");
+                        })
+                        // Nếu đã đăng nhập nhưng không đủ quyền → trang lỗi 403
+                        .accessDeniedHandler((request, response, accessDeniedException) -> {
+                            response.sendRedirect("/layout/403");
+                        })
                 );
 
         return http.build();
