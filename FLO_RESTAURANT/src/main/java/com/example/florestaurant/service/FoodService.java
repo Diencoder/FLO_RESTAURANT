@@ -9,7 +9,6 @@ import java.util.List;
 public interface FoodService {
     List<Food> getActiveFoods();  // Get list of active food items
     Food getFoodById(Long foodId);  // Get food by ID
-    void addFood(Food food, MultipartFile image);
-    void updateFood(Long id, Food food, MultipartFile image, Long categoryId);
+    void addFood(Food food, MultipartFile image, String title, double price, int stock, String description, Long categoryId, String active, String featured);    void updateFood(Long id, Food food, MultipartFile image, Long categoryId);
     void deleteFood(Long id);  // Delete food by ID
 }

@@ -97,5 +97,16 @@ public class UserServiceImpl implements UserService {
         // Lưu SecurityContext vào session (quan trọng để Spring Security quản lý phiên làm việc)
         session.setAttribute("SPRING_SECURITY_CONTEXT", SecurityContextHolder.getContext());
     }
-
+    @Override
+    public void logout(HttpSession session) {
+        // Xóa thông tin người dùng khỏi session
+        session.removeAttribute("user");
+    }
+    @Override
+    public String handleLogoutMessage(String logout) {
+        if (logout != null) {
+            return "Bạn đã đăng xuất thành công.";
+        }
+        return null;
+    }
 }

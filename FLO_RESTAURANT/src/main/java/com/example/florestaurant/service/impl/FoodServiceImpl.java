@@ -35,43 +35,52 @@ public class FoodServiceImpl implements FoodService {
 
     @Override
     @Transactional
-    public void addFood(Food food, MultipartFile image) {
+    public void addFood(Food food, MultipartFile image, String title, double price, int stock, String description, Long categoryId, String active, String featured) {
         try {
+            // Tạo đối tượng Food và gán thông tin từ các tham số
+            food.setTitle(title);
+            food.setPrice(price);
+            food.setStock(stock);
+            food.setDescription(description);
+            food.setCategoryId(categoryId);
+            food.setActive(active);
+            food.setFeatured(featured);
+
             // Handle image name (default if no image provided)
             String imageName = image.isEmpty() ? "default.jpg" : image.getOriginalFilename();
 
-            // If there is an image, save it to the specified path
+            // Nếu có ảnh, lưu vào thư mục tĩnh
             if (!image.isEmpty()) {
                 Path path = Paths.get("D:/PROJECTJAVA/FLO_RESTAURANT/src/main/resources/static/images/" + imageName);
                 Files.copy(image.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
             }
 
-            // Set the image name (either the uploaded one or default)
+            // Đặt tên ảnh (hoặc tên ảnh tải lên hoặc mặc định)
             food.setImageName(imageName);
 
-            // Ensure price is not negative or zero
+            // Đảm bảo giá trị giá và số lượng hợp lệ
             if (food.getPrice() <= 0) {
                 food.setPrice(0);
             }
 
-            // Ensure stock is not negative or zero
             if (food.getStock() <= 0) {
                 food.setStock(0);
             }
 
-            // Automatically set status to "no" if stock is zero
+            // Tự động set trạng thái "no" nếu số lượng là 0
             if (food.getStock() == 0) {
                 food.setActive("no");
             }
 
-            // Save the food item in the database
+            // Lưu món ăn vào cơ sở dữ liệu
             foodRepository.save(food);
 
         } catch (IOException e) {
             e.printStackTrace();
-            // You can add more error handling here if needed
+            // Xử lý lỗi nếu có
         }
     }
+
 
     @Override
     @Transactional

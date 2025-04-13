@@ -50,17 +50,9 @@ public class AdminFoodController {
 
         // Tạo đối tượng món ăn và gán thông tin
         Food food = new Food();
-        food.setTitle(title);
-        food.setPrice(price);
-        food.setStock(stock);
-        food.setDescription(description);
-        food.setCategoryId(categoryId);
-        food.setActive(active);
-        food.setFeatured(featured);
 
         // Gọi dịch vụ để thêm món ăn và xử lý ảnh
-        foodService.addFood(food, image);
-
+        foodService.addFood(food, image, title, price, stock, description, categoryId, active, featured);  // Gọi service để thêm món ăn
         return "redirect:/admin/inventory"; // Quay lại trang quản lý kho
     }
     // Hiển thị form chỉnh sửa món ăn

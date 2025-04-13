@@ -9,6 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Food {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,18 +17,12 @@ public class Food {
     private String title;
     private String description;
     private double price;
-    private String imageName;
+    private String imageName;  // Chỉ lưu tên ảnh trong cơ sở dữ liệu
     private Long categoryId;
     private String featured;
     private String active;
-    private int stock;  // Represents the stock count
+    private int stock;  // Số lượng hàng
 
-    // Getter and Setter
-    public int getStock() {
-        return stock;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
-    }
+    // Không cần phương thức getter và setter vì Lombok đã tạo sẵn các phương thức này.
+    // Đảm bảo rằng các thuộc tính cần thiết đã được cấu hình chính xác.
 }

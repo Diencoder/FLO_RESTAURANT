@@ -15,14 +15,17 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-    // Hiển thị trang đăng nhập
     @GetMapping("/login")
     public String showLoginPage(@RequestParam(value = "logout", required = false) String logout,
                                 Model model) {
-        if (logout != null) {
-            model.addAttribute("message", "Bạn đã đăng xuất thành công.");
+        // Gọi service để lấy thông điệp nếu có
+        String message = userService.handleLogoutMessage(logout);
+
+        if (message != null) {
+            model.addAttribute("message", message);  // Thêm thông điệp vào model
         }
-        return "layout/login";  // layout/login.html
+
+        return "layout/login";  // Trả về view login
     }
 
     // Xử lý đăng nhập

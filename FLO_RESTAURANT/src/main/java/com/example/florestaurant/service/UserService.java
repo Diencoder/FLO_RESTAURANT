@@ -10,5 +10,7 @@ public interface UserService {
     boolean existsByUsername(String username);
     boolean existsByPhone(String phone);
     void authenticateUser(User user, HttpSession session);  // Khai báo phương thức authenticateUser
+    void logout(HttpSession session);
+    String handleLogoutMessage(String logout);
 
 }
