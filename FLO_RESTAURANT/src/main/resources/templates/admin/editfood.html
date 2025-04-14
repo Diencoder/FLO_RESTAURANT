@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sửa Món Ăn</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .current-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<div th:replace="~{fragments/header}"></div>
+
+<!-- Sidebar -->
+<div th:replace="~{fragments/sidebar}"></div>
+
+<section id="content">
+    <div th:replace="~{fragments/navbar}"></div>
+
+    <main>
+        <div class="head-title">
+            <div class="left">
+                <h1>Sửa Món Ăn</h1>
+                <ul class="breadcrumb">
+                    <li><a href="/admin">Dashboard</a></li>
+                    <li><i class="bx bx-chevron-right"></i></li>
+                    <li><a class="active" href="/admin/editfood/{id}(id=${food.id})">Sửa Món Ăn</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <br/>
+
+        <!-- Edit Food Form -->
+        <div class="form-container">
+            <h3>Chỉnh sửa thông tin món ăn</h3>
+
+            <form action="#" th:action="@{/admin/editfood/{id}(id=${food.id})}" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Tên món ăn</label>
+                    <input type="text" class="form-control" id="title" name="title" th:value="${food.title}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="price" class="form-label">Giá</label>
+                    <input type="number" class="form-control" id="price" name="price" th:value="${food.price}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="stock" class="form-label">Tồn kho</label>
+                    <input type="number" class="form-control" id="stock" name="stock" th:value="${food.stock}" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label">Mô tả</label>
+                    <textarea class="form-control" id="description" name="description" rows="3" th:value="${food.description}"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <label for="category_id" class="form-label">Danh mục</label>
+                    <select class="form-control" id="category_id" name="category_id" required>
+                        <option value="" th:selected="${food.categoryId == null}">Chọn danh mục</option>
+                        <option th:each="category : ${categories}"
+                                th:value="${category.id}"
+                                th:text="${category.title}"
+                                th:selected="${food.categoryId == category.id}">
+                        </option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="image" class="form-label">Chọn ảnh</label>
+                    <!-- Display current image -->
+                    <div>
+                        <img th:if="${food.imageName != null}" th:src="@{'/uploads/' + ${food.imageName}}" class="current-image" alt="Current Image">
+                    </div>
+                    <input type="file" class="form-control" id="image" name="image">
+                </div>
+
+                <div class="mb-3">
+                    <label for="active" class="form-label">Trạng thái</label>
+                    <select class="form-control" id="active" name="active">
+                        <option value="yes" th:selected="${food.active == 'yes'}">Có sẵn</option>
+                        <option value="no" th:selected="${food.active == 'no'}">Hết hàng</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Cập nhật</button>
+            </form>
+        </div>
+    </main>
+</section>
+
+<!-- Footer -->
+<div th:replace="~{fragments/footer}"></div>
+
+</body>
+</html>

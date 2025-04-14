@@ -1,7 +1,8 @@
+
 package com.example.florestaurant.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
+        import lombok.Getter;
 import lombok.Setter;
 
 @Table(name = "tbl_users")
@@ -24,9 +25,10 @@ public class User {
     private String password;
     private String role;
 
-    public User() {
-        // Constructor này sẽ được Spring Data JPA sử dụng
-    }
+
+    //    public User() {
+//        this.role = "user";  // Gán vai trò mặc định là "user"
+//    }
     // Constructor có tham số
     public User(String name, String email, String add1, String city, String phone, String username, String password) {
         this.name = name;
@@ -36,6 +38,12 @@ public class User {
         this.phone = phone;
         this.username = username;
         this.password = password;
+        this.role = (role != null) ? role : "ROLE_USER";
+    }
+
+
+    public User() {
+
     }
     public Long getId() {
         return id;

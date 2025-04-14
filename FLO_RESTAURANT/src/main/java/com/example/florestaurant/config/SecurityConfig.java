@@ -1,15 +1,15 @@
 package com.example.florestaurant.config;
 
+import com.example.florestaurant.security.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.logout.LogoutFilter;
-import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
-import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 
 @Configuration
 @EnableWebSecurity
@@ -18,28 +18,58 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .authorizeHttpRequests(authorizeRequests ->
-                        authorizeRequests
-                                .requestMatchers("/**").permitAll()  // Cho phép tất cả các yêu cầu mà không cần đăng nhập
-                )
-                .formLogin(login -> login
-                        .loginPage("/layout/login")  // Chỉ định trang đăng nhập tùy chỉnh
-                        .failureUrl("/login?error=true")  // Chỉ định trang nếu đăng nhập thất bại
-                        .permitAll()  // Cho phép tất cả người dùng truy cập trang login
-                )
+                .csrf(csrf -> csrf.disable()) // Tắt CSRF để dùng form POST dễ hơn
+
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/admin/**").hasRole("ADMIN")// Cho phép tất cả các yêu cầu mà không cần đăng nhập
+
+                        .requestMatchers("/**").permitAll()                )
+
                 .logout(logout -> logout
-                        .logoutUrl("/logout")  // Đảm bảo URL của đăng xuất
-                        .logoutSuccessUrl("/index")  // Chuyển đến trang chủ sau khi đăng xuất thành công
-                        .invalidateHttpSession(true)  // Xóa session khi đăng xuất
-                        .clearAuthentication(true)  // Xóa xác thực người dùng khi đăng xuất
-                        .permitAll()  // Cho phép tất cả người dùng đăng xuất
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/index")
+                        .invalidateHttpSession(true)
+                        .clearAuthentication(true)
+                        .permitAll()
                 )
-                .exceptionHandling(exceptions ->
-                        exceptions.accessDeniedPage("/error")  // Đưa trang lỗi tùy chỉnh khi gặp lỗi 403
+                .exceptionHandling(ex -> ex
+                        .authenticationEntryPoint((request, response, authException) -> {
+                            response.sendRedirect("/login");
+                        })
+                        // Nếu đã đăng nhập nhưng không đủ quyền → trang lỗi 403
+                        .accessDeniedHandler((request, response, accessDeniedException) -> {
+                            response.sendRedirect("/layout/403");
+                        })
                 );
 
         return http.build();
     }
 
-}
+    // PasswordEncoder sử dụng MD5 – để Spring Security so sánh đúng
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new PasswordEncoder() {
+            @Override
+            public String encode(CharSequence rawPassword) {
+                try {
+                    MessageDigest md = MessageDigest.getInstance("MD5");
+                    byte[] digest = md.digest(rawPassword.toString().getBytes(StandardCharsets.UTF_8));
+                    StringBuilder sb = new StringBuilder();
+                    for (byte b : digest) {
+                        String hex = Integer.toHexString(0xff & b);
+                        if (hex.length() == 1) sb.append('0');
+                        sb.append(hex);
+                    }
+                    return sb.toString();
+                } catch (Exception e) {
+                    throw new RuntimeException("Lỗi mã hóa MD5", e);
+                }
+            }
 
+            @Override
+            public boolean matches(CharSequence rawPassword, String encodedPassword) {
+                return encode(rawPassword).equals(encodedPassword);
+            }
+        };
+    }
+}

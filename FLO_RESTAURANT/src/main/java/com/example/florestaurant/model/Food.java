@@ -9,17 +9,20 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Food {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String title;
-    private Double price;
-    private String imageName;
+    private String description;
+    private double price;
+    private String imageName;  // Chỉ lưu tên ảnh trong cơ sở dữ liệu
+    private Long categoryId;
+    private String featured;
     private String active;
+    private int stock;
     private int quantity;  // Số lượng trong giỏ hàng
-    private Integer stock;
+
     // Constructor mặc định
     public Food() {}
 
@@ -36,4 +39,6 @@ public class Food {
     public double getTotalPrice() {
         return this.price * this.quantity;  // Tính tổng giá trị món ăn = giá * số lượng
     }
+
+
 }
