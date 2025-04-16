@@ -36,4 +36,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
     // Truy vấn lấy ID của người dùng theo username
     @Query("SELECT u.id FROM User u WHERE u.username = :username")
     Long findIdByUsername(String username);
+
 }

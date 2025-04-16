@@ -32,6 +32,7 @@ public class Food {
         this.quantity = quantity;  // Số lượng món ăn trong giỏ hàng
     }
 
+
     // Phương thức tính tổng giá trị của món ăn
     public double getTotalPrice() {
         return this.price * this.quantity;  // Tính tổng giá trị món ăn = giá * số lượng

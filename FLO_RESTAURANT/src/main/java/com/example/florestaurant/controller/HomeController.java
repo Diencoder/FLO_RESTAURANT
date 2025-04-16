@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-    @GetMapping("/index")
+    @GetMapping({"/", "/index", "/index.html"})
     public String home() {
         return "layout/index";  // Trả về layout/index.html
     }

@@ -3,7 +3,7 @@ package com.example.florestaurant.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
+import java.util.List;
 import java.util.Date;
 
 @Entity
@@ -50,6 +50,9 @@ public class OrderManager {
 
     @Column(name = "order_status")
     private String orderStatus;
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<OrderItem> items;  // Danh sách các món ăn trong đơn hàng
+
 
     public OrderManager() {
     }

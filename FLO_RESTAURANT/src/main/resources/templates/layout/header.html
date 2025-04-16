@@ -70,12 +70,16 @@
             </a>
 
             <!-- Kiểm tra nếu người dùng đã đăng nhập -->
-            <div th:if="${session.user != null}">
-                <!-- Nếu người dùng đã đăng nhập, hiển thị nút Đăng xuất -->
-                <a href="/logout" class="btn btn-secondary py-2 px-4">
-                    Đăng xuất
-                </a>
-            </div>
+            <<div th:if="${session.user != null}" class="dropdown ms-3">
+            <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                <i class="fas fa-user-circle"></i> [[${session.user.username}]]
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="/myaccount">Tài khoản của tôi</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/logout">Đăng xuất</a></li>
+            </ul>
+             </div>
             <div th:if="${session.user == null}">
                 <!-- Nếu người dùng chưa đăng nhập, hiển thị nút Đăng nhập -->
                 <a href="/login" class="btn btn-success py-2 px-4">

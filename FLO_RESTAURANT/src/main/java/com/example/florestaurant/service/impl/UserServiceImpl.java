@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.findById(id);
     }
 
-    // Xóa người dùng theo ID
+    // Xóa người dùng theo I
     @Override
     public void deleteUser(Long id) {
         userRepository.deleteById(id);  // Xóa người dùng theo ID từ database
