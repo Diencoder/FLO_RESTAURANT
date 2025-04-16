@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html lang="vi" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/header}"></head>
+<head>
+    <style>
+        /* Ensure the table takes up full width */
+        .table {
+            width: 100%; /* Make the table span the full width */
+            table-layout: fixed; /* Ensure the table layout is fixed for even spacing */
+        }
+
+        /* Optional: Make each column have enough space */
+        .table th, .table td {
+            text-align: center; /* Center text */
+            padding: 10px; /* Add padding for better readability */
+            overflow: hidden; /* Prevent overflow */
+        }
+
+        /* Ensure stock numbers are black */
+
+    </style>
+</head>
 <body>
 
 <!-- Nhúng phần Sidebar -->
