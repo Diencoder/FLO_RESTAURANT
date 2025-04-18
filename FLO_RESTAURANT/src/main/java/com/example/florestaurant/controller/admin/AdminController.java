@@ -32,38 +32,7 @@ public class AdminController {
         model.addAttribute("breadcrumb", "Dashboard");
         return "admin/admin";
     }
-
-    @GetMapping("/admin/manageadmin")
-    public String showManageAdmin(Model model) {
-        model.addAttribute("breadcrumb", "Quản Lý Admin");
-        return "admin/manageadmin";
-    }
-
-    @GetMapping("/admin/manageonlineorder")
-    public String showManageOnlineOrder(Model model) {
-        model.addAttribute("breadcrumb", "Quản Lý Đơn Hàng Online");
-        return "admin/manageonlineorder";
-    }
-
-    @GetMapping("/admin/manageeiorder")
-    public String showManageEiOrder(Model model) {
-        model.addAttribute("breadcrumb", "Quản Lý Đơn Hàng Tại Quán");
-        return "admin/manageeiorder";
-    }
-
-    @GetMapping("/admin/managecategory")
-    public String showManageCategory(Model model) {
-        model.addAttribute("breadcrumb", "Quản Lý Danh Mục");
-        return "admin/managecategory";
-    }
-
-    @GetMapping("/admin/managefood")
-    public String showManageFood(Model model) {
-        model.addAttribute("breadcrumb", "Quản Lý Thực Đơn");
-        model.addAttribute("foods", foodService.getActiveFoods());
-        return "admin/managefood";
-    }
-
+    
     @GetMapping("/admin/inventory")
     public String showInventory(Model model) {
         model.addAttribute("breadcrumb", "Kho Hàng");

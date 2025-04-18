@@ -18,14 +18,31 @@ public class MyAccountController {
     // Hiển thị thông tin người dùng
     @GetMapping("/myaccount")
     public String myAccount(HttpSession session, Model model) {
-        User user = (User) session.getAttribute("user"); // Lấy thông tin người dùng từ session
-        if (user == null) {
-            return "redirect:/login"; // Chuyển hướng đến trang đăng nhập nếu không có thông tin người dùng
+        // Lấy thông tin người dùng từ session
+        User user = (User) session.getAttribute("user");
+
+        // In ra thông tin người dùng trong session (nếu có)
+        if (user != null) {
+            System.out.println("User info from session: " + user);
+            // Bạn có thể in các thuộc tính của người dùng, ví dụ:
+            System.out.println("User name: " + user.getUsername()); // Thay thế bằng thuộc tính thật của lớp User
+        } else {
+            System.out.println("No user found in session.");
         }
+
+        // Nếu không có thông tin người dùng trong session, chuyển hướng về trang đăng nhập
+        if (user == null) {
+            return "redirect:/login"; // Chuyển hướng tới trang đăng nhập nếu chưa đăng nhập
+        }
+
+        // Thêm thông tin người dùng vào model để Thymeleaf sử dụng
+        model.addAttribute("user", user);
         model.addAttribute("pageTitle", "Tài khoản của tôi");
-        model.addAttribute("user", user); // Thêm thông tin người dùng vào model để hiển thị trên trang
-        return "layout/myaccount"; // Trả về view myaccount.html
+
+        // Trả về view myaccount.html
+        return "layout/myaccount";
     }
+
 
     // Hiển thị form chỉnh sửa thông tin người dùng
     @GetMapping("/editaccount")

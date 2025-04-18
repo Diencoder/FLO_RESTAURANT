@@ -54,7 +54,8 @@ public class LoginController {
 
             // Gọi phương thức authenticateUser để thiết lập thông tin bảo mật
             userService.authenticateUser(user, session);
-
+            model.addAttribute("user", user);
+            System.out.println("Session User: " + session.getAttribute("user"));
             // Chuyển hướng người dùng sau khi đăng nhập thành công
             if ("ROLE_ADMIN".equals(user.getRole())) {
                 return "redirect:/admin/admin"; // Chuyển hướng đến trang admin

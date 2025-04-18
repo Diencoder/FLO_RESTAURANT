@@ -1,19 +1,17 @@
-
 package com.example.florestaurant.model;
 
 import jakarta.persistence.*;
-        import lombok.Getter;
+import lombok.Getter;
 import lombok.Setter;
 
+@Entity
 @Table(name = "tbl_users")
 @Getter
 @Setter
-@Entity
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Hoặc sử dụng strategy khác như AUTO
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
@@ -23,12 +21,13 @@ public class User {
     private String phone;
     private String username;
     private String password;
-    private String role;
+    private String role; // Vai trò không còn được gán mặc định ở đây
 
+    // Constructor không tham số
+    public User() {
+        // Không gán vai trò mặc định ở đây
+    }
 
-    //    public User() {
-//        this.role = "user";  // Gán vai trò mặc định là "user"
-//    }
     // Constructor có tham số
     public User(String name, String email, String add1, String city, String phone, String username, String password) {
         this.name = name;
@@ -38,18 +37,17 @@ public class User {
         this.phone = phone;
         this.username = username;
         this.password = password;
-        this.role = (role != null) ? role : "ROLE_USER";
+        // Vai trò có thể được gán sau khi tạo đối tượng
     }
 
-
-    public User() {
-
-    }
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    // Phương thức toString()
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", role='" + role + '\'' +
+                '}';
     }
 }

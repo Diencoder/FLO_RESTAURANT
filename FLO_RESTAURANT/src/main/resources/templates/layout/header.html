@@ -1,4 +1,6 @@
-<!-- header.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
     <meta charset="utf-8">
     <title>FLO_RESTAURANT</title>
@@ -19,9 +21,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="@{/lib/animate/animate.min.css}" rel="stylesheet">
-    <link href="@{/lib/owlcarousel/assets/owl.carousel.min.css}" rel="stylesheet">
-    <link href="@{/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css}" rel="stylesheet" />
+    <link th:href="@{/lib/animate/animate.min.css}" rel="stylesheet">
+    <link th:href="@{/lib/owlcarousel/assets/owl.carousel.min.css}" rel="stylesheet">
+    <link th:href="@{/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css}" rel="stylesheet" />
 
     <!-- Lightbox for Image Gallery -->
     <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.3/dist/css/lightbox.min.css" rel="stylesheet">
@@ -63,23 +65,18 @@
 
             </div>
 
-            <!-- Giỏ hàng -->
-            <a th:href="@{/mycart}" class="btn btn-primary py-2 px-4">
-                <i class="fas fa-shopping-cart"></i>
-                <span> Giỏ hàng <span th:text="${cartSize}">0</span></span>
-            </a>
+            <!-- Hiển thị theo trạng thái đăng nhập -->
+            <div class="d-flex align-items-center gap-2">
+                <div sec:authorize="isAuthenticated()">
+                    <a href="/logout" class="btn btn-outline-light">Đăng xuất</a>
+                </div>
+                <div sec:authorize="isAnonymous()">
+                    <a href="/login" class="btn btn-outline-light">Đăng nhập</a>
+                </div>
 
-            <!-- Kiểm tra nếu người dùng đã đăng nhập -->
-            <div th:if="${session.user != null}">
-                <!-- Nếu người dùng đã đăng nhập, hiển thị nút Đăng xuất -->
-                <a href="/logout" class="btn btn-secondary py-2 px-4">
-                    Đăng xuất
-                </a>
-            </div>
-            <div th:if="${session.user == null}">
-                <!-- Nếu người dùng chưa đăng nhập, hiển thị nút Đăng nhập -->
-                <a href="/login" class="btn btn-success py-2 px-4">
-                    Đăng nhập
+                <!-- Giỏ hàng -->
+                <a href="/mycart" class="btn btn-primary py-2 px-4">
+                    <i class="fas fa-shopping-cart"></i><span> Giỏ hàng [[${count}]]</span>
                 </a>
             </div>
         </div>
@@ -89,7 +86,6 @@
     <div class="container-xxl py-5 bg-dark hero-header mb-1">
         <div class="container text-center my-3 pt-1 pb-1">
             <h1 class="display-3 text-white mb-3 animated slideInDown" th:text="${pageTitle}"></h1>
-
             <!-- Breadcrumb -->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb justify-content-center text-uppercase">
@@ -101,3 +97,4 @@
     </div>
 </div>
 </body>
+</html>

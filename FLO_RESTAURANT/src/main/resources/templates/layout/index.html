@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <meta charset="utf-8">
@@ -66,20 +67,18 @@
 
                 </div>
 
-                <a href="/mycart" class="btn btn-primary py-2 px-4">
-                    <i class="fas fa-shopping-cart"></i><span> Giỏ Hàng</span>
-                </a>
-                <!-- Kiểm tra nếu người dùng đã đăng nhập -->
-                <div th:if="${session.user != null}">
-                    <!-- Nếu người dùng đã đăng nhập, hiển thị nút Đăng xuất -->
-                    <a href="/logout" class="btn btn-secondary py-2 px-4">
-                        Đăng xuất
-                    </a>
-                </div>
-                <div th:if="${session.user == null}">
-                    <!-- Nếu người dùng chưa đăng nhập, hiển thị nút Đăng nhập -->
-                    <a href="/login" class="btn btn-success py-2 px-4">
-                        Đăng nhập
+                <!-- Hiển thị theo trạng thái đăng nhập -->
+                <div class="d-flex align-items-center gap-2">
+                    <div sec:authorize="isAuthenticated()">
+                        <a href="/logout" class="btn btn-outline-light">Đăng xuất</a>
+                    </div>
+                    <div sec:authorize="isAnonymous()">
+                        <a href="/login" class="btn btn-outline-light">Đăng nhập</a>
+                    </div>
+
+                    <!-- Giỏ hàng -->
+                    <a href="/mycart" class="btn btn-primary py-2 px-4">
+                        <i class="fas fa-shopping-cart"></i><span> Giỏ hàng [[${count}]]</span>
                     </a>
                 </div>
             </div>

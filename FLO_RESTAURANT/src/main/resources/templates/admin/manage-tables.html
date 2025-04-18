@@ -81,7 +81,7 @@
                            class="btn btn-warning btn-sm"
                            onclick="return confirm('Bạn có chắc chắn muốn hủy đặt bàn này?')">Hủy Đặt Bàn</a>
                         <a th:href="@{/admin/tables/delete/{tableNumber}(tableNumber=${table.tableNumber})}"
-                           th:if="${table.status == T(com.example.florestaurant.model.RestaurantTable.TableStatus).Available}"
+                           th:if="${table.status == T(com.example.florestaurant.model.RestaurantTable.TableStatus).Availsable}"
                            class="btn btn-danger btn-sm"
                            onclick="return confirm('Bạn có chắc chắn muốn xóa bàn này?')">Xóa Bàn</a>
                     </td>

@@ -28,6 +28,7 @@ public class ReservationController {
         List<RestaurantTable> tables = reservationService.getAvailableTables();
         System.out.println("Available tables: " + tables.size());
         model.addAttribute("tables", tables);
+        model.addAttribute("pageTitle", "Đặt bàn");
         return "reservation/list";
     }
 
