@@ -34,6 +34,7 @@
 
     <!-- Template Stylesheet -->
     <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/profile.css}" rel="stylesheet">
 </head>
 
 <body>
@@ -53,14 +54,13 @@
                 <a href="/about" class="nav-item nav-link" th:classappend="${pageTitle == 'Giới thiệu'} ? 'active' : ''">Giới thiệu</a>
                 <a href="/menu" class="nav-item nav-link" th:classappend="${pageTitle == 'Thực đơn'} ? 'active' : ''">Thực đơn</a>
                 <a href="/reserve" class="nav-item nav-link" th:classappend="${pageTitle == 'Đặt bàn'} ? 'active' : ''">Đặt bàn</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Trang</a>
-                    <div class="dropdown-menu m-0">
-                        <a href="/team" class="dropdown-item" th:classappend="${pageTitle == 'Đội ngũ của chúng tôi'} ? 'active' : ''">Đội ngũ của chúng tôi</a>
-                        <a href="/testimonial" class="dropdown-item" th:classappend="${pageTitle == 'Lời chứng thực'} ? 'active' : ''">Lời chứng thực</a>
-                    </div>
-                </div>
                 <a href="/contact" class="nav-item nav-link" th:classappend="${pageTitle == 'Liên hệ'} ? 'active' : ''">Liên hệ</a>
+                <!-- Thêm tài khoản và tên người dùng -->
+                <a href="/myaccount" class="nav-item nav-link">
+                    <i class="fa fa-user me-2"></i> <!-- Icon tài khoản -->
+                    Tài khoản của tôi <!-- Chữ "Tài khoản của tôi" -->
+                </a>
+
             </div>
 
             <!-- Giỏ hàng -->

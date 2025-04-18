@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -15,6 +16,7 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    // Hiển thị trang đăng nhập
     @GetMapping("/login")
     public String showLoginPage(@RequestParam(value = "logout", required = false) String logout,
                                 Model model) {
@@ -34,11 +36,21 @@ public class LoginController {
                               @RequestParam("password") String password,
                               HttpSession session,
                               Model model) {
+        // Xác thực người dùng
         User user = userService.validateUser(username, password);
 
         if (user != null) {
+            // Lưu thông tin người dùng vào session
             session.setAttribute("user", user);
-            session.setAttribute("role", user.getRole());
+            session.setAttribute("username", user.getUsername());
+            session.setAttribute("cus_name", user.getName());
+            session.setAttribute("cus_email", user.getEmail());
+            session.setAttribute("cus_add1", user.getAdd1());
+            session.setAttribute("cus_city", user.getCity());
+            session.setAttribute("cus_phone", user.getPhone());
+
+            // Lưu vai trò vào session
+            session.setAttribute("role", user.getRole());  // Lưu role vào session
 
             // Gọi phương thức authenticateUser để thiết lập thông tin bảo mật
             userService.authenticateUser(user, session);

@@ -5,16 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8c1c74aa-e7ef-4943-a9d8-27019accd5cc" name="Changes" comment="mycart change">
+      <change afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/MyAccountController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/UserReviewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/Review.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/repository/UserReviewRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/UserReviewService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/impl/UserReviewServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/layout/Changepassword.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/layout/contact.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/layout/userupdate.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/layout/vieworder.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/CartItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/CartItemService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/CartService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/impl/CartItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/impl/CartItemServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/impl/CartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/impl/CartServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/layout/mycart.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/layout/mycart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/com/example/florestaurant/controller/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/com/example/florestaurant/controller/MenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/com/example/florestaurant/service/CartService.class" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/com/example/florestaurant/service/CartService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/templates/layout/mycart.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/target/classes/templates/layout/mycart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/AboutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/AboutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/ContactController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/ContactController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/layout/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/layout/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/layout/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/layout/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/layout/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/layout/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,33 +68,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.FloRestaurantApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dienpv&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/PROJECTJAVA&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.FloRestaurantApplication.executor": "Run",
+    "git-widget-placeholder": "hoaifnam",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/ProjectClone/FLO_RESTAURANT",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\LearningJavaCore\FLO_RESTAURANT\src\main\resources\static\js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\ProjectClone\FLO_RESTAURANT\FLO_RESTAURANT\src\main\resources\templates\layout" />
+      <recent name="D:\ProjectClone\FLO_RESTAURANT\FLO_RESTAURANT\src\main\java\com\example\florestaurant\controller" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.FloRestaurantApplication">
@@ -151,6 +162,7 @@
       <workItem from="1743425514577" duration="8641000" />
       <workItem from="1743521394359" duration="9765000" />
       <workItem from="1743561203516" duration="5980000" />
+      <workItem from="1744956782734" duration="1088000" />
     </task>
     <task id="LOCAL-00001" summary="cart">
       <option name="closed" value="true" />

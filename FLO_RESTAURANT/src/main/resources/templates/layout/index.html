@@ -53,13 +53,19 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0 pe-4">
-                    <a href="/index" class="nav-item nav-link active">Trang Chủ</a>
-                    <a href="/about" class="nav-item nav-link">Giới Thiệu</a>
-                    <a href="/categories" class="nav-item nav-link">Danh Mục</a>
-                    <a href="/reserve" class="nav-item nav-link">Đặt bàn</a>
-                    <a href="/menu" class="nav-item nav-link">Thực Đơn</a>
-                    <a href="/contact" class="nav-item nav-link">Liên Hệ</a>
+                    <a href="/index" class="nav-item nav-link" th:classappend="${pageTitle == 'Trang chủ'} ? 'active' : ''">Trang chủ</a>
+                    <a href="/about" class="nav-item nav-link" th:classappend="${pageTitle == 'Giới thiệu'} ? 'active' : ''">Giới thiệu</a>
+                    <a href="/menu" class="nav-item nav-link" th:classappend="${pageTitle == 'Thực đơn'} ? 'active' : ''">Thực đơn</a>
+                    <a href="/reserve" class="nav-item nav-link" th:classappend="${pageTitle == 'Đặt bàn'} ? 'active' : ''">Đặt bàn</a>
+                    <a href="/contact" class="nav-item nav-link" th:classappend="${pageTitle == 'Liên hệ'} ? 'active' : ''">Liên hệ</a>
+                    <!-- Thêm tài khoản và tên người dùng -->
+                    <a href="/myaccount" class="nav-item nav-link">
+                        <i class="fa fa-user me-2"></i> <!-- Icon tài khoản -->
+                        Tài khoản của tôi <!-- Chữ "Tài khoản của tôi" -->
+                    </a>
+
                 </div>
+
                 <a href="/mycart" class="btn btn-primary py-2 px-4">
                     <i class="fas fa-shopping-cart"></i><span> Giỏ Hàng</span>
                 </a>
@@ -155,7 +161,7 @@
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="card">
-                            <img src="/images/food/food1.jpg" class="card-img-top" alt="Món ăn 1">
+                            <img src="/images/food/banh_cuon.jpg" class="card-img-top" alt="Món ăn 1">
                             <div class="card-body text-center">
                                 <h5 class="card-title">Món ăn 1</h5>
                                 <p class="card-text">150,000 VND</p>
@@ -166,7 +172,7 @@
 
                     <div class="col-lg-3">
                         <div class="card">
-                            <img src="/images/food/food2.jpg" class="card-img-top" alt="Món ăn 2">
+                            <img src="/images/food/com_tam.jpg" class="card-img-top" alt="Món ăn 2">
                             <div class="card-body text-center">
                                 <h5 class="card-title">Món ăn 2</h5>
                                 <p class="card-text">200,000 VND</p>
@@ -177,7 +183,7 @@
 
                     <div class="col-lg-3">
                         <div class="card">
-                            <img src="/images/food/food3.jpg" class="card-img-top" alt="Món ăn 3">
+                            <img src="/images/food/lau_hai_san.jpg" class="card-img-top" alt="Món ăn 3">
                             <div class="card-body text-center">
                                 <h5 class="card-title">Món ăn 3</h5>
                                 <p class="card-text">250,000 VND</p>
@@ -188,7 +194,7 @@
 
                     <div class="col-lg-3">
                         <div class="card">
-                            <img src="/images/food/food4.jpg" class="card-img-top" alt="Món ăn 4">
+                            <img src="/images/food/che_dau_xanh.jpg" class="card-img-top" alt="Món ăn 4">
                             <div class="card-body text-center">
                                 <h5 class="card-title">Món ăn 4</h5>
                                 <p class="card-text">300,000 VND</p>
@@ -201,7 +207,55 @@
         </div>
     </div>
     <!-- Featured Product End -->
-
+    <!-- Team Start -->
+    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container">
+            <div class="text-center">
+                <!-- Tiêu đề phần đội ngũ -->
+                <h5 class="section-title ff-secondary text-center text-primary fw-normal">Đội Ngũ</h5>
+                <h1 class="mb-5">Gặp Gỡ Đội Ngũ Của Chúng Tôi</h1>
+            </div>
+            <div class="row">
+                <!-- Thành viên 1: Phụ Bếp -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="team-item text-center bg-transparent border rounded p-4">
+                        <img class="img-fluid rounded-circle mb-3" src="../images/chef.jpg" style="width: 150px; height: 150px;">
+                        <h5 class="mb-1">Linh Nguyễn</h5>
+                        <small>Phụ Bếp</small>
+                        <p class="mt-3">Linh là phụ bếp tài năng, luôn sẵn sàng hỗ trợ các đầu bếp trong mọi công việc để đảm bảo mọi món ăn đều hoàn hảo.</p>
+                    </div>
+                </div>
+                <!-- Thành viên 2: Đầu Bếp 1 -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="team-item text-center bg-transparent border rounded p-4">
+                        <img class="img-fluid rounded-circle mb-3" src="../images/chef2.jpg" style="width: 150px; height: 150px;">
+                        <h5 class="mb-1">Hồng Anh</h5>
+                        <small>Đầu Bếp</small>
+                        <p class="mt-3">Hồng Anh có kinh nghiệm lâu năm trong ngành ẩm thực, đặc biệt là trong các món ăn sáng tạo và độc đáo.</p>
+                    </div>
+                </div>
+                <!-- Thành viên 3: Đầu Bếp 2 -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="team-item text-center bg-transparent border rounded p-4">
+                        <img class="img-fluid rounded-circle mb-3" src="../images/chef3.jpg" style="width: 150px; height: 150px;">
+                        <h5 class="mb-1">Minh Tuấn</h5>
+                        <small>Đầu Bếp</small>
+                        <p class="mt-3">Minh Tuấn nổi bật với khả năng chế biến các món ăn từ nguyên liệu tươi ngon và phong cách ẩm thực hiện đại.</p>
+                    </div>
+                </div>
+                <!-- Thành viên 4: Bếp Trưởng -->
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="team-item text-center bg-transparent border rounded p-4">
+                        <img class="img-fluid rounded-circle mb-3" src="../images/chef4.jpg" style="width: 150px; height: 150px;">
+                        <h5 class="mb-1">Tú Anh</h5>
+                        <small>Bếp Trưởng</small>
+                        <p class="mt-3">Với kinh nghiệm lâu năm và khả năng quản lý tuyệt vời, Tú Anh là bếp trưởng dẫn dắt đội ngũ sáng tạo những món ăn đẳng cấp.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
     <!-- Testimonial Start -->
     <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container">
@@ -228,7 +282,7 @@
                     <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
                     <p>Tôi khá ấn tượng với ý tưởng độc đáo của họ. Xin gửi lời khen ngợi đến Robo Cafe và toàn bộ đội ngũ của họ.</p>
                     <div class="d-flex align-items-center">
-                        <img class="img-fluid flex-shrink-0 rounded-circle" src="/images/avatar2.jpeg" style="width: 50px; height: 50px;">
+                        <img class="img-fluid flex-shrink-0 rounded-circle" src="/images/avatar1.jpeg" style="width: 50px; height: 50px;">
                         <div class="ps-3">
                             <h5 class="mb-1">Ashraf Alam</h5>
                             <small>Doanh Nhân</small>
@@ -240,7 +294,7 @@
                     <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
                     <p>Môi trường rất tuyệt vời và họ cung cấp thức ăn ngon và bổ dưỡng. Tôi rất thích.</p>
                     <div class="d-flex align-items-center">
-                        <img class="img-fluid flex-shrink-0 rounded-circle" src="/images/avatar3.jpeg" style="width: 50px; height: 50px;">
+                        <img class="img-fluid flex-shrink-0 rounded-circle" src="/images/avatar1.jpeg" style="width: 50px; height: 50px;">
                         <div class="ps-3">
                             <h5 class="mb-1">Sumon Mollah</h5>
                             <small>Giáo Viên</small>
@@ -252,7 +306,7 @@
                     <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
                     <p>WOW!! Ý tưởng độc đáo của FLO_RESTAURANT thật tuyệt vời. Chất lượng món ăn rất tốt, tiếp tục phát huy nhé.</p>
                     <div class="d-flex align-items-center">
-                        <img class="img-fluid flex-shrink-0 rounded-circle" src="/images/avatar4.jpeg" style="width: 50px; height: 50px;">
+                        <img class="img-fluid flex-shrink-0 rounded-circle" src="/images/avatar1.jpeg" style="width: 50px; height: 50px;">
                         <div class="ps-3">
                             <h5 class="mb-1">Labony Haque</h5>
                             <small>Sinh Viên</small>
@@ -263,6 +317,83 @@
         </div>
     </div>
     <!-- Testimonial End -->
+    <!-- Phần Liên Hệ Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <!-- Tiêu đề phần Liên Hệ -->
+                <h5 class="section-title ff-secondary text-center text-primary fw-normal">Liên Hệ Với Chúng Tôi</h5>
+                <h1 class="mb-5">Liên Hệ Để Giải Quyết Mọi Thắc Mắc</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-12">
+                    <div class="row gy-4">
+                        <!-- Phần Thông Tin Liên Hệ Đặt Chỗ -->
+                        <div class="col-md-4">
+                            <h5 class="section-title ff-secondary fw-normal text-start text-primary">Đặt Chỗ</h5>
+                            <p><i class="fa fa-envelope-open text-primary me-2"></i>FLO@gmail.com</p>
+                        </div>
+                        <!-- Phần Thông Tin Liên Hệ Chung -->
+                        <div class="col-md-4">
+                            <h5 class="section-title ff-secondary fw-normal text-start text-primary">Chung</h5>
+                            <p><i class="fa fa-envelope-open text-primary me-2"></i>FLO@gmail.com</p>
+                        </div>
+                        <!-- Phần Thông Tin Liên Hệ Kỹ Thuật -->
+                        <div class="col-md-4">
+                            <h5 class="section-title ff-secondary fw-normal text-start text-primary">Kỹ Thuật</h5>
+                            <p><i class="fa fa-envelope-open text-primary me-2"></i>FLO@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 wow fadeIn" data-wow-delay="0.1s">
+                    <!-- Google Map -->
+                    <iframe th:src="@{https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15674.173818186831!2d106.6401792!3d10.846207999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1741594299456!5m2!1svi!2s}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="col-md-6">
+                    <div class="wow fadeInUp" data-wow-delay="0.2s">
+                        <!-- Mẫu Form Liên Hệ -->
+                        <form th:action="@{/sendMessage}" method="POST">
+                            <div class="row g-3">
+                                <!-- Nhập Tên -->
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Tên Của Bạn" required>
+                                        <label for="name">Tên Của Bạn</label>
+                                    </div>
+                                </div>
+                                <!-- Nhập Số Điện Thoại -->
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="number" class="form-control" id="email" name="phone" placeholder="Số Điện Thoại" required>
+                                        <label for="email">Số Điện Thoại</label>
+                                    </div>
+                                </div>
+                                <!-- Nhập Chủ Đề -->
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="subject" name="subject" placeholder="Chủ Đề" required>
+                                        <label for="subject">Chủ Đề</label>
+                                    </div>
+                                </div>
+                                <!-- Nhập Tin Nhắn -->
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Để lại tin nhắn ở đây" id="message" name="message" style="height: 150px" required></textarea>
+                                        <label for="message">Tin Nhắn</label>
+                                    </div>
+                                </div>
+                                <!-- Nút Gửi Tin Nhắn -->
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" type="submit" name="submit_message">Gửi Tin Nhắn</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Phần Liên Hệ End -->
 
 
     <!-- Footer Start -->

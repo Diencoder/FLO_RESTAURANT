@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/header}"></head>
+<body>
+<!-- Content Section Start -->
+
+
+<div class="container py-5">
+    <div class="row">
+        <!-- Sidebar - Điều hướng -->
+        <div class="profile-nav col-md-3">
+            <div class="panel shadow-sm rounded">
+                <div class="user-heading round text-center">
+                    <a href="myaccount.html">
+                        <img src="../images/avatar.png" alt="Avatar" class="img-fluid rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover;">
+                    </a>
+                    <h1 class="h4"><span th:text="${user.name}"></span></h1>
+                </div>
+                <ul class="nav flex-column">
+                    <li class="nav-item mb-2">
+                        <a href="/editaccount" class="nav-link d-flex align-items-center p-2 rounded shadow-sm">
+                            <i class="fa fa-edit me-2"></i> Chỉnh sửa hồ sơ
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="/vieworder/vieworder" class="nav-link d-flex align-items-center p-2 rounded shadow-sm">
+                            <i class="fa fa-box me-2"></i> Xem Đơn hàng
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="/change-password" class="nav-link d-flex align-items-center p-2 rounded shadow-sm">
+                            <i class="fa fa-box me-2"></i> Đổi mật khẩu
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-2">
+                        <a href="view_table.html" class="nav-link d-flex align-items-center p-2 rounded shadow-sm">
+                            <i class="fa fa-table"></i> Xem Bàn đã đặt
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Thông tin hồ sơ -->
+        <div class="profile-info col-md-9">
+            <div class="panel shadow-sm rounded">
+                <div class="panel-body bio-graph-info">
+                    <h1 class="display-5 mb-4 text-primary">Tài khoản của tôi</h1>
+                    <div class="row">
+                        <div class="bio-row mb-3">
+                            <p><strong>Họ và tên:</strong> <span th:text="${user.name}"></span></p>
+                        </div>
+                        <div class="bio-row mb-3">
+                            <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
+                        </div>
+                        <div class="bio-row mb-3">
+                            <p><strong>Địa chỉ:</strong> <span th:text="${user.add1}"></span></p>
+                        </div>
+                        <div class="bio-row mb-3">
+                            <p><strong>Thành phố:</strong> <span th:text="${user.city}"></span></p>
+                        </div>
+                        <div class="bio-row mb-3">
+                            <p><strong>Số điện thoại:</strong> <span th:text="${user.phone}"></span></p>
+                        </div>
+                        <div class="bio-row mb-3">
+                            <p><strong>Tên người dùng:</strong> <span th:text="${user.username}"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Content Section End -->
+
+<div th:replace="~{layout/footer}"></div>
+</body>
+
+</html>
