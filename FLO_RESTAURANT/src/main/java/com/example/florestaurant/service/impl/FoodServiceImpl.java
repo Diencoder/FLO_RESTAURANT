@@ -4,6 +4,8 @@ import com.example.florestaurant.model.Food;
 import com.example.florestaurant.repository.FoodRepository;
 import com.example.florestaurant.service.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,10 +24,11 @@ public class FoodServiceImpl implements FoodService {
     private FoodRepository foodRepository;
 
     @Override
-    @Transactional
-    public List<Food> getActiveFoods() {
-        return foodRepository.findAll();  // Query to find all foods (you can add a filter here for active foods if needed)
+    @Transactional(readOnly = true)
+    public Page<Food> getActiveFoods(Pageable pageable) {
+        return foodRepository.findByActive("Yes", pageable); // Sử dụng đúng phương thức trong repository
     }
+
 
     @Override
     @Transactional

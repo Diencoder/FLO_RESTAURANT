@@ -4,6 +4,8 @@ import com.example.florestaurant.model.Food;
 import com.example.florestaurant.service.CartService;
 import com.example.florestaurant.service.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -29,11 +31,19 @@ public class MenuController {
 
     // Hiển thị các món ăn trong thực đơn
     @GetMapping("/menu")
-    public String showMenu(Model model) {
-        model.addAttribute("foods", foodService.getActiveFoods());  // Lấy tất cả món ăn có trạng thái 'Yes'
+    public String showMenu(Model model,
+                           @RequestParam(defaultValue = "0") int page,
+                           @RequestParam(defaultValue = "8") int size) {
+
+        Page<Food> foodPage = foodService.getActiveFoods(PageRequest.of(page, size));
+        model.addAttribute("foods", foodPage.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", foodPage.getTotalPages());
         model.addAttribute("pageTitle", "Thực đơn");
-        return "layout/menu";  // Trả về template "menu.html"
+
+        return "layout/menu";
     }
+
 
     // Thêm món ăn vào giỏ hàng
     @PostMapping("/addToCart")

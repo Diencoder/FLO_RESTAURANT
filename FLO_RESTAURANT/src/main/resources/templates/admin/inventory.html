@@ -5,21 +5,16 @@
     <title>Quản Lý Kho Hàng</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Ensure the table takes up full width */
         .table {
-            width: 100%; /* Make the table span the full width */
-            table-layout: fixed; /* Ensure the table layout is fixed for even spacing */
+            width: 100%;
+            table-layout: fixed;
         }
 
-        /* Optional: Make each column have enough space */
         .table th, .table td {
-            text-align: center; /* Center text */
-            padding: 10px; /* Add padding for better readability */
-            overflow: hidden; /* Prevent overflow */
+            text-align: center;
+            padding: 10px;
+            overflow: hidden;
         }
-
-        /* Ensure stock numbers are black */
-
     </style>
 </head>
 <body>
@@ -34,7 +29,6 @@
     <div th:replace="~{fragments/navbar}"></div>
 
     <main>
-        <!-- Header Section -->
         <div class="head-title">
             <div class="left">
                 <h1>Kho</h1>
@@ -48,7 +42,6 @@
 
         <br/>
 
-        <!-- Add Product Button and Title -->
         <div class="d-flex justify-content-between mb-4">
             <h3>Danh sách Mặt hàng Kho</h3>
             <a href="/admin/addfood" class="btn btn-success">Thêm Sản phẩm</a>
@@ -71,7 +64,7 @@
                         <tr th:each="food : ${foods}">
                             <td th:text="${food.title}">Món ăn</td>
                             <td><span class="status" th:text="${food.stock}" style="color: black;"></span></td>
-                            <td><span class="price" th:text="${food.price}"></span></td>
+                            <td><span class="price" th:text="${food.price} + ' VND'"></span></td>
                             <td>
                                 <a th:href="@{/admin/editfood/{id}(id=${food.id})}" class="btn btn-warning">Sửa</a>
                                 <a th:href="@{/admin/deletefood/{id}(id=${food.id})}" class="btn btn-danger" role="button" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')">Xóa</a>
@@ -80,6 +73,28 @@
                         </tbody>
                     </table>
                 </div>
+
+                <!-- ✅ PHÂN TRANG -->
+                <div class="text-center mt-4">
+                    <nav>
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item" th:classappend="${currentPage == 0} ? 'disabled'">
+                                <a class="page-link" th:href="@{/admin/inventory(page=${currentPage - 1})}">Trước</a>
+                            </li>
+
+                            <li class="page-item"
+                                th:each="i : ${#numbers.sequence(0, totalPages - 1)}"
+                                th:classappend="${i == currentPage} ? 'active'">
+                                <a class="page-link" th:href="@{/admin/inventory(page=${i})}" th:text="${i + 1}">1</a>
+                            </li>
+
+                            <li class="page-item" th:classappend="${currentPage == totalPages - 1} ? 'disabled'">
+                                <a class="page-link" th:href="@{/admin/inventory(page=${currentPage + 1})}">Sau</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- END PHÂN TRANG -->
             </div>
         </div>
     </main>

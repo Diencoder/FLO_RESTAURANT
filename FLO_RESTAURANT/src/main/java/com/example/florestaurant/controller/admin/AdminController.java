@@ -9,6 +9,8 @@ import com.example.florestaurant.model.Food;
 import com.example.florestaurant.service.CategoryService;
 import com.example.florestaurant.service.FoodService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,13 +34,21 @@ public class AdminController {
         model.addAttribute("breadcrumb", "Dashboard");
         return "admin/admin";
     }
-    
+
     @GetMapping("/admin/inventory")
-    public String showInventory(Model model) {
+    public String showInventory(Model model,
+                                @RequestParam(defaultValue = "0") int page,
+                                @RequestParam(defaultValue = "10") int size) {
+        Page<Food> foodPage = foodService.getActiveFoods(PageRequest.of(page, size));
+
         model.addAttribute("breadcrumb", "Kho Hàng");
-        model.addAttribute("foods", foodService.getActiveFoods());
+        model.addAttribute("foods", foodPage.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", foodPage.getTotalPages());
+
         return "admin/inventory";
     }
+
 
     @GetMapping("/admin/logout")
     public String logout() {
