@@ -1,8 +1,27 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/header}"></head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách Người dùng</title>
+
+    <!-- Thêm link đến Bootstrap CSS từ CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
 <body>
+
+<!-- Nhúng phần Header -->
+<div th:replace="~{fragments/header}"></div>
+
+<!-- Nhúng phần Sidebar -->
 <div th:replace="~{fragments/sidebar}"></div>
-<div th:replace="~{fragments/content}"></div>
+
+<!-- Nội dung chính -->
+<div class="container centered-content text-center">
+    <h1 class="display-5 text-primary">👋 Chào mừng đến trang quản trị</h1>
+    <p class="lead">Chúc bạn một ngày làm việc hiệu quả!</p>
+</div>
+
 </body>
 </html>
