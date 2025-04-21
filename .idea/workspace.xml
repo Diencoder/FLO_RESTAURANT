@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c1c74aa-e7ef-4943-a9d8-27019accd5cc" name="Changes" comment="thay đổi myaccount">
+    <list default="true" id="8c1c74aa-e7ef-4943-a9d8-27019accd5cc" name="Changes" comment="full">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/admin/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/admin/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/repository/FoodRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/repository/FoodRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/FoodService.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/FoodService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/impl/FoodServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/impl/FoodServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/admin/inventory.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/admin/inventory.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/layout/menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/layout/menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +156,7 @@
       <workItem from="1744993157364" duration="2112000" />
       <workItem from="1745041130683" duration="33000" />
       <workItem from="1745245142160" duration="3240000" />
-      <workItem from="1745248927018" duration="1030000" />
+      <workItem from="1745248927018" duration="1943000" />
     </task>
     <task id="LOCAL-00001" summary="cart">
       <option name="closed" value="true" />
@@ -260,7 +254,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744988477612</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="full">
+      <option name="closed" value="true" />
+      <created>1745250524578</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1745250524578</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -281,6 +283,7 @@
     <MESSAGE value="cart" />
     <MESSAGE value="mycart change" />
     <MESSAGE value="thay đổi myaccount" />
-    <option name="LAST_COMMIT_MESSAGE" value="thay đổi myaccount" />
+    <MESSAGE value="full" />
+    <option name="LAST_COMMIT_MESSAGE" value="full" />
   </component>
 </project>
