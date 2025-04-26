@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c1c74aa-e7ef-4943-a9d8-27019accd5cc" name="Changes" comment="full">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/Order.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/repository/OrderRepository.java" beforeDir="false" />
-    </list>
+    <list default="true" id="8c1c74aa-e7ef-4943-a9d8-27019accd5cc" name="Changes" comment="chỉnh sửa full" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -165,7 +160,7 @@
       <workItem from="1745383922880" duration="23000" />
       <workItem from="1745559839193" duration="187000" />
       <workItem from="1745600823861" duration="76000" />
-      <workItem from="1745635714898" duration="4728000" />
+      <workItem from="1745635714898" duration="5067000" />
     </task>
     <task id="LOCAL-00001" summary="cart">
       <option name="closed" value="true" />
@@ -287,7 +282,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745253108513</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="chỉnh sửa full">
+      <option name="closed" value="true" />
+      <created>1745641385735</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1745641385735</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -309,6 +312,7 @@
     <MESSAGE value="mycart change" />
     <MESSAGE value="thay đổi myaccount" />
     <MESSAGE value="full" />
-    <option name="LAST_COMMIT_MESSAGE" value="full" />
+    <MESSAGE value="chỉnh sửa full" />
+    <option name="LAST_COMMIT_MESSAGE" value="chỉnh sửa full" />
   </component>
 </project>
