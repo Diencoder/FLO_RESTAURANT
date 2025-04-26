@@ -6,16 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8c1c74aa-e7ef-4943-a9d8-27019accd5cc" name="Changes" comment="full">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/admin/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/admin/admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/admin/content.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/admin/header.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/admin/manage-edit-user.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/admin/manage-edit-user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/admin/manageadmin.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/admin/managefood.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/fragments/content.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/fragments/head.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/fragments/head.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/fragments/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/fragments/sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/fragments/sidebar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/Order.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/repository/OrderRepository.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +67,7 @@
     &quot;Spring Boot.FloRestaurantApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;dienpv&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/ProjectClone/FLO_RESTAURANT&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/ELearningJava2&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -165,7 +158,14 @@
       <workItem from="1744993157364" duration="2112000" />
       <workItem from="1745041130683" duration="33000" />
       <workItem from="1745245142160" duration="3240000" />
-      <workItem from="1745248927018" duration="3628000" />
+      <workItem from="1745248927018" duration="4457000" />
+      <workItem from="1745280048161" duration="3915000" />
+      <workItem from="1745330282990" duration="4117000" />
+      <workItem from="1745368912144" duration="1603000" />
+      <workItem from="1745383922880" duration="23000" />
+      <workItem from="1745559839193" duration="187000" />
+      <workItem from="1745600823861" duration="76000" />
+      <workItem from="1745635714898" duration="4728000" />
     </task>
     <task id="LOCAL-00001" summary="cart">
       <option name="closed" value="true" />
@@ -279,7 +279,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745251376760</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="full">
+      <option name="closed" value="true" />
+      <created>1745253108513</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1745253108513</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

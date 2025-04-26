@@ -50,7 +50,7 @@ public class RegisterController {
         }
         // Tạo đối tượng User mới từ thông tin người dùng
         User user = new User(name, email, add1, city, phone, username, password);
-
+        user.setRole("ROLE_USER");
         // Lưu thông tin người dùng vào cơ sở dữ liệu thông qua UserService
         userService.save(user);
 
