@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/header}"></head>
+<body>
+<!-- Content Section Start -->
+<div class="container" id="top"> <!-- Gắn id để quay lại đầu -->
+    <!-- ✅ Hiển thị thông báo nếu có -->
+    <div th:if="${message}" class="alert alert-success text-center">
+        <span th:text="${message}"></span>
+    </div>
+
+    <h1 class="my-4 text-center">Menu</h1>
+
+    <div class="row">
+        <!-- Duyệt qua danh sách món ăn -->
+        <div th:each="food : ${foods}" class="col-lg-3 col-md-4 col-sm-6 mb-4">
+            <div class="card h-100">
+                <!-- Hiển thị hình ảnh của món ăn -->
+                <img th:src="@{/images/food/{image}(image=${food.imageName})}" class="card-img-top" alt="Food Image">
+                <div class="card-body text-center">
+                    <!-- Tiêu đề món ăn -->
+                    <h5 class="card-title" th:text="${food.title}">Food Title</h5>
+                    <!-- Giá món ăn -->
+                    <p class="card-text" th:text="${food.price + ' VND'}">Price</p>
+
+                    <!-- Form thêm món ăn vào giỏ hàng -->
+                    <form th:action="@{/addToCart}" method="POST">
+                        <button type="submit" class="btn btn-primary btn-sm">Thêm Vào Giỏ Hàng</button>
+
+                        <!-- Input ẩn để truyền thông tin món ăn -->
+                        <input type="hidden" name="foodId" th:value="${food.id}">
+                        <input type="hidden" name="itemName" th:value="${food.title}">
+                        <input type="hidden" name="price" th:value="${food.price}">
+                        <input type="hidden" name="quantity" value="1">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ✅ Phân trang -->
+    <div class="text-center mt-4">
+        <nav>
+            <ul class="pagination justify-content-center">
+                <li class="page-item" th:classappend="${currentPage == 0} ? 'disabled'">
+                    <a class="page-link" th:href="@{/menu(page=${currentPage - 1})}">Trước</a>
+                </li>
+
+                <li class="page-item"
+                    th:each="i : ${#numbers.sequence(0, totalPages - 1)}"
+                    th:classappend="${i == currentPage} ? 'active'">
+                    <a class="page-link" th:href="@{/menu(page=${i})}" th:text="${i + 1}">1</a>
+                </li>
+
+                <li class="page-item" th:classappend="${currentPage == totalPages - 1} ? 'disabled'">
+                    <a class="page-link" th:href="@{/menu(page=${currentPage + 1})}">Sau</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- ✅ Nút quay về trang đầu hoặc cuối (chuyển trang chứ không cuộn) -->
+    <div class="text-center mt-4 mb-5">
+        <a th:href="@{/menu(page=0)}" class="btn btn-outline-secondary btn-sm mx-2">⬆️ Trang đầu</a>
+        <a th:href="@{/menu(page=${totalPages - 1})}" class="btn btn-outline-secondary btn-sm mx-2">⬇️ Trang cuối</a>
+    </div>
+</div>
+<!-- Content Section End -->
+
+<!-- Điểm đánh dấu cuối trang -->
+<div id="bottom"></div>
+
+<div th:replace="~{layout/footer}"></div>
+</body>
+</html>

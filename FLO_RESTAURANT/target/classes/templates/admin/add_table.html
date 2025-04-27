@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Người dùng</title>
+
+    <!-- Thêm Bootstrap CSS từ CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Nhúng phần Header -->
+<div th:replace="~{fragments/header}"></div>
+
+<!-- Nhúng phần Sidebar -->
+<div th:replace="~{fragments/sidebar}"></div>
+
+<!-- CONTENT -->
+<section id="content">
+    <!-- Nhúng phần Navbar -->
+    <div th:replace="~{fragments/navbar}"></div>
+    <div class="container mt-5">
+        <h1>Thêm Bàn Mới</h1>
+
+        <!-- Hiển thị thông báo lỗi nếu có -->
+        <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+
+        <form th:action="@{/admin/tables/add}" method="post" th:object="${restaurantTable}">
+            <div class="form-group">
+                <label for="tableNumber">Số Bàn</label>
+                <input type="number" class="form-control" id="tableNumber" name="tableNumber" th:field="*{tableNumber}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="area">Khu Vực</label>
+                <input type="text" class="form-control" id="area" name="area" th:field="*{area}" required>
+            </div>
+
+            <div class="form-group">
+                         <label for="capacity">Sức Chứa</label>
+                <input type="number" class="form-control" id="capacity" name="capacity" th:field="*{capacity}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="status">Trạng Thái</label>
+                <select class="form-control" id="status" name="status" th:field="*{status}">
+                    <option value="Available">Available</option>
+                    <option value="Reserved">Reserved</option>
+                    <option value="Occupied">Occupied</option>
+                    <option value="OutOfService">Out of Service</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Thêm Bàn</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</section>
+</body>
+</html>

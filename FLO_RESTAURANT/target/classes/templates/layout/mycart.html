@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/header}"></head>
+<body>
+<div class="container mt-5">
+    <h1>Your Cart</h1>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Lặp qua từng món ăn trong giỏ hàng -->
+        <tr th:each="food : ${cart}" th:data-food-id="${food.id}">
+            <td th:text="${food.title}"></td> <!-- Tên món ăn -->
+            <td>
+                <!-- Form thay đổi số lượng và gửi về server -->
+                <form th:action="@{/updateCart}" method="POST" class="updateCartForm">
+                    <input type="hidden" name="foodId" th:value="${food.id}">
+                    <input type="number" name="quantity" th:value="${food.quantity}" class="form-control quantity" min="1" required />
+                    <button type="submit" class="btn btn-primary">Cập Nhật</button>
+                </form>
+            </td>
+            <td th:text="${food.price}" class="price"></td> <!-- Giá món ăn -->
+            <td th:text="${food.getTotalPrice()}" class="total"></td> <!-- Tổng tiền món ăn -->
+            <td>
+                <form th:action="@{/removeFromCart}" method="post">
+                    <input type="hidden" name="foodId" th:value="${food.id}">
+                    <button type="submit" class="btn btn-danger">Remove</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <p id="totalAmount" th:text="'Total: ' + ${totalAmount}"></p>  <!-- Hiển thị tổng tiền -->
+
+    <!-- Thông tin khách hàng -->
+    <h3>Thông tin khách hàng</h3>
+    <form th:action="@{/purchase}" method="post">
+        <input type="text" name="tran_id" th:value="${T(java.lang.Math).random() * 1000000}" class="form-control" placeholder="Mã giao dịch" readonly required>
+        <input type="text" name="username" th:value="${session.username}" class="form-control" placeholder="Tên đăng nhập" readonly required>
+        <input type="text" name="cus_name" th:value="${session.cus_name}" class="form-control" placeholder="Tên khách hàng" required>
+        <input type="email" name="cus_email" th:value="${session.cus_email}" class="form-control" placeholder="Email" required>
+        <input type="text" name="cus_add1" th:value="${session.cus_add1}" class="form-control" placeholder="Địa chỉ" required>
+        <input type="text" name="cus_city" th:value="${session.cus_city}" class="form-control" placeholder="Thành phố" required>
+        <input type="text" name="cus_phone" th:value="${session.cus_phone}" class="form-control" placeholder="Số điện thoại" required>
+
+        <br><br>
+        <button type="submit" class="btn btn-success">🛒 Thanh Toán ngay</button>
+    </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Lắng nghe sự kiện submit form
+        $('.updateCartForm').on('submit', function(e) {
+            e.preventDefault();  // Ngừng form gửi đi mặc định
+
+            var form = $(this);
+            var quantity = form.find('.quantity').val();
+            var price = form.closest('tr').find('.price').text();
+            var total = quantity * price;
+
+            // Cập nhật tổng tiền cho món ăn
+            form.closest('tr').find('.total').text(total.toFixed(2));
+
+            $.ajax({
+                url: form.attr('action'),  // URL gửi yêu cầu
+                type: 'POST',
+                data: form.serialize(),  // Gửi tất cả dữ liệu trong form
+                success: function(response) {
+                    // Cập nhật lại tổng tiền giỏ hàng
+                    $('#totalAmount').text('Total: ' + response.totalAmount);
+                    form.find('.quantity').val(response.quantity);  // Cập nhật lại số lượng trong input
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error updating cart:', error);
+                }
+            });
+        });
+    });
+
+</script>
+
+</body>
+</html>
