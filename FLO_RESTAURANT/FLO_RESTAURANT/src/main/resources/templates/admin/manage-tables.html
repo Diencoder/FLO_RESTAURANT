@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header}"></head>
+<head>
+    <meta charset="utf-8">
+    <title>FLO_RESTAURANT</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <link rel="icon" type="image/png" th:href="@{/images/logo.png}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+
+    <style>
+        #sidebar {
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            background-color: #f8f9fa;
+            padding-top: 20px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .content-area {
+            margin-left: 250px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+            <div class="position-sticky">
+                <a href="#" class="brand">
+                    <img th:src="@{/images/logo.png}" width="80px" alt="Logo">
+                </a>
+                <ul class="side-menu top">
+                    <li><a th:href="@{/admin}"><i class='bx bxs-dashboard'></i><span class="text">Dashboard</span></a></li>
+                    <li><a th:href="@{/manageadmin}"><i class='bx bxs-group'></i><span class="text">Admin Panel</span></a></li>
+                    <li><a th:href="@{/admin/orders}"><i class='bx bxs-cart'></i><span class="text">Đơn hàng Online</span></a></li>
+                    <li><a th:href="@{/admin/manageeiorder}"><i class='bx bx-qr-scan'></i><span class="text">Đơn hàng Eat In</span></a></li>
+                    <li><a th:href="@{/admin/managecategory}"><i class='bx bxs-category'></i><span class="text">Danh mục</span></a></li>
+                    <li class="active"><a th:href="@{/admin/tables}"><i class='bx bxs-dashboard'></i><span class="text">Quản lý đặt bàn</span></a></li>
+                    <li><a th:href="@{/admin/managefood}"><i class='bx bxs-food-menu'></i><span class="text">Thực đơn</span></a></li>
+                    <li><a th:href="@{/admin/inventory}"><i class='bx bxs-box'></i><span class="text">Kho</span></a></li>
+                </ul>
+                <ul class="side-menu">
+                    <li><a th:href="@{#}"><i class='bx bxs-cog'></i><span class="text">Cài đặt</span></a></li>
+                    <li><a th:href="@{/logout}" class="logout"><i class='bx bxs-log-out-circle'></i><span class="text">Đăng xuất</span></a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 content-area">
+            <div class="container mt-5">
+                <h1>Danh sách Bàn</h1>
+
+                <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+
+                <a href="/admin/tables/add_table" class="btn btn-primary mb-3">Thêm Bàn Mới</a>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                        <tr>
+                            <th>Số Bàn</th>
+                            <th>Khu Vực</th>
+                            <th>Sức Chứa</th>
+                            <th>Trạng Thái</th>
+                            <th>Quản lý</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="table : ${tables}">
+                            <td th:text="${table.tableNumber}"></td>
+                            <td th:text="${table.area}"></td>
+                            <td th:text="${table.capacity}"></td>
+                            <td th:text="${table.status}"></td>
+                            <td>
+                                <a th:href="@{/admin/tables/cancel/{tableNumber}(tableNumber=${table.tableNumber})}"
+                                   th:if="${table.status == T(com.example.florestaurant.model.RestaurantTable.TableStatus).Reserved}"
+                                   class="btn btn-warning btn-sm"
+                                   onclick="return confirm('Bạn có chắc chắn muốn hủy đặt bàn này?')">Hủy Đặt Bàn</a>
+                                <a th:href="@{/admin/tables/delete/{tableNumber}(tableNumber=${table.tableNumber})}"
+                                   th:if="${table.status == T(com.example.florestaurant.model.RestaurantTable.TableStatus).Available}"
+                                   class="btn btn-danger btn-sm"
+                                   onclick="return confirm('Bạn có chắc chắn muốn xóa bàn này?')">Xóa Bàn</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div style="display: none;">Template manage-tables.html is being used</div>
+        </main>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

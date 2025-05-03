@@ -22,7 +22,7 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/admin/**").hasRole("ADMIN")// Cho phép tất cả các yêu cầu mà không cần đăng nhập
-
+                        .requestMatchers("/reserve/**").authenticated()
                         .requestMatchers("/**").permitAll()                )
 
                 .logout(logout -> logout

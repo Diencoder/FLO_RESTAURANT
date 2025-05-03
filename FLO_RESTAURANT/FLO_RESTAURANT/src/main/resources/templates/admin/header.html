@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Boxicons -->
+    <link th:href='https//unpkg.com/boxicons2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <!-- My CSS -->
+    <!-- Template Stylesheet -->
+    <link th:href="@{/css/style-admin.css}" rel="stylesheet">
+    <link th:href="@{/css/manage-table.css}" rel="stylesheet">
+    <link rel="icon"
+          type="image/png"
+          href="../images/logo.png">
+
+    <title>Quản Trị Robo Cafe</title>
+</head>
+<body>
+
+<!-- navbar.html -->
+<nav>
+    <div class="navbar-container">
+        <a href="#" class="logo">
+            <img th:src="@{/images/logo.png}" width="80px" alt="Logo">
+        </a>
+        <form action="#" class="search-form">
+            <input type="search" placeholder="Search...">
+            <button type="submit" class="search-btn"><i class="bx bx-search"></i></button>
+        </form>
+        <div class="navbar-right">
+<!--            <input type="checkbox" id="switch-mode" hidden>-->
+            <label for="switch-mode" class="switch-mode"></label>
+            <div class="notification">
+                <i class="bx bxs-bell"></i>
+                <span th:text="${notificationCount}"></span> <!-- Hiển thị số lượng thông báo -->
+            </div>
+            <div class="profile">
+                <i class="bx bx-user-circle"></i> <!-- Icon ảnh đại diện -->
+
+            </div>
+        </div>
+    </div>
+</nav>
+<section id="content">
+    <nav>
+        <i class='bx bx-menu'></i>
+        <a href="#" class="nav-link"></a>
+        <form th:action="@{/search}" method="get">  <!-- Giả sử bạn có một controller xử lý tìm kiếm -->
+            <div class="form-input">
+                <input type="search" name="query" placeholder="Tìm kiếm...">
+                <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+            </div>
+        </form>
+        <input type="checkbox" id="switch-mode" hidden>
+        <label for="switch-mode" class="switch-mode"></label>
+        <div class="fetch_message">
+            <div class="action_message notfi_message">
+                <a th:href="@{/messages}"><i class='bx bxs-envelope'></i></a>  <!-- Đường dẫn đến trang tin nhắn -->
+                <span th:classappend="${row_message_notif} > 0 ? 'num' : ''" th:text="${row_message_notif}"></span>
+            </div>
+        </div>
+        <div class="notification" onclick="menuToggle();">
+            <div class="action notif">
+                <i class='bx bxs-bell' onclick="menuToggle();"></i>
+                <div class="notif_menu">
+                    <ul>
+                        <li th:if="${row_stock_notif > 0}" th:each="i : ${#numbers.sequence(1, row_stock_notif)}">
+                            <a th:href="@{/inventory}">
+                                <span th:text="${row_stock_notif}"></span>&nbsp;Món hết hàng
+                            </a>
+                        </li>
+                        <li th:if="${row_ei_order_notif > 0}">
+                            <a th:href="@{/manage-online-order}">
+                                <span th:text="${row_online_order_notif}"></span>&nbsp;Đơn Hàng Online Mới
+                            </a>
+                        </li>
+                        <li th:if="${row_ei_order_notif > 0}">
+                            <a th:href="@{/manage-ei-order}">
+                                <span th:text="${row_ei_order_notif}"></span>&nbsp;Đơn Hàng Ăn Tại Chỗ Mới
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <span th:classappend="${row_stock_notif + row_ei_order_notif + row_online_order_notif} > 0 ? 'num' : ''"
+                      th:text="${row_stock_notif + row_ei_order_notif + row_online_order_notif}"></span>
+            </div>
+        </div>
+    </nav>
+</section>
+
+</body>
+</html>

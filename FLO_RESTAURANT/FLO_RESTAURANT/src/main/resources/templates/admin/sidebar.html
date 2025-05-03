@@ -1,0 +1,66 @@
+<!-- sidebar.html -->
+<section id="sidebar">
+    <a href="#" class="brand">
+        <img th:src="@{/images/logo.png}" width="80px" alt="Logo">
+    </a>
+    <ul class="side-menu top">
+        <li class="active">
+            <a href="#">
+                <i class='bx bxs-dashboard'></i>
+                <span class="text">Bảng Điều Khiển</span>
+            </a>
+        </li>
+        <li>
+            <a href="manage-admin.html">
+                <i class='bx bxs-group'></i>
+                <span class="text">Quản Lý Admin</span>
+            </a>
+        </li>
+        <li>
+            <a href="manage-online-order.html">
+                <i class='bx bxs-cart'></i>
+                <span class="text">Đơn Hàng Online &nbsp;</span>
+                <span th:text="${onlineOrderNotif}"></span>
+            </a>
+        </li>
+        <li>
+            <a href="manage-ei-order.html">
+                <i class='bx bx-qr-scan'></i>
+                <span class="text">Đơn Hàng Tại Quán &nbsp;&nbsp;&nbsp;</span>
+                <span th:text="${eiOrderNotif}"></span>
+            </a>
+        </li>
+        <li>
+            <a href="manage-category.html">
+                <i class='bx bxs-category'></i>
+                <span class="text">Danh Mục</span>
+            </a>
+        </li>
+        <li>
+            <a href="manage-food.html">
+                <i class='bx bxs-food-menu'></i>
+                <span class="text">Thực Đơn</span>
+            </a>
+        </li>
+        <li>
+            <a href="inventory.html">
+                <i class='bx bxs-box'></i>
+                <span class="text">Kho Hàng</span>
+            </a>
+        </li>
+    </ul>
+    <ul class="side-menu">
+        <li>
+            <a href="#">
+                <i class='bx bxs-cog'></i>
+                <span class="text">Cài Đặt</span>
+            </a>
+        </li>
+        <li>
+            <a href="logout.html" class="logout">
+                <i class='bx bxs-log-out-circle'></i>
+                <span class="text">Đăng Xuất</span>
+            </a>
+        </li>
+    </ul>
+</section>
