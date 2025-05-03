@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c1c74aa-e7ef-4943-a9d8-27019accd5cc" name="Changes" comment="chỉnh sửa full" />
+    <list default="true" id="8c1c74aa-e7ef-4943-a9d8-27019accd5cc" name="Changes" comment="chỉnh sửa full">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/admin/add_table.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/admin/add_table.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/admin/manage-tables.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/admin/manage-tables.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/layout/myaccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/layout/myaccount.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,12 +35,12 @@
     &quot;assignee&quot;: &quot;Diencoder&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Diencoder/FLO_RESTAURANT.git&quot;,
-    &quot;accountId&quot;: &quot;4b4639bc-1fed-4e88-94e9-f48860c6f5d3&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Diencoder/FLO_RESTAURANT.git",
+    "accountId": "c517adad-9ea5-4b03-a8ee-2e6bf424d7b8"
   }
-}</component>
+}]]></component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -50,30 +57,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.FloRestaurantApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dienpv&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/ELearningJava2&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.FloRestaurantApplication.executor": "Run",
+    "git-widget-placeholder": "dienpv",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/TaiXuong_D/java_done",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\LearningJavaCore\FLO_RESTAURANT\src\main\resources\static\js" />
@@ -161,6 +169,7 @@
       <workItem from="1745559839193" duration="187000" />
       <workItem from="1745600823861" duration="76000" />
       <workItem from="1745635714898" duration="5067000" />
+      <workItem from="1745732585564" duration="228000" />
     </task>
     <task id="LOCAL-00001" summary="cart">
       <option name="closed" value="true" />
