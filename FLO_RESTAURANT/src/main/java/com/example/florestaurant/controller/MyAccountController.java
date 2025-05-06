@@ -20,7 +20,6 @@ public class MyAccountController {
     public String myAccount(HttpSession session, Model model) {
         // Lấy thông tin người dùng từ session
         User user = (User) session.getAttribute("user");
-
         // In ra thông tin người dùng trong session (nếu có)
         if (user != null) {
             System.out.println("User info from session: " + user);
@@ -29,20 +28,16 @@ public class MyAccountController {
         } else {
             System.out.println("No user found in session.");
         }
-
         // Nếu không có thông tin người dùng trong session, chuyển hướng về trang đăng nhập
         if (user == null) {
             return "redirect:/login"; // Chuyển hướng tới trang đăng nhập nếu chưa đăng nhập
         }
-
         // Thêm thông tin người dùng vào model để Thymeleaf sử dụng
         model.addAttribute("user", user);
         model.addAttribute("pageTitle", "Tài khoản của tôi");
-
         // Trả về view myaccount.html
         return "layout/myaccount";
     }
-
 
     // Hiển thị form chỉnh sửa thông tin người dùng
     @GetMapping("/editaccount")

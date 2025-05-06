@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "order_manager")
@@ -50,6 +51,9 @@ public class OrderManager {
 
     @Column(name = "order_status")
     private String orderStatus;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderItem> items;  // Thêm thuộc tính items liên kết với OrderItem
 
     public OrderManager() {
     }

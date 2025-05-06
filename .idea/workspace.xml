@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8c1c74aa-e7ef-4943-a9d8-27019accd5cc" name="Changes" comment="done" />
+    <list default="true" id="8c1c74aa-e7ef-4943-a9d8-27019accd5cc" name="Changes" comment="done">
+      <change afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/UserReviewController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/Review.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/repository/UserReviewRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/UserReviewService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/impl/UserReviewServicelmpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/layout/vieworder.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/MyAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/MyAccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/OrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/OrderItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/OrderManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/OrderManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/layout/myaccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/layout/myaccount.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,14 +28,19 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="HTML File" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="PUSH_AUTO_UPDATE" value="true" />
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/FLO_RESTAURANT" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="HoaifNam2" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -62,10 +81,10 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.FloRestaurantApplication.executor": "Run",
-    "git-widget-placeholder": "hoaifnam",
+    "git-widget-placeholder": "Anhkiet2",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/TaiXuong_D/Java_backup",
+    "last_opened_file_path": "D:/FLO_RESTAURANT",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -74,7 +93,13 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "vcs.Git",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -111,8 +136,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.24978.46" />
-        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-IU-243.24978.46" />
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
       </set>
     </attachedChunks>
   </component>
@@ -166,6 +191,11 @@
       <workItem from="1745635714898" duration="5067000" />
       <workItem from="1745732585564" duration="228000" />
       <workItem from="1746267197149" duration="300000" />
+      <workItem from="1746268713643" duration="860000" />
+      <workItem from="1746280668475" duration="2346000" />
+      <workItem from="1746463577301" duration="11236000" />
+      <workItem from="1746479658017" duration="171000" />
+      <workItem from="1746510618521" duration="843000" />
     </task>
     <task id="LOCAL-00001" summary="cart">
       <option name="closed" value="true" />
@@ -314,7 +344,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Anhkiet2" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -328,5 +370,16 @@
     <MESSAGE value="chỉnh sửa full" />
     <MESSAGE value="done" />
     <option name="LAST_COMMIT_MESSAGE" value="done" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/OrderManager.java</url>
+          <line>66</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
