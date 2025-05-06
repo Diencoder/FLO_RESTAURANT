@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Người dùng</title>
+
+  <!-- Thêm Bootstrap CSS từ CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Nhúng phần Header -->
+<div th:replace="~{fragments/header}"></div>
+
+<!-- Nhúng phần Sidebar -->
+<div th:replace="~{fragments/sidebar}"></div>
+
+<!-- CONTENT -->
+<section id="content">
+  <!-- Nhúng phần Navbar -->
+  <div th:replace="~{fragments/navbar}"></div>
+
+  <div class="container mt-5">
+    <h1 class="mb-4" th:text="${user.id == null ? 'Tạo mới Người dùng' : 'Sửa Người dùng'}"></h1>
+
+    <form th:action="@{/admin/users/save}" method="post" th:object="${user}">
+      <!-- Trường ẩn cho id -->
+      <input type="hidden" th:field="*{id}" />
+
+      <!-- Tên -->
+      <div class="mb-3">
+        <label for="name" class="form-label">Tên:</label>
+        <input type="text" class="form-control" id="name" th:field="*{name}" placeholder="Nhập tên người dùng" required />
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Nhập email" required />
+      </div>
+
+      <!-- Điện thoại -->
+      <div class="mb-3">
+        <label for="phone" class="form-label">Điện thoại:</label>
+        <input type="text" class="form-control" id="phone" th:field="*{phone}" placeholder="Nhập số điện thoại" required />
+      </div>
+
+      <!-- Tên người dùng -->
+      <div class="mb-3">
+        <label for="username" class="form-label">Tên người dùng:</label>
+        <input type="text" class="form-control" id="username" th:field="*{username}" placeholder="Nhập tên đăng nhập" required />
+      </div>
+
+      <!-- Địa chỉ -->
+      <div class="mb-3">
+        <label for="add1" class="form-label">Địa chỉ:</label>
+        <input type="text" class="form-control" id="add1" th:field="*{add1}" placeholder="Nhập địa chỉ" required />
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Mật khẩu:</label>
+        <input type="password" class="form-control" id="password" th:field="*{password}" placeholder="Nhập mật khẩu nếu muốn thay đổi" />
+      </div>
+
+      <!-- Thành phố -->
+      <div class="mb-3">
+        <label for="city" class="form-label">Thành phố:</label>
+        <input type="text" class="form-control" id="city" th:field="*{city}" placeholder="Nhập thành phố" required />
+      </div>
+
+      <!-- Vai trò -->
+      <div class="mb-3">
+        <label for="role" class="form-label">Vai trò:</label>
+        <select class="form-select" id="role" th:field="*{role}">
+          <option value="ROLE_ADMIN" th:selected="${user.role == 'ADMIN'}">ROLE_ADMIN</option>
+          <option value="ROLE_USER" th:selected="${user.role == 'ROLE_USER'}">ROLE_USER</option>
+        </select>
+      </div>
+
+      <!-- Nút submit -->
+      <button type="submit" class="btn btn-primary">Lưu</button>
+    </form>
+  </div>
+</section>
+
+<!-- Nhúng phần Footer -->
+<div th:replace="~{fragments/footer}"></div>
+
+<!-- Nhúng Bootstrap JS và Popper.js từ CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>

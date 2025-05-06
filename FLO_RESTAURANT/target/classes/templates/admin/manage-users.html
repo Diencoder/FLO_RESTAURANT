@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danh sách Người dùng</title>
+
+  <!-- Thêm link đến Bootstrap CSS từ CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Nhúng phần Header -->
+<div th:replace="~{fragments/header}"></div>
+
+<!-- Nhúng phần Sidebar -->
+<div th:replace="~{fragments/sidebar}"></div>
+
+<!-- CONTENT -->
+<section id="content">
+  <!-- Nhúng phần Navbar -->
+  <div th:replace="~{fragments/navbar}"></div>
+
+  <div class="container mt-5">
+    <div class="row">
+
+      <!-- Cột bên trái cho Admin -->
+      <div class="col-md-12">
+        <h2 class="mb-4 text-primary">Danh sách Người dùng</h2>
+
+        <!-- Nút tạo người dùng mới cho Admin -->
+        <div class="mb-3">
+          <a href="/admin/users/form" class="btn btn-primary">Tạo Người dùng Mới</a>
+        </div>
+
+        <!-- Bảng Danh sách Người dùng -->
+        <table class="table table-striped table-hover table-bordered">
+          <thead class="table-dark">
+          <tr>
+            <th>ID</th>
+            <th>Tên</th>
+            <th>Email</th>
+            <th>Điện thoại</th>
+            <th>Địa chỉ</th>
+            <th>Thành phố</th>
+            <th>Vai trò</th>
+            <th>Hành động</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="user : ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.phone}"></td>
+            <td th:text="${user.add1}"></td>
+            <td th:text="${user.city}"></td>
+            <td th:text="${user.role}"></td>
+            <td>
+              <a th:href="@{/admin/users/form(id=${user.id})}" class="btn btn-warning btn-sm">Sửa</a>
+              <a th:href="@{/admin/users/delete/{id}(id=${user.id})}" class="btn btn-danger btn-sm">Xóa</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Nhúng phần Footer -->
+<div th:replace="~{fragments/footer}"></div>
+
+<!-- Nhúng Bootstrap JS từ CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>

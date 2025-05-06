@@ -1,0 +1,24 @@
+<!-- cart.html -->
+<html>
+<head>
+    <title>Cart</title>
+</head>
+<body>
+<h1>Your Cart</h1>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>số lượng</th>
+        <th>Price</th>
+        <th>Total</th>
+    </tr>
+    <tr th:each="item : ${cart.items}">
+        <td th:text="${item.food.title}"></td>
+        <td th:text="${item.quantity}"></td>
+        <td th:text="${item.food.price}"></td>
+        <td th:text="${item.food.price * item.quantity}"></td>
+    </tr>
+</table>
+<p th:text="'Total Price: ' + ${cart.getTotalPrice()}"></p>
+</body>
+</html>

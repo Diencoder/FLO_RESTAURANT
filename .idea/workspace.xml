@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="8c1c74aa-e7ef-4943-a9d8-27019accd5cc" name="Changes" comment="done">
       <change afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/UserReviewController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/Review.java" afterDir="false" />
@@ -18,12 +19,20 @@
       <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/OrderItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/OrderItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/OrderManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/OrderManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/layout/myaccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/src/main/resources/templates/layout/myaccount.html" afterDir="false" />
+=======
+    <list default="true" id="989606ae-37a9-4526-8e30-fcd881d0c608" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/add_table.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/add_table.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/manage-tables.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/manage-tables.html" afterDir="false" />
+>>>>>>> 248eda60f0aab01083fbdb2cb62f28cdec78e46f
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -67,13 +76,46 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2uXNYNaJj8bMJvL3rqqD1DR6jwI" />
+=======
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/FLO_RESTAURANT" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/FLO_RESTAURANT" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "vohoainam26"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Diencoder/FLO_RESTAURANT.git",
+    "accountId": "c517adad-9ea5-4b03-a8ee-2e6bf424d7b8"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="2wIR8sZSWqbPzAeynkWDojTn9Kx" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+>>>>>>> 248eda60f0aab01083fbdb2cb62f28cdec78e46f
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+<<<<<<< HEAD
     "DefaultHtmlFileTemplate": "HTML File",
+=======
+>>>>>>> 248eda60f0aab01083fbdb2cb62f28cdec78e46f
     "RequestMappingsPanelOrder0": "0",
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
@@ -81,15 +123,22 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.FloRestaurantApplication.executor": "Run",
+<<<<<<< HEAD
     "git-widget-placeholder": "Anhkiet2",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/FLO_RESTAURANT",
+=======
+    "git-widget-placeholder": "dienpv",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+>>>>>>> 248eda60f0aab01083fbdb2cb62f28cdec78e46f
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+<<<<<<< HEAD
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -120,6 +169,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+=======
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+>>>>>>> 248eda60f0aab01083fbdb2cb62f28cdec78e46f
     <configuration name="FloRestaurantApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="FloRestaurant" />
@@ -128,22 +183,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+<<<<<<< HEAD
     <list>
       <item itemvalue="Spring Boot.FloRestaurantApplication" />
       <item itemvalue="Spring Boot.FloRestaurantApplication (1)" />
     </list>
+=======
+>>>>>>> 248eda60f0aab01083fbdb2cb62f28cdec78e46f
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
+<<<<<<< HEAD
         <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
         <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
+=======
+        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.24978.46" />
+        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-IU-243.24978.46" />
+>>>>>>> 248eda60f0aab01083fbdb2cb62f28cdec78e46f
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
       <changelist id="8c1c74aa-e7ef-4943-a9d8-27019accd5cc" name="Changes" comment="" />
       <created>1742391011168</created>
       <option name="number" value="Default" />
@@ -334,11 +398,21 @@
       <updated>1746267409736</updated>
     </task>
     <option name="localTasksCounter" value="18" />
+=======
+      <changelist id="989606ae-37a9-4526-8e30-fcd881d0c608" name="Changes" comment="" />
+      <created>1745726946179</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1745726946179</updated>
+      <workItem from="1745726947588" duration="4243000" />
+    </task>
+>>>>>>> 248eda60f0aab01083fbdb2cb62f28cdec78e46f
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+<<<<<<< HEAD
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -382,4 +456,6 @@
       </breakpoints>
     </breakpoint-manager>
   </component>
+=======
+>>>>>>> 248eda60f0aab01083fbdb2cb62f28cdec78e46f
 </project>
