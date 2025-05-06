@@ -9,14 +9,12 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
+@SessionAttributes("user")
 @RequestMapping("/vieworder")
 public class UserReviewController {
     @Autowired
@@ -25,7 +23,7 @@ public class UserReviewController {
     private UserReviewService userReviewService;
 
 
-    @GetMapping("/vieworder")
+    @GetMapping
     public String vieworders(HttpSession session, Model model) {
         // Lấy thông tin người dùng từ session
         User user = (User) session.getAttribute("user");
@@ -36,7 +34,7 @@ public class UserReviewController {
         }
 
         // Lấy các đơn hàng của người dùng
-        List<OrderManager> orders = orderService.getAllOrders();  // Lấy tất cả đơn hàng
+        List<OrderManager> orders = orderService.getOrdersByUsername(user.getUsername());  // Lấy tất cả đơn hàng
 
         // Thêm thông tin người dùng và đơn hàng vào model
         model.addAttribute("user", user);  // Thêm user vào model để sử dụng trong view
@@ -44,6 +42,4 @@ public class UserReviewController {
 
         return "layout/vieworder";  // Trả về trang đơn hàng
     }
-
-
 }

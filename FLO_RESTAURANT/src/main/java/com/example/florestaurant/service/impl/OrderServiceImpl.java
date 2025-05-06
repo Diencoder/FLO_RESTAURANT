@@ -47,7 +47,10 @@ public class OrderServiceImpl implements OrderService {
         // Lưu lịch sử đơn hàng
         saveOrderHistory(username, cartItems);
     }
-
+    @Override
+    public List<OrderManager> getOrdersByUsername(String username) {
+        return orderManagerRepository.findByUsername(username);  // Truy vấn đơn hàng theo userId
+    }
     @Override
     public Aamarpay savePayment(String tranId, String cusName, double totalAmount) {
         Aamarpay payment = new Aamarpay();

@@ -3,6 +3,7 @@
   <component name="dataSourceStorageLocal" created-in="IU-243.24978.46">
     <data-source name="restaurant_flo" uuid="ff45b493-3d6d-4499-b8fd-d2e2dced2920">
       <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" />
+      <user-name>root</user-name>
       <schema-mapping />
     </data-source>
   </component>

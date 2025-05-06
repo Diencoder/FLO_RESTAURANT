@@ -4,159 +4,49 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< HEAD
-    <list default="true" id="8c1c74aa-e7ef-4943-a9d8-27019accd5cc" name="Changes" comment="done" />
-=======
-    <list default="true" id="989606ae-37a9-4526-8e30-fcd881d0c608" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/add_table.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/add_table.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/manage-tables.html" beforeDir="false" afterPath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/manage-tables.html" afterDir="false" />
+    <list default="true" id="b325e424-4a64-40b9-9038-60106c3516fa" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
->>>>>>> 248eda60f0aab01083fbdb2cb62f28cdec78e46f
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-<<<<<<< HEAD
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-        <option value="HTML File" />
-        <option value="Interface" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="PUSH_AUTO_UPDATE" value="true" />
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="HoaifNam3" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="ROOT_SYNC" value="DONT_SYNC" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;Diencoder&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Diencoder/FLO_RESTAURANT.git&quot;,
-    &quot;accountId&quot;: &quot;c517adad-9ea5-4b03-a8ee-2e6bf424d7b8&quot;
-  }
-}</component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
-      </MavenGeneralSettings>
-    </option>
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 0
 }</component>
-  <component name="ProjectId" id="2uXNYNaJj8bMJvL3rqqD1DR6jwI" />
-=======
-  <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$/FLO_RESTAURANT" value="main" />
-      </map>
-    </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/FLO_RESTAURANT" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "vohoainam26"
-  }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Diencoder/FLO_RESTAURANT.git",
-    "accountId": "c517adad-9ea5-4b03-a8ee-2e6bf424d7b8"
-  }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 4
-}]]></component>
-  <component name="ProjectId" id="2wIR8sZSWqbPzAeynkWDojTn9Kx" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="1" id="Add" />
-  </component>
->>>>>>> 248eda60f0aab01083fbdb2cb62f28cdec78e46f
+  <component name="ProjectId" id="2wjFuiKI2cdKrgAwUurLYry2RtJ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-<<<<<<< HEAD
-    "DefaultHtmlFileTemplate": "HTML File",
-=======
->>>>>>> 248eda60f0aab01083fbdb2cb62f28cdec78e46f
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.FloRestaurantApplication.executor": "Run",
-<<<<<<< HEAD
-    "git-widget-placeholder": "kietanh",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/TaiXuong_D/Java_backup",
-=======
-    "git-widget-placeholder": "dienpv",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
->>>>>>> 248eda60f0aab01083fbdb2cb62f28cdec78e46f
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-<<<<<<< HEAD
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.FloRestaurantApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;kietanh&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\LearningJavaCore\FLO_RESTAURANT\src\main\resources\static\js" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\ProjectClone\FLO_RESTAURANT\FLO_RESTAURANT\src\main\resources\templates\layout" />
-      <recent name="D:\ProjectClone\FLO_RESTAURANT\FLO_RESTAURANT\src\main\java\com\example\florestaurant\controller" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Spring Boot.FloRestaurantApplication">
-    <configuration name="FloRestaurantApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
-      <module name="FloRestaurant" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.florestaurant.FloRestaurantApplication" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-=======
-    "vue.rearranger.settings.migration": "true"
-  }
-}]]></component>
+}</component>
   <component name="RunManager">
->>>>>>> 248eda60f0aab01083fbdb2cb62f28cdec78e46f
     <configuration name="FloRestaurantApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="FloRestaurant" />
@@ -165,255 +55,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-<<<<<<< HEAD
-    <list>
-      <item itemvalue="Spring Boot.FloRestaurantApplication" />
-      <item itemvalue="Spring Boot.FloRestaurantApplication (1)" />
-    </list>
-=======
->>>>>>> 248eda60f0aab01083fbdb2cb62f28cdec78e46f
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-<<<<<<< HEAD
-        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
-=======
         <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.24978.46" />
         <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-IU-243.24978.46" />
->>>>>>> 248eda60f0aab01083fbdb2cb62f28cdec78e46f
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-<<<<<<< HEAD
-      <changelist id="8c1c74aa-e7ef-4943-a9d8-27019accd5cc" name="Changes" comment="" />
-      <created>1742391011168</created>
+      <changelist id="b325e424-4a64-40b9-9038-60106c3516fa" name="Changes" comment="" />
+      <created>1746547308597</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1742391011168</updated>
-      <workItem from="1742391014046" duration="6829000" />
-      <workItem from="1742437854690" duration="4570000" />
-      <workItem from="1742479801376" duration="62000" />
-      <workItem from="1742480439058" duration="10000" />
-      <workItem from="1742482706384" duration="10537000" />
-      <workItem from="1742521606945" duration="10973000" />
-      <workItem from="1742549036308" duration="366000" />
-      <workItem from="1742607607917" duration="974000" />
-      <workItem from="1742609870441" duration="1179000" />
-      <workItem from="1742611127073" duration="224000" />
-      <workItem from="1742695144749" duration="1006000" />
-      <workItem from="1742696436190" duration="12000" />
-      <workItem from="1742698784846" duration="79000" />
-      <workItem from="1742699149585" duration="676000" />
-      <workItem from="1742700955998" duration="1097000" />
-      <workItem from="1742704453769" duration="3123000" />
-      <workItem from="1742707718056" duration="100000" />
-      <workItem from="1742707957000" duration="2364000" />
-      <workItem from="1742775028390" duration="604000" />
-      <workItem from="1742979677880" duration="250000" />
-      <workItem from="1743001492437" duration="9311000" />
-      <workItem from="1743042941493" duration="2638000" />
-      <workItem from="1743069097402" duration="19177000" />
-      <workItem from="1743256568204" duration="764000" />
-      <workItem from="1743425514577" duration="8641000" />
-      <workItem from="1743521394359" duration="9765000" />
-      <workItem from="1743561203516" duration="5980000" />
-      <workItem from="1744956782734" duration="1088000" />
-      <workItem from="1744975093497" duration="12992000" />
-      <workItem from="1744993157364" duration="2112000" />
-      <workItem from="1745041130683" duration="33000" />
-      <workItem from="1745245142160" duration="3240000" />
-      <workItem from="1745248927018" duration="4457000" />
-      <workItem from="1745280048161" duration="3915000" />
-      <workItem from="1745330282990" duration="4117000" />
-      <workItem from="1745368912144" duration="1603000" />
-      <workItem from="1745383922880" duration="23000" />
-      <workItem from="1745559839193" duration="187000" />
-      <workItem from="1745600823861" duration="76000" />
-      <workItem from="1745635714898" duration="5067000" />
-      <workItem from="1745732585564" duration="228000" />
-      <workItem from="1746267197149" duration="1547000" />
-      <workItem from="1746527413828" duration="1072000" />
-      <workItem from="1746542777799" duration="581000" />
-      <workItem from="1746543517560" duration="43000" />
-      <workItem from="1746544878832" duration="126000" />
+      <updated>1746547308597</updated>
+      <workItem from="1746547311929" duration="6176000" />
+      <workItem from="1746553579147" duration="382000" />
     </task>
-    <task id="LOCAL-00001" summary="cart">
-      <option name="closed" value="true" />
-      <created>1742522103145</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1742522103146</updated>
-    </task>
-    <task id="LOCAL-00002" summary="cart">
-      <option name="closed" value="true" />
-      <created>1742522511898</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1742522511898</updated>
-    </task>
-    <task id="LOCAL-00003" summary="cart">
-      <option name="closed" value="true" />
-      <created>1742522607233</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1742522607233</updated>
-    </task>
-    <task id="LOCAL-00004" summary="cart">
-      <option name="closed" value="true" />
-      <created>1743083076568</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1743083076569</updated>
-    </task>
-    <task id="LOCAL-00005" summary="cart">
-      <option name="closed" value="true" />
-      <created>1743083170522</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1743083170522</updated>
-    </task>
-    <task id="LOCAL-00006" summary="mycart change">
-      <option name="closed" value="true" />
-      <created>1743093248025</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1743093248026</updated>
-    </task>
-    <task id="LOCAL-00007" summary="mycart change">
-      <option name="closed" value="true" />
-      <created>1743435340787</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1743435340787</updated>
-    </task>
-    <task id="LOCAL-00008" summary="mycart change">
-      <option name="closed" value="true" />
-      <created>1743435370201</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1743435370201</updated>
-    </task>
-    <task id="LOCAL-00009" summary="mycart change">
-      <option name="closed" value="true" />
-      <created>1743531242775</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1743531242775</updated>
-    </task>
-    <task id="LOCAL-00010" summary="mycart change">
-      <option name="closed" value="true" />
-      <created>1744988372526</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1744988372527</updated>
-    </task>
-    <task id="LOCAL-00011" summary="thay đổi myaccount">
-      <option name="closed" value="true" />
-      <created>1744988443030</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1744988443030</updated>
-    </task>
-    <task id="LOCAL-00012" summary="thay đổi myaccount">
-      <option name="closed" value="true" />
-      <created>1744988477610</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1744988477612</updated>
-    </task>
-    <task id="LOCAL-00013" summary="full">
-      <option name="closed" value="true" />
-      <created>1745250524578</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1745250524578</updated>
-    </task>
-    <task id="LOCAL-00014" summary="full">
-      <option name="closed" value="true" />
-      <created>1745251376760</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1745251376760</updated>
-    </task>
-    <task id="LOCAL-00015" summary="full">
-      <option name="closed" value="true" />
-      <created>1745253108513</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1745253108513</updated>
-    </task>
-    <task id="LOCAL-00016" summary="chỉnh sửa full">
-      <option name="closed" value="true" />
-      <created>1745641385735</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1745641385735</updated>
-    </task>
-    <task id="LOCAL-00017" summary="done">
-      <option name="closed" value="true" />
-      <created>1746267409736</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1746267409736</updated>
-    </task>
-    <option name="localTasksCounter" value="18" />
-=======
-      <changelist id="989606ae-37a9-4526-8e30-fcd881d0c608" name="Changes" comment="" />
-      <created>1745726946179</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1745726946179</updated>
-      <workItem from="1745726947588" duration="4243000" />
-    </task>
->>>>>>> 248eda60f0aab01083fbdb2cb62f28cdec78e46f
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-<<<<<<< HEAD
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="cart" />
-    <MESSAGE value="mycart change" />
-    <MESSAGE value="thay đổi myaccount" />
-    <MESSAGE value="full" />
-    <MESSAGE value="chỉnh sửa full" />
-    <MESSAGE value="done" />
-    <option name="LAST_COMMIT_MESSAGE" value="done" />
-  </component>
-=======
->>>>>>> 248eda60f0aab01083fbdb2cb62f28cdec78e46f
 </project>

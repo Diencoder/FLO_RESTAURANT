@@ -5,14 +5,14 @@
 <!-- Content Section Start -->
 <div class="container bootstrap snippets bootdey">
   <div class="row">
+    <!-- Sidebar -->
     <div class="profile-nav col-md-3">
       <div class="panel">
         <div class="user-heading round">
           <a href="myaccount.php">
-            <img src="../images/avatar.png" alt="">
+            <img src="../images/avatar.png" alt="User Avatar">
           </a>
           <h1 class="h4"><span th:text="${user.username}"></span></h1> <!-- Hiển thị tên người dùng -->
-
         </div>
 
         <ul class="nav nav-pills nav-stacked">
@@ -21,26 +21,30 @@
               <i class="fa fa-edit me-2"></i> Chỉnh Sửa Hồ Sơ
             </a>
           </li>
-          <li class="nav-item mb-2">
-            <a href="/vieworder/vieworder" class="nav-link d-flex align-items-center p-2 rounded shadow-sm">
-              <i class="fa fa-box me-2"></i> Xem Đơn Hàng
-            </a>
-          </li>
+
           <li class="nav-item mb-2">
             <a href="update-password.php" class="nav-link d-flex align-items-center p-2 rounded shadow-sm">
               <i class="fa fa-lock me-2"></i> Đổi Mật Khẩu
             </a>
           </li>
+          <li class="nav-item mb-2">
+            <a href="/vieworder" class="nav-link d-flex align-items-center p-2 rounded shadow-sm">
+              <i class="fa fa-box me-2"></i> Xem Đơn Hàng
+            </a>
+          </li>
         </ul>
       </div>
     </div>
+
+    <!-- Main Content -->
     <div class="profile-info col-md-9">
       <div class="panel">
         <div class="table-data">
           <div class="order">
             <div class="head">
+              <h4 class="mb-4">Danh sách Đơn Hàng</h4>
             </div>
-            <table class="table">
+            <table class="table table-bordered">
               <thead>
               <tr>
                 <th>Mã Đơn Hàng</th>
@@ -48,6 +52,7 @@
                 <th>Tình Trạng Đơn Hàng</th>
                 <th>Tổng Tiền</th>
                 <th>Thông Tin Sản Phẩm</th>
+                <th>Thao Tác</th>
               </tr>
               </thead>
               <tbody>
@@ -58,7 +63,7 @@
                 <td th:text="${order.orderStatus}"></td>
                 <td th:text="${order.totalAmount}"></td>
                 <td>
-                  <table>
+                  <table class="table table-sm">
                     <thead>
                     <tr>
                       <th>Tên Món Ăn</th>
@@ -76,7 +81,8 @@
                   </table>
                 </td>
                 <td>
-
+                  <a href="/order/details/{order.orderId}" class="btn btn-info btn-sm">Xem Chi Tiết</a>
+                  <a href="/order/cancel/{order.orderId}" class="btn btn-danger btn-sm">Hủy Đơn</a>
                 </td>
               </tr>
               </tbody>
@@ -84,9 +90,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div>
-
     </div>
   </div>
 </div>

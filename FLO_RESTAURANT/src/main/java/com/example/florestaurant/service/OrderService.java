@@ -15,7 +15,7 @@ public interface OrderService {
 
     // Lấy tất cả đơn hàng
     List<OrderManager> getAllOrders();
-
+    List<OrderManager> getOrdersByUsername(String username);
     // Lấy đơn hàng theo id
     OrderManager getOrderById(Long id);
 
