@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/header}"></head>
+<body>
+<!-- Content Section Start -->
+<div class="container bootstrap snippets bootdey">
+  <div class="row">
+    <div class="profile-nav col-md-3">
+      <div class="panel">
+        <div class="user-heading round">
+          <a href="myaccount.php">
+            <img src="../images/avatar.png" alt="">
+          </a>
+          <h1 class="h4"><span th:text="${user.username}"></span></h1> <!-- Hiển thị tên người dùng -->
+
+        </div>
+
+        <ul class="nav nav-pills nav-stacked">
+          <li class="nav-item mb-2">
+            <a href="update-account.php" class="nav-link d-flex align-items-center p-2 rounded shadow-sm">
+              <i class="fa fa-edit me-2"></i> Chỉnh Sửa Hồ Sơ
+            </a>
+          </li>
+          <li class="nav-item mb-2">
+            <a href="/vieworder/vieworder" class="nav-link d-flex align-items-center p-2 rounded shadow-sm">
+              <i class="fa fa-box me-2"></i> Xem Đơn Hàng
+            </a>
+          </li>
+          <li class="nav-item mb-2">
+            <a href="update-password.php" class="nav-link d-flex align-items-center p-2 rounded shadow-sm">
+              <i class="fa fa-lock me-2"></i> Đổi Mật Khẩu
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="profile-info col-md-9">
+      <div class="panel">
+        <div class="table-data">
+          <div class="order">
+            <div class="head">
+            </div>
+            <table class="table">
+              <thead>
+              <tr>
+                <th>Mã Đơn Hàng</th>
+                <th>Tình Trạng Thanh Toán</th>
+                <th>Tình Trạng Đơn Hàng</th>
+                <th>Tổng Tiền</th>
+                <th>Thông Tin Sản Phẩm</th>
+              </tr>
+              </thead>
+              <tbody>
+              <!-- Lặp qua các đơn hàng và hiển thị thông tin -->
+              <tr th:each="order : ${orders}">
+                <td th:text="${order.orderId}"></td>
+                <td th:text="${order.paymentStatus}"></td>
+                <td th:text="${order.orderStatus}"></td>
+                <td th:text="${order.totalAmount}"></td>
+                <td>
+                  <table>
+                    <thead>
+                    <tr>
+                      <th>Tên Món Ăn</th>
+                      <th>Số Lượng</th>
+                      <th>Giá</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="item : ${order.items}">
+                      <td th:text="${item.itemName}"></td>
+                      <td th:text="${item.quantity}"></td>
+                      <td th:text="${item.price}"></td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </td>
+                <td>
+
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+
+    </div>
+  </div>
+</div>
+
+<div th:replace="~{layout/footer}"></div>
+</body>
+</html>

@@ -5,320 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8c1c74aa-e7ef-4943-a9d8-27019accd5cc" name="Changes" comment="done">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/FloRestaurantApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/config/GlobalModelAttribute.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/config/SecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/AboutController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/CategoriesController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/ContactController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/ErrorController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/HomeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/LoginController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/LogoutController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/MenuController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/PurchaseController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/RegisterController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/ReservationController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/admin/AdminController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/admin/AdminTableController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/admin/OrderController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/Aamarpay.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/Cart.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/CartItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/Food.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/Order.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/OrderHistory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/OrderItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/OrderManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/Reservation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/RestaurantTable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/model/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/repository/AamarpayRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/repository/FoodRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/repository/OrderHistoryRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/repository/OrderItemRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/repository/OrderManagerRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/repository/OrderRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/repository/ReservationRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/repository/RestaurantTableRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/repository/UserRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/CartItemService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/CartService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/FoodService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/FoodServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/OrderService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/ReservationService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/RestaurantTableService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/impl/CartItemServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/impl/CartServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/impl/OrderServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/impl/ReservationServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/impl/RestaurantTableServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/assets/img/readme_assets/admin/Mock Up.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/assets/img/readme_assets/admin/admin_list_page.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/assets/img/readme_assets/admin/category_management.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/assets/img/readme_assets/admin/eat_in_orders_page.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/assets/img/readme_assets/admin/homepage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/assets/img/readme_assets/admin/inventory_management_page.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/assets/img/readme_assets/admin/login_page.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/assets/img/readme_assets/admin/online_orders_page.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/assets/img/readme_assets/frontend/202.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/assets/img/readme_assets/frontend/Robo_cafe.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/assets/img/readme_assets/frontend/cart.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/assets/img/readme_assets/frontend/categories.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/assets/img/readme_assets/frontend/food_menu.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/assets/img/readme_assets/frontend/homepage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/assets/img/readme_assets/frontend/payment_confirmation.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/assets/img/readme_assets/frontend/payment_gateway.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/assets/img/readme_assets/frontend/user_account.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/assets/img/readme_assets/frontend/view_orders.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/assets/login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/assets/manage-table.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/assets/script-admin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/assets/style-admin.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/css/admin.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/css/bootstrap.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/css/eipay.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/css/login-front.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/css/manage-table.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/css/order-details.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/css/profile.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/css/reservation_styles.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/css/style-admin.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/ChickenCurry.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/about-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/about-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/about-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/about-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/avatar.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/avatar1.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/bg_homepage.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/brand-logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/burger.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/card-bg-8.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/card-bg1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/card-bg2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/card-bg3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/card-bg4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/card-bg7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/category/Food_Category_13196.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/category/Food_Category_141.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/category/Food_Category_39435.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/category/Food_Category_76472.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/category/Food_Category_81005.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/category/Food_Category_94135.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/ei-orders.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/folder2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/Bengali.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/Food-Name-1499.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/Food-Name-1511.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/Food-Name-1669.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/Food-Name-251.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/Food-Name-2893.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/Food-Name-2913.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/Food-Name-3512.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/Food-Name-3657.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/Food-Name-4854.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/Food-Name-5049.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/Food-Name-5356.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/Food-Name-5497.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/Food-Name-5500.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/Food-Name-5725.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/Food-Name-6428.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/Food-Name-7394.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/Food-Name-8238.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/Food-Name-8745.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/Food-Name-9143.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/Food-Name-926.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/Food-Name-937.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/FriedChicken.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/mojito.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/food/test.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/hero.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/inventory.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/locker.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/logo1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/logo_ntx.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/man-sitting.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/menu-burger.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/menu-momo.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/menu-pizza.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/menu.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/menu2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/momo.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/online-orders.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/orders_completed.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/pizza.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/revenue.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/images/rocket.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/js/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/animate/animate.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/animate/animate.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/counterup/counterup.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/easing/easing.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/easing/easing.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/owlcarousel/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/owlcarousel/assets/ajax-loader.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/owlcarousel/assets/owl.carousel.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/owlcarousel/assets/owl.carousel.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/owlcarousel/assets/owl.theme.default.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/owlcarousel/assets/owl.theme.default.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/owlcarousel/assets/owl.theme.green.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/owlcarousel/assets/owl.theme.green.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/owlcarousel/assets/owl.video.play.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/owlcarousel/owl.carousel.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/owlcarousel/owl.carousel.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/tempusdominus/css/tempusdominus-bootstrap-4.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/tempusdominus/js/moment-timezone.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/tempusdominus/js/moment.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/tempusdominus/js/tempusdominus-bootstrap-4.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/waypoints/links.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/waypoints/waypoints.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/wow/wow.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/lib/wow/wow.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_accordion.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_alert.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_badge.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_breadcrumb.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_button-group.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_buttons.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_card.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_carousel.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_close.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_containers.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_dropdown.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_forms.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_functions.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_grid.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_helpers.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_images.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_list-group.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_mixins.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_modal.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_nav.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_navbar.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_offcanvas.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_pagination.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_popover.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_progress.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_reboot.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_root.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_spinners.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_tables.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_toasts.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_tooltip.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_transitions.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_type.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_utilities.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/_variables.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/bootstrap-grid.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/bootstrap-reboot.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/bootstrap-utilities.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/bootstrap.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/forms/_floating-labels.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/forms/_form-check.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/forms/_form-control.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/forms/_form-range.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/forms/_form-select.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/forms/_form-text.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/forms/_input-group.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/forms/_labels.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/forms/_validation.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/helpers/_clearfix.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/helpers/_colored-links.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/helpers/_position.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/helpers/_ratio.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/helpers/_stretched-link.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/helpers/_text-truncation.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/helpers/_visually-hidden.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/mixins/_alert.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/mixins/_border-radius.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/mixins/_box-shadow.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/mixins/_breakpoints.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/mixins/_buttons.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/mixins/_caret.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/mixins/_clearfix.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/mixins/_color-scheme.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/mixins/_container.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/mixins/_deprecate.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/mixins/_forms.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/mixins/_gradients.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/mixins/_grid.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/mixins/_image.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/mixins/_list-group.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/mixins/_lists.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/mixins/_pagination.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/mixins/_reset-text.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/mixins/_resize.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/mixins/_table-variants.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/mixins/_text-truncate.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/mixins/_transition.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/mixins/_utilities.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/mixins/_visually-hidden.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/utilities/_api.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/static/scss/bootstrap/scss/vendor/_rfs.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/add_table.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/admin.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/content.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/editorder.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/header.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/inventory.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/manage-tables.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/manageadmin.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/managecategory.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/manageeiorder.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/managefood.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/manageonlineorder.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/manageorders.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/orders.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/reserved_tables.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/sidebar.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/error.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/fragments/content.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/fragments/footer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/fragments/head.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/fragments/header.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/fragments/navbar.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/fragments/sidebar.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/layout/404.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/layout/about.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/layout/cart.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/layout/confirmation.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/layout/error.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/layout/footer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/layout/head.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/layout/header.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/layout/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/layout/login.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/layout/menu.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/layout/mycart.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/layout/register.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/layout/script.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/reservation/confirmation.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/reservation/form.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/reservation/list.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -328,15 +16,20 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
-        <option value="HTML File" />
         <option value="Class" />
+        <option value="HTML File" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="PUSH_AUTO_UPDATE" value="true" />
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/FLO_RESTAURANT" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="HoaifNam3" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -367,32 +60,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.FloRestaurantApplication.executor": "Run",
-    "git-widget-placeholder": "hoaifnam",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/TaiXuong_D/Java_backup",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.FloRestaurantApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;AnhKiet3&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/TaiXuong_D/Java_backup&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\LearningJavaCore\FLO_RESTAURANT\src\main\resources\static\js" />
@@ -427,8 +120,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-125ca727e0f0-intellij.indexing.shared.core-IU-243.24978.46" />
-        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-IU-243.24978.46" />
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
       </set>
     </attachedChunks>
   </component>
@@ -483,6 +176,8 @@
       <workItem from="1745732585564" duration="228000" />
       <workItem from="1746267197149" duration="1547000" />
       <workItem from="1746527413828" duration="1072000" />
+      <workItem from="1746542777799" duration="581000" />
+      <workItem from="1746543517560" duration="43000" />
     </task>
     <task id="LOCAL-00001" summary="cart">
       <option name="closed" value="true" />

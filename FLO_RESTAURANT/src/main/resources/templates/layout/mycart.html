@@ -3,16 +3,16 @@
 <head th:replace="~{layout/header}"></head>
 <body>
 <div class="container mt-5">
-    <h1>Your Cart</h1>
+    <h1>Giỏ hàng của tôi </h1>
 
     <table class="table table-bordered">
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Total</th>
-            <th>Action</th>
+            <th>Tên món ăn </th>
+            <th>Số lượng </th>
+            <th>Giá</th>
+            <th>Tổng tiền </th>
+            <th>Thao tác </th>
         </tr>
         </thead>
         <tbody>
@@ -32,25 +32,46 @@
             <td>
                 <form th:action="@{/removeFromCart}" method="post">
                     <input type="hidden" name="foodId" th:value="${food.id}">
-                    <button type="submit" class="btn btn-danger">Remove</button>
+                    <button type="submit" class="btn btn-danger">Xóa món ăn </button>
                 </form>
             </td>
         </tr>
         </tbody>
     </table>
 
-    <p id="totalAmount" th:text="'Total: ' + ${totalAmount}"></p>  <!-- Hiển thị tổng tiền -->
+    <p id="totalAmount" th:text="'Tổng tiền : ' + ${totalAmount}"></p>  <!-- Hiển thị tổng tiền -->
 
     <!-- Thông tin khách hàng -->
     <h3>Thông tin khách hàng</h3>
     <form th:action="@{/purchase}" method="post">
-        <input type="text" name="tran_id" th:value="${T(java.lang.Math).random() * 1000000}" class="form-control" placeholder="Mã giao dịch" readonly required>
-        <input type="text" name="username" th:value="${session.username}" class="form-control" placeholder="Tên đăng nhập" readonly required>
-        <input type="text" name="cus_name" th:value="${session.cus_name}" class="form-control" placeholder="Tên khách hàng" required>
-        <input type="email" name="cus_email" th:value="${session.cus_email}" class="form-control" placeholder="Email" required>
-        <input type="text" name="cus_add1" th:value="${session.cus_add1}" class="form-control" placeholder="Địa chỉ" required>
-        <input type="text" name="cus_city" th:value="${session.cus_city}" class="form-control" placeholder="Thành phố" required>
-        <input type="text" name="cus_phone" th:value="${session.cus_phone}" class="form-control" placeholder="Số điện thoại" required>
+        <div class="form-group">
+            <label for="tran_id">Mã giao dịch</label>
+            <input type="text" id="tran_id" name="tran_id" th:value="${T(java.lang.Math).random() * 1000000}" class="form-control" placeholder="Mã giao dịch" readonly required>
+        </div>
+        <div class="form-group">
+            <label for="username">Tên đăng nhập</label>
+            <input type="text" id="username" name="username" th:value="${session.username}" class="form-control" placeholder="Tên đăng nhập" readonly required>
+        </div>
+        <div class="form-group">
+            <label for="cus_name">Tên khách hàng</label>
+            <input type="text" id="cus_name" name="cus_name" th:value="${session.cus_name}" class="form-control" placeholder="Tên khách hàng" required>
+        </div>
+        <div class="form-group">
+            <label for="cus_email">Email</label>
+            <input type="email" id="cus_email" name="cus_email" th:value="${session.cus_email}" class="form-control" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+            <label for="cus_add1">Địa chỉ</label>
+            <input type="text" id="cus_add1" name="cus_add1" th:value="${session.cus_add1}" class="form-control" placeholder="Địa chỉ" required>
+        </div>
+        <div class="form-group">
+            <label for="cus_city">Thành phố</label>
+            <input type="text" id="cus_city" name="cus_city" th:value="${session.cus_city}" class="form-control" placeholder="Thành phố" required>
+        </div>
+        <div class="form-group">
+            <label for="cus_phone">Số điện thoại</label>
+            <input type="text" id="cus_phone" name="cus_phone" th:value="${session.cus_phone}" class="form-control" placeholder="Số điện thoại" required>
+        </div>
 
         <br><br>
         <button type="submit" class="btn btn-success">🛒 Thanh Toán ngay</button>
