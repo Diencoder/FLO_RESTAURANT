@@ -1,0 +1,369 @@
+Index: FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/ReservationController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.florestaurant.controller;\r\n\r\nimport com.example.florestaurant.model.Reservation;\r\nimport com.example.florestaurant.model.RestaurantTable;\r\nimport com.example.florestaurant.model.User;\r\nimport com.example.florestaurant.service.ReservationService;\r\nimport com.example.florestaurant.service.UserService;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.stereotype.Controller;\r\nimport org.springframework.ui.Model;\r\nimport org.springframework.web.bind.annotation.*;\r\n\r\nimport java.util.Date;\r\nimport java.util.List;\r\n\r\n@Controller\r\npublic class ReservationController {\r\n\r\n    @Autowired\r\n    private ReservationService reservationService;\r\n\r\n    @Autowired\r\n    private UserService userService;\r\n\r\n    // Hiển thị danh sách các bàn có sẵn\r\n    @GetMapping(\"/reserve\")\r\n    public String showAvailableTables(Model model) {\r\n        List<RestaurantTable> tables = reservationService.getAvailableTables();\r\n        System.out.println(\"Available tables: \" + tables.size());\r\n        model.addAttribute(\"tables\", tables);\r\n        model.addAttribute(\"pageTitle\", \"Đặt bàn\");\r\n        return \"reservation/list\";\r\n    }\r\n\r\n    // Hiển thị form đặt bàn\r\n    @GetMapping(\"/reserve/{tableNumber}\")\r\n    public String showReservationForm(@PathVariable(\"tableNumber\") int tableNumber, Model model) {\r\n        Reservation reservation = new Reservation();\r\n        reservation.setTableNumber(tableNumber);\r\n        model.addAttribute(\"reservation\", reservation);\r\n        return \"reservation/form\";\r\n    }\r\n\r\n    // Xử lý yêu cầu đặt bàn từ form\r\n    @PostMapping(\"/reserve\")\r\n    public String makeReservation(@ModelAttribute(\"reservation\") Reservation reservation, Model model) {\r\n        // Kiểm tra thông tin người dùng trong tbl_users\r\n        User user = userService.findUserByDetails(\r\n                reservation.getCustomerName(),\r\n                reservation.getCustomerEmail(),\r\n                reservation.getCustomerPhone()\r\n        );\r\n\r\n        // Gán user_id nếu tìm thấy người dùng\r\n        if (user != null) {\r\n            reservation.setUser(user);\r\n        }\r\n\r\n        // Thiết lập thời gian đặt bàn\r\n        reservation.setReservationTime(new Date());\r\n\r\n        // Lấy thông tin bàn để gán area\r\n        RestaurantTable table = reservationService.getTableByNumber(reservation.getTableNumber());\r\n        if (table != null) {\r\n            reservation.setArea(table.getArea());\r\n        }\r\n\r\n        // Lưu đặt bàn\r\n        Reservation createdReservation = reservationService.createReservation(reservation);\r\n\r\n        if (createdReservation != null) {\r\n            model.addAttribute(\"message\", \"Đặt bàn thành công!\");\r\n            return \"reservation/confirmation\";\r\n        } else {\r\n            model.addAttribute(\"message\", \"Bàn đã được đặt hoặc không còn sẵn!\");\r\n            return \"reservation/list\";\r\n        }\r\n    }\r\n}
+===================================================================
+diff --git a/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/ReservationController.java b/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/ReservationController.java
+--- a/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/ReservationController.java	(revision 8ec3982fa0370902173c2617cfc35d039388a1bc)
++++ b/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/controller/ReservationController.java	(date 1745729531175)
+@@ -6,6 +6,8 @@
+ import com.example.florestaurant.service.ReservationService;
+ import com.example.florestaurant.service.UserService;
+ import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.security.core.Authentication;
++import org.springframework.security.core.context.SecurityContextHolder;
+ import org.springframework.stereotype.Controller;
+ import org.springframework.ui.Model;
+ import org.springframework.web.bind.annotation.*;
+@@ -44,28 +46,23 @@
+     // Xử lý yêu cầu đặt bàn từ form
+     @PostMapping("/reserve")
+     public String makeReservation(@ModelAttribute("reservation") Reservation reservation, Model model) {
+-        // Kiểm tra thông tin người dùng trong tbl_users
+         User user = userService.findUserByDetails(
+                 reservation.getCustomerName(),
+                 reservation.getCustomerEmail(),
+                 reservation.getCustomerPhone()
+         );
+ 
+-        // Gán user_id nếu tìm thấy người dùng
+         if (user != null) {
+             reservation.setUser(user);
+         }
+ 
+-        // Thiết lập thời gian đặt bàn
+         reservation.setReservationTime(new Date());
+ 
+-        // Lấy thông tin bàn để gán area
+         RestaurantTable table = reservationService.getTableByNumber(reservation.getTableNumber());
+         if (table != null) {
+             reservation.setArea(table.getArea());
+         }
+ 
+-        // Lưu đặt bàn
+         Reservation createdReservation = reservationService.createReservation(reservation);
+ 
+         if (createdReservation != null) {
+Index: FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/config/SecurityConfig.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.florestaurant.config;\r\n\r\nimport com.example.florestaurant.security.CustomUserDetailsService;\r\nimport org.springframework.context.annotation.Bean;\r\nimport org.springframework.context.annotation.Configuration;\r\nimport org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;\r\nimport org.springframework.security.config.annotation.web.builders.HttpSecurity;\r\nimport org.springframework.security.web.SecurityFilterChain;\r\nimport org.springframework.security.crypto.password.PasswordEncoder;\r\n\r\nimport java.nio.charset.StandardCharsets;\r\nimport java.security.MessageDigest;\r\n\r\n@Configuration\r\n@EnableWebSecurity\r\npublic class SecurityConfig {\r\n\r\n    @Bean\r\n    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {\r\n        http\r\n                .csrf(csrf -> csrf.disable()) // Tắt CSRF để dùng form POST dễ hơn\r\n\r\n                .authorizeHttpRequests(auth -> auth\r\n                        .requestMatchers(\"/admin/**\").hasRole(\"ADMIN\")// Cho phép tất cả các yêu cầu mà không cần đăng nhập\r\n\r\n                        .requestMatchers(\"/**\").permitAll()                )\r\n\r\n                .logout(logout -> logout\r\n                        .logoutUrl(\"/logout\")\r\n                        .logoutSuccessUrl(\"/index\")\r\n                        .invalidateHttpSession(true)\r\n                        .clearAuthentication(true)\r\n                        .permitAll()\r\n                )\r\n                .exceptionHandling(ex -> ex\r\n                        .authenticationEntryPoint((request, response, authException) -> {\r\n                            response.sendRedirect(\"/login\");\r\n                        })\r\n                        // Nếu đã đăng nhập nhưng không đủ quyền → trang lỗi 403\r\n                        .accessDeniedHandler((request, response, accessDeniedException) -> {\r\n                            response.sendRedirect(\"/layout/403\");\r\n                        })\r\n                );\r\n\r\n        return http.build();\r\n    }\r\n\r\n    // PasswordEncoder sử dụng MD5 – để Spring Security so sánh đúng\r\n    @Bean\r\n    public PasswordEncoder passwordEncoder() {\r\n        return new PasswordEncoder() {\r\n            @Override\r\n            public String encode(CharSequence rawPassword) {\r\n                try {\r\n                    MessageDigest md = MessageDigest.getInstance(\"MD5\");\r\n                    byte[] digest = md.digest(rawPassword.toString().getBytes(StandardCharsets.UTF_8));\r\n                    StringBuilder sb = new StringBuilder();\r\n                    for (byte b : digest) {\r\n                        String hex = Integer.toHexString(0xff & b);\r\n                        if (hex.length() == 1) sb.append('0');\r\n                        sb.append(hex);\r\n                    }\r\n                    return sb.toString();\r\n                } catch (Exception e) {\r\n                    throw new RuntimeException(\"Lỗi mã hóa MD5\", e);\r\n                }\r\n            }\r\n\r\n            @Override\r\n            public boolean matches(CharSequence rawPassword, String encodedPassword) {\r\n                return encode(rawPassword).equals(encodedPassword);\r\n            }\r\n        };\r\n    }\r\n}
+===================================================================
+diff --git a/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/config/SecurityConfig.java b/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/config/SecurityConfig.java
+--- a/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/config/SecurityConfig.java	(revision 8ec3982fa0370902173c2617cfc35d039388a1bc)
++++ b/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/config/SecurityConfig.java	(date 1745727172816)
+@@ -22,7 +22,7 @@
+ 
+                 .authorizeHttpRequests(auth -> auth
+                         .requestMatchers("/admin/**").hasRole("ADMIN")// Cho phép tất cả các yêu cầu mà không cần đăng nhập
+-
++                        .requestMatchers("/reserve/**").authenticated() // Yêu cầu người dùng phải đăng nhập khi truy cập /reserve
+                         .requestMatchers("/**").permitAll()                )
+ 
+                 .logout(logout -> logout
+Index: FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/impl/UserServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>\r\npackage com.example.florestaurant.service.impl;\r\n\r\nimport com.example.florestaurant.model.User;\r\nimport com.example.florestaurant.repository.UserRepository;\r\nimport com.example.florestaurant.service.UserService;\r\nimport jakarta.servlet.http.HttpSession;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.security.authentication.UsernamePasswordAuthenticationToken;\r\nimport org.springframework.security.core.authority.SimpleGrantedAuthority;\r\nimport org.springframework.security.core.context.SecurityContextHolder;\r\nimport org.springframework.stereotype.Service;\r\n\r\nimport java.security.MessageDigest;\r\nimport java.security.NoSuchAlgorithmException;\r\nimport java.util.List;\r\nimport java.util.Optional;\r\n\r\n@Service\r\npublic class UserServiceImpl implements UserService {\r\n\r\n    @Autowired\r\n    private UserRepository userRepository;\r\n\r\n    // Phương thức mã hóa mật khẩu bằng MD5\r\n    private String encodeMD5(String password) throws NoSuchAlgorithmException {\r\n        MessageDigest md = MessageDigest.getInstance(\"MD5\");\r\n        md.update(password.getBytes());\r\n        byte[] digest = md.digest();\r\n\r\n        StringBuilder sb = new StringBuilder();\r\n        for (byte b : digest) {\r\n            sb.append(String.format(\"%02x\", b));  // Chuyển mỗi byte thành chuỗi hex\r\n        }\r\n\r\n        return sb.toString();  // Trả về mật khẩu đã mã hóa dạng MD5\r\n    }\r\n\r\n    // Phương thức đăng ký người dùng (mã hóa mật khẩu trước khi lưu)\r\n    @Override\r\n    public void save(User user) {\r\n        try {\r\n            // Mã hóa mật khẩu trước khi lưu vào cơ sở dữ liệu\r\n            String encodedPassword = encodeMD5(user.getPassword());\r\n            user.setPassword(encodedPassword); // Cập nhật mật khẩu đã mã hóa cho user\r\n            userRepository.save(user); // Lưu người dùng vào cơ sở dữ liệu\r\n        } catch (NoSuchAlgorithmException e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    // Phương thức xác thực người dùng khi đăng nhập\r\n    @Override\r\n    public User validateUser(String username, String password) {\r\n        User user = userRepository.findByUsername(username);\r\n\r\n        try {\r\n            // Kiểm tra mật khẩu đã mã hóa với mật khẩu nhập vào\r\n            if (user != null && user.getPassword().equals(encodeMD5(password))) {\r\n                return user;  // Nếu mật khẩu đúng, trả về đối tượng User\r\n            }\r\n        } catch (NoSuchAlgorithmException e) {\r\n            e.printStackTrace();\r\n        }\r\n\r\n        return null;  // Nếu mật khẩu sai hoặc người dùng không tồn tại, trả về null\r\n    }\r\n\r\n    // Kiểm tra email đã tồn tại\r\n    @Override\r\n    public boolean existsByEmail(String email) {\r\n        return userRepository.existsByEmail(email);\r\n    }\r\n\r\n    // Kiểm tra username đã tồn tại\r\n    @Override\r\n    public boolean existsByUsername(String username) {\r\n        return userRepository.existsByUsername(username);\r\n    }\r\n\r\n    // Kiểm tra số điện thoại đã tồn tại\r\n    @Override\r\n    public boolean existsByPhone(String phone) {\r\n        return userRepository.existsByPhone(phone);\r\n    }\r\n    @Override\r\n    public void authenticateUser(User user, HttpSession session) {\r\n        // Tạo danh sách quyền hạn từ vai trò của người dùng\r\n        List<SimpleGrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(user.getRole()));\r\n\r\n        // Tạo Authentication object\r\n        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(\r\n                user.getUsername(), null, authorities\r\n        );\r\n\r\n        // Cập nhật SecurityContext với thông tin người dùng\r\n        SecurityContextHolder.getContext().setAuthentication(authentication);\r\n\r\n        // Lưu SecurityContext vào session (quan trọng để Spring Security quản lý phiên làm việc)\r\n        session.setAttribute(\"SPRING_SECURITY_CONTEXT\", SecurityContextHolder.getContext());\r\n    }\r\n    @Override\r\n    public void logout(HttpSession session) {\r\n        // Xóa thông tin người dùng khỏi session\r\n        session.removeAttribute(\"user\");\r\n    }\r\n    @Override\r\n    public String handleLogoutMessage(String logout) {\r\n        if (logout != null) {\r\n            return \"Bạn đã đăng xuất thành công.\";\r\n        }\r\n        return null;\r\n    }\r\n    // Kiểm tra dữ liệu người dùng, bao gồm kiểm tra các trường bắt buộc\r\n    private void validateUserData(User user) {\r\n        if (user.getName() == null || user.getEmail() == null || user.getUsername() == null || user.getPassword() == null) {\r\n            throw new IllegalArgumentException(\"Dữ liệu không hợp lệ, các trường tên, email, tên người dùng, và mật khẩu là bắt buộc.\");\r\n        }\r\n    }\r\n\r\n    // Lấy danh sách tất cả người dùng\r\n    @Override\r\n    public List<User> getAllUsers() {\r\n        return userRepository.findAll();  // Lấy tất cả người dùng từ database\r\n    }\r\n\r\n    // Lấy người dùng theo ID\r\n    @Override\r\n    public Optional<User> getUserById(Long id) {\r\n        return userRepository.findById(id);\r\n    }\r\n\r\n    // Xóa người dùng theo ID\r\n    @Override\r\n    public void deleteUser(Long id) {\r\n        userRepository.deleteById(id);  // Xóa người dùng theo ID từ database\r\n    }\r\n\r\n    @Override\r\n    public User findUserByDetails(String customerName, String customerEmail, String customerPhone) {\r\n        return null;\r\n    }\r\n\r\n\r\n\r\n}\r\n
+===================================================================
+diff --git a/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/impl/UserServiceImpl.java b/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/impl/UserServiceImpl.java
+--- a/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/impl/UserServiceImpl.java	(revision 8ec3982fa0370902173c2617cfc35d039388a1bc)
++++ b/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/service/impl/UserServiceImpl.java	(date 1745729676428)
+@@ -143,4 +143,4 @@
+ 
+ 
+ 
+-}
++}
+\ No newline at end of file
+Index: FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/repository/RestaurantTableRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.florestaurant.repository;\r\n\r\nimport com.example.florestaurant.model.RestaurantTable;\r\nimport org.springframework.data.jpa.repository.JpaRepository;\r\n\r\nimport java.util.List;\r\nimport java.util.Optional;\r\n\r\npublic interface RestaurantTableRepository extends JpaRepository<RestaurantTable, Long> {\r\n    List<RestaurantTable> findByStatus(RestaurantTable.TableStatus status);\r\n\r\n    Optional<RestaurantTable> findByTableNumber(int tableNumber);\r\n}
+===================================================================
+diff --git a/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/repository/RestaurantTableRepository.java b/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/repository/RestaurantTableRepository.java
+--- a/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/repository/RestaurantTableRepository.java	(revision 8ec3982fa0370902173c2617cfc35d039388a1bc)
++++ b/FLO_RESTAURANT/FLO_RESTAURANT/src/main/java/com/example/florestaurant/repository/RestaurantTableRepository.java	(date 1745729929885)
+@@ -1,5 +1,6 @@
+ package com.example.florestaurant.repository;
+ 
++import com.example.florestaurant.model.Reservation;
+ import com.example.florestaurant.model.RestaurantTable;
+ import org.springframework.data.jpa.repository.JpaRepository;
+ 
+@@ -10,4 +11,5 @@
+     List<RestaurantTable> findByStatus(RestaurantTable.TableStatus status);
+ 
+     Optional<RestaurantTable> findByTableNumber(int tableNumber);
++
+ }
+\ No newline at end of file
+Index: FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/layout/myaccount.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"vi\" xmlns:th=\"http://www.thymeleaf.org\">\r\n<head th:replace=\"~{layout/header}\"></head>\r\n<body>\r\n<!-- Content Section Start -->\r\n\r\n\r\n<div class=\"container py-5\">\r\n    <div class=\"row\">\r\n        <!-- Sidebar - Điều hướng -->\r\n        <div class=\"profile-nav col-md-3\">\r\n            <div class=\"panel shadow-sm rounded\">\r\n                <div class=\"user-heading round text-center\">\r\n                    <a href=\"myaccount.html\">\r\n                        <img src=\"../images/avatar.png\" alt=\"Avatar\" class=\"img-fluid rounded-circle mb-3\" style=\"width: 120px; height: 120px; object-fit: cover;\">\r\n                    </a>\r\n                    <h1 class=\"h4\"><span th:text=\"${user.name}\"></span></h1>\r\n                </div>\r\n                <ul class=\"nav flex-column\">\r\n                    <li class=\"nav-item mb-2\">\r\n                        <a href=\"/editaccount\" class=\"nav-link d-flex align-items-center p-2 rounded shadow-sm\">\r\n                            <i class=\"fa fa-edit me-2\"></i> Chỉnh sửa hồ sơ\r\n                        </a>\r\n                    </li>\r\n\r\n                    <li class=\"nav-item mb-2\">\r\n                        <a href=\"/change-password\" class=\"nav-link d-flex align-items-center p-2 rounded shadow-sm\">\r\n                            <i class=\"fa fa-box me-2\"></i> Đổi mật khẩu\r\n                        </a>\r\n                    </li>\r\n\r\n                    <li class=\"nav-item mb-2\">\r\n                        <a href=\"view_table.html\" class=\"nav-link d-flex align-items-center p-2 rounded shadow-sm\">\r\n                            <i class=\"fa fa-table\"></i> Xem Bàn đã đặt\r\n                        </a>\r\n                    </li>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n\r\n        <!-- Thông tin hồ sơ -->\r\n        <div class=\"profile-info col-md-9\">\r\n            <div class=\"panel shadow-sm rounded\">\r\n                <div class=\"panel-body bio-graph-info\">\r\n                    <h1 class=\"display-5 mb-4 text-primary\">Tài khoản của tôi</h1>\r\n                    <div class=\"row\">\r\n                        <div class=\"bio-row mb-3\">\r\n                            <p><strong>Họ và tên:</strong> <span th:text=\"${user.name}\"></span></p>\r\n                        </div>\r\n                        <div class=\"bio-row mb-3\">\r\n                            <p><strong>Email:</strong> <span th:text=\"${user.email}\"></span></p>\r\n                        </div>\r\n                        <div class=\"bio-row mb-3\">\r\n                            <p><strong>Địa chỉ:</strong> <span th:text=\"${user.add1}\"></span></p>\r\n                        </div>\r\n                        <div class=\"bio-row mb-3\">\r\n                            <p><strong>Thành phố:</strong> <span th:text=\"${user.city}\"></span></p>\r\n                        </div>\r\n                        <div class=\"bio-row mb-3\">\r\n                            <p><strong>Số điện thoại:</strong> <span th:text=\"${user.phone}\"></span></p>\r\n                        </div>\r\n                        <div class=\"bio-row mb-3\">\r\n                            <p><strong>Tên người dùng:</strong> <span th:text=\"${user.username}\"></span></p>\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<!-- Content Section End -->\r\n\r\n<div th:replace=\"~{layout/footer}\"></div>\r\n</body>\r\n\r\n</html>\r\n
+===================================================================
+diff --git a/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/layout/myaccount.html b/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/layout/myaccount.html
+--- a/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/layout/myaccount.html	(revision 8ec3982fa0370902173c2617cfc35d039388a1bc)
++++ b/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/layout/myaccount.html	(date 1745730038123)
+@@ -28,12 +28,7 @@
+                             <i class="fa fa-box me-2"></i> Đổi mật khẩu
+                         </a>
+                     </li>
+-
+-                    <li class="nav-item mb-2">
+-                        <a href="view_table.html" class="nav-link d-flex align-items-center p-2 rounded shadow-sm">
+-                            <i class="fa fa-table"></i> Xem Bàn đã đặt
+-                        </a>
+-                    </li>
++                    
+                 </ul>
+             </div>
+         </div>
+Index: FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/add_table.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html xmlns:th=\"http://www.thymeleaf.org\">\r\n<head th:replace=\"~{fragments/header}\"></head>\r\n<head>\r\n    <meta charset=\"utf-8\">\r\n    <title>FLO_RESTAURANT</title>\r\n    <meta content=\"width=device-width, initial-scale=1.0\" name=\"viewport\">\r\n    <meta content=\"\" name=\"keywords\">\r\n    <meta content=\"\" name=\"description\">\r\n\r\n    <link rel=\"icon\" type=\"image/png\" th:href=\"@{/images/logo.png}\">\r\n\r\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\r\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\r\n    <link href=\"https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap\" rel=\"stylesheet\">\r\n\r\n    <link href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css\" rel=\"stylesheet\">\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css\" rel=\"stylesheet\">\r\n    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>\r\n\r\n    <link href=\"lib/animate/animate.min.css\" rel=\"stylesheet\">\r\n    <link href=\"lib/owlcarousel/assets/owl.carousel.min.css\" rel=\"stylesheet\">\r\n    <link href=\"lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css\" rel=\"stylesheet\" />\r\n\r\n    <link th:href=\"@{/css/bootstrap.min.css}\" rel=\"stylesheet\">\r\n\r\n    <link th:href=\"@{/css/style.css}\" rel=\"stylesheet\">\r\n\r\n    <style>\r\n        #sidebar {\r\n            height: 100vh; /* Chiều cao bằng 100% viewport */\r\n            position: fixed; /* Cố định sidebar ở vị trí */\r\n            top: 0;\r\n            left: 0;\r\n            width: 250px; /* Điều chỉnh độ rộng sidebar theo ý muốn */\r\n            background-color: #f8f9fa; /* Màu nền tùy chọn cho sidebar */\r\n            padding-top: 20px; /* Khoảng cách từ đỉnh sidebar */\r\n            overflow-y: auto; /* Thêm thanh cuộn nếu nội dung sidebar quá dài */\r\n            z-index: 1000; /* Đảm bảo sidebar không bị che bởi nội dung khác */\r\n        }\r\n\r\n        .content-area {\r\n            margin-left: 250px; /* Đẩy nội dung sang phải bằng độ rộng của sidebar */\r\n            padding: 20px; /* Khoảng cách xung quanh nội dung */\r\n        }\r\n    </style>\r\n<body>\r\n<div class=\"container mt-5\">\r\n    <h1>Thêm Bàn Mới</h1>\r\n\r\n    <!-- Hiển thị thông báo lỗi nếu có -->\r\n    <div th:if=\"${error}\" class=\"alert alert-danger\" th:text=\"${error}\"></div>\r\n\r\n    <form th:action=\"@{/admin/tables/add}\" method=\"post\" th:object=\"${restaurantTable}\">\r\n        <div class=\"form-group\">\r\n            <label for=\"tableNumber\">Số Bàn</label>\r\n            <input type=\"number\" class=\"form-control\" id=\"tableNumber\" name=\"tableNumber\" th:field=\"*{tableNumber}\" required>\r\n        </div>\r\n\r\n        <div class=\"form-group\">\r\n            <label for=\"area\">Khu Vực</label>\r\n            <input type=\"text\" class=\"form-control\" id=\"area\" name=\"area\" th:field=\"*{area}\" required>\r\n        </div>\r\n\r\n        <div class=\"form-group\">\r\n             W           <label for=\"capacity\">Sức Chứa</label>\r\n            <input type=\"number\" class=\"form-control\" id=\"capacity\" name=\"capacity\" th:field=\"*{capacity}\" required>\r\n        </div>\r\n\r\n        <div class=\"form-group\">\r\n            <label for=\"status\">Trạng Thái</label>\r\n            <select class=\"form-control\" id=\"status\" name=\"status\" th:field=\"*{status}\">\r\n                <option value=\"Available\">Available</option>\r\n                <option value=\"Reserved\">Reserved</option>\r\n                <option value=\"Occupied\">Occupied</option>\r\n                <option value=\"OutOfService\">Out of Service</option>\r\n            </select>\r\n        </div>\r\n\r\n        <button type=\"submit\" class=\"btn btn-primary\">Thêm Bàn</button>\r\n    </form>\r\n</div>\r\n\r\n<script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>\r\n<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js\"></script>\r\n</body>\r\n</html>
+===================================================================
+diff --git a/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/add_table.html b/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/add_table.html
+--- a/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/add_table.html	(revision 8ec3982fa0370902173c2617cfc35d039388a1bc)
++++ b/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/add_table.html	(date 1745727869929)
+@@ -1,87 +1,64 @@
+ <!DOCTYPE html>
+ <html xmlns:th="http://www.thymeleaf.org">
+-<head th:replace="~{fragments/header}"></head>
+ <head>
+-    <meta charset="utf-8">
+-    <title>FLO_RESTAURANT</title>
+-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+-    <meta content="" name="keywords">
+-    <meta content="" name="description">
+-
+-    <link rel="icon" type="image/png" th:href="@{/images/logo.png}">
+-
+-    <link rel="preconnect" href="https://fonts.googleapis.com">
+-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+-
+-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
++    <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
++    <meta name="viewport" content="width=device-width, initial-scale=1.0">
++    <title>Form Người dùng</title>
+ 
+-    <link href="lib/animate/animate.min.css" rel="stylesheet">
+-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+-
+-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+-
+-    <link th:href="@{/css/style.css}" rel="stylesheet">
+-
+-    <style>
+-        #sidebar {
+-            height: 100vh; /* Chiều cao bằng 100% viewport */
+-            position: fixed; /* Cố định sidebar ở vị trí */
+-            top: 0;
+-            left: 0;
+-            width: 250px; /* Điều chỉnh độ rộng sidebar theo ý muốn */
+-            background-color: #f8f9fa; /* Màu nền tùy chọn cho sidebar */
+-            padding-top: 20px; /* Khoảng cách từ đỉnh sidebar */
+-            overflow-y: auto; /* Thêm thanh cuộn nếu nội dung sidebar quá dài */
+-            z-index: 1000; /* Đảm bảo sidebar không bị che bởi nội dung khác */
+-        }
+-
+-        .content-area {
+-            margin-left: 250px; /* Đẩy nội dung sang phải bằng độ rộng của sidebar */
+-            padding: 20px; /* Khoảng cách xung quanh nội dung */
+-        }
+-    </style>
++    <!-- Thêm Bootstrap CSS từ CDN -->
++    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
++</head>
+ <body>
+-<div class="container mt-5">
+-    <h1>Thêm Bàn Mới</h1>
++
++<!-- Nhúng phần Header -->
++<div th:replace="~{fragments/header}"></div>
++
++<!-- Nhúng phần Sidebar -->
++<div th:replace="~{fragments/sidebar}"></div>
++
++<!-- CONTENT -->
++<section id="content">
++    <!-- Nhúng phần Navbar -->
++    <div th:replace="~{fragments/navbar}"></div>
++    <div class="container mt-5">
++        <h1>Thêm Bàn Mới</h1>
+ 
+-    <!-- Hiển thị thông báo lỗi nếu có -->
+-    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
++        <!-- Hiển thị thông báo lỗi nếu có -->
++        <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+ 
+-    <form th:action="@{/admin/tables/add}" method="post" th:object="${restaurantTable}">
+-        <div class="form-group">
+-            <label for="tableNumber">Số Bàn</label>
+-            <input type="number" class="form-control" id="tableNumber" name="tableNumber" th:field="*{tableNumber}" required>
+-        </div>
++        <form th:action="@{/admin/tables/add}" method="post" th:object="${restaurantTable}">
++            <div class="form-group">
++                <label for="tableNumber">Số Bàn</label>
++                <input type="number" class="form-control" id="tableNumber" name="tableNumber" th:field="*{tableNumber}" required>
++            </div>
+ 
+-        <div class="form-group">
+-            <label for="area">Khu Vực</label>
+-            <input type="text" class="form-control" id="area" name="area" th:field="*{area}" required>
+-        </div>
++            <div class="form-group">
++                <label for="area">Khu Vực</label>
++                <input type="text" class="form-control" id="area" name="area" th:field="*{area}" required>
++            </div>
+ 
+-        <div class="form-group">
+-             W           <label for="capacity">Sức Chứa</label>
+-            <input type="number" class="form-control" id="capacity" name="capacity" th:field="*{capacity}" required>
+-        </div>
++            <div class="form-group">
++                         <label for="capacity">Sức Chứa</label>
++                <input type="number" class="form-control" id="capacity" name="capacity" th:field="*{capacity}" required>
++            </div>
+ 
+-        <div class="form-group">
+-            <label for="status">Trạng Thái</label>
+-            <select class="form-control" id="status" name="status" th:field="*{status}">
+-                <option value="Available">Available</option>
+-                <option value="Reserved">Reserved</option>
+-                <option value="Occupied">Occupied</option>
+-                <option value="OutOfService">Out of Service</option>
+-            </select>
+-        </div>
++            <div class="form-group">
++                <label for="status">Trạng Thái</label>
++                <select class="form-control" id="status" name="status" th:field="*{status}">
++                    <option value="Available">Available</option>
++                    <option value="Reserved">Reserved</option>
++                    <option value="Occupied">Occupied</option>
++                    <option value="OutOfService">Out of Service</option>
++                </select>
++            </div>
+ 
+-        <button type="submit" class="btn btn-primary">Thêm Bàn</button>
+-    </form>
+-</div>
++            <button type="submit" class="btn btn-primary">Thêm Bàn</button>
++        </form>
++    </div>
+ 
+-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
++    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
++    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
++</section>
+ </body>
+ </html>
+\ No newline at end of file
+Index: FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/manage-tables.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html xmlns:th=\"http://www.thymeleaf.org\">\r\n<head th:replace=\"~{fragments/header}\"></head>\r\n<head>\r\n    <meta charset=\"utf-8\">\r\n    <title>FLO_RESTAURANT</title>\r\n    <meta content=\"width=device-width, initial-scale=1.0\" name=\"viewport\">\r\n    <meta content=\"\" name=\"keywords\">\r\n    <meta content=\"\" name=\"description\">\r\n\r\n    <link rel=\"icon\" type=\"image/png\" th:href=\"@{/images/logo.png}\">\r\n\r\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\r\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\r\n    <link href=\"https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap\" rel=\"stylesheet\">\r\n\r\n    <link href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css\" rel=\"stylesheet\">\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css\" rel=\"stylesheet\">\r\n    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>\r\n\r\n    <link href=\"lib/animate/animate.min.css\" rel=\"stylesheet\">\r\n    <link href=\"lib/owlcarousel/assets/owl.carousel.min.css\" rel=\"stylesheet\">\r\n    <link href=\"lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css\" rel=\"stylesheet\" />\r\n\r\n    <link th:href=\"@{/css/bootstrap.min.css}\" rel=\"stylesheet\">\r\n    <link th:href=\"@{/css/style.css}\" rel=\"stylesheet\">\r\n\r\n    <style>\r\n        /* Ensure the table takes up full width */\r\n        .table {\r\n            width: 100%; /* Make the table span the full width */\r\n            table-layout: fixed; /* Ensure the table layout is fixed for even spacing */\r\n        }\r\n\r\n        /* Optional: Make each column have enough space */\r\n        .table th, .table td {\r\n            text-align: center; /* Center text */\r\n            padding: 10px; /* Add padding for better readability */\r\n            overflow: hidden; /* Prevent overflow */\r\n        }\r\n\r\n        /* Ensure stock numbers are black */\r\n\r\n    </style>\r\n</head>\r\n<body>\r\n\r\n<!-- Thêm phần sidebar ở đây -->\r\n<div id=\"sidebar\">\r\n    <div th:replace=\"~{fragments/sidebar}\"></div> <!-- Sidebar sẽ được chèn vào đây -->\r\n</div>\r\n\r\n<main class=\"col-md-9 ms-sm-auto col-lg-10 px-md-4 content-area\">\r\n    <div class=\"container mt-5\">\r\n        <h1>Danh sách Bàn</h1>\r\n\r\n        <div th:if=\"${error}\" class=\"alert alert-danger\" th:text=\"${error}\"></div>\r\n\r\n        <a href=\"/admin/tables/add_table\" class=\"btn btn-primary mb-3\">Thêm Bàn Mới</a>\r\n\r\n        <div class=\"table-responsive\">\r\n            <table class=\"table table-bordered table-striped table-hover\">\r\n                <thead>\r\n                <tr>\r\n                    <th>Số Bàn</th>\r\n                    <th>Khu Vực</th>\r\n                    <th>Sức Chứa</th>\r\n                    <th>Trạng Thái</th>\r\n                    <th>Quản lý</th>\r\n                </tr>\r\n                </thead>\r\n                <tbody>\r\n                <tr th:each=\"table : ${tables}\">\r\n                    <td th:text=\"${table.tableNumber}\"></td>\r\n                    <td th:text=\"${table.area}\"></td>\r\n                    <td th:text=\"${table.capacity}\"></td>\r\n                    <td th:text=\"${table.status}\"></td>\r\n                    <td>\r\n                        <a th:href=\"@{/admin/tables/cancel/{tableNumber}(tableNumber=${table.tableNumber})}\"\r\n                           th:if=\"${table.status == T(com.example.florestaurant.model.RestaurantTable.TableStatus).Reserved}\"\r\n                           class=\"btn btn-warning btn-sm\"\r\n                           onclick=\"return confirm('Bạn có chắc chắn muốn hủy đặt bàn này?')\">Hủy Đặt Bàn</a>\r\n                        <a th:href=\"@{/admin/tables/delete/{tableNumber}(tableNumber=${table.tableNumber})}\"\r\n                           th:if=\"${table.status == T(com.example.florestaurant.model.RestaurantTable.TableStatus).Availsable}\"\r\n                           class=\"btn btn-danger btn-sm\"\r\n                           onclick=\"return confirm('Bạn có chắc chắn muốn xóa bàn này?')\">Xóa Bàn</a>\r\n                    </td>\r\n                </tr>\r\n                </tbody>\r\n            </table>\r\n        </div>\r\n    </div>\r\n    <div style=\"display: none;\">Template manage-tables.html is being used</div>\r\n</main>\r\n\r\n<script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\"></script>\r\n<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js\"></script>\r\n</body>\r\n</html>\r\n
+===================================================================
+diff --git a/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/manage-tables.html b/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/manage-tables.html
+--- a/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/manage-tables.html	(revision 8ec3982fa0370902173c2617cfc35d039388a1bc)
++++ b/FLO_RESTAURANT/FLO_RESTAURANT/src/main/resources/templates/admin/manage-tables.html	(date 1745727858045)
+@@ -1,56 +1,29 @@
+ <!DOCTYPE html>
+-<html xmlns:th="http://www.thymeleaf.org">
+-<head th:replace="~{fragments/header}"></head>
++<html lang="en" xmlns:th="http://www.thymeleaf.org">
+ <head>
+-    <meta charset="utf-8">
+-    <title>FLO_RESTAURANT</title>
+-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+-    <meta content="" name="keywords">
+-    <meta content="" name="description">
+-
+-    <link rel="icon" type="image/png" th:href="@{/images/logo.png}">
+-
+-    <link rel="preconnect" href="https://fonts.googleapis.com">
+-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+-
+-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+-
+-    <link href="lib/animate/animate.min.css" rel="stylesheet">
+-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+-
+-    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+-    <link th:href="@{/css/style.css}" rel="stylesheet">
+-
+-    <style>
+-        /* Ensure the table takes up full width */
+-        .table {
+-            width: 100%; /* Make the table span the full width */
+-            table-layout: fixed; /* Ensure the table layout is fixed for even spacing */
+-        }
+-
+-        /* Optional: Make each column have enough space */
+-        .table th, .table td {
+-            text-align: center; /* Center text */
+-            padding: 10px; /* Add padding for better readability */
+-            overflow: hidden; /* Prevent overflow */
+-        }
++    <meta charset="UTF-8">
++    <meta http-equiv="X-UA-Compatible" content="IE=edge">
++    <meta name="viewport" content="width=device-width, initial-scale=1.0">
++    <title>Danh sách Người dùng</title>
+ 
+-        /* Ensure stock numbers are black */
+-
+-    </style>
++    <!-- Thêm link đến Bootstrap CSS từ CDN -->
++    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+ </head>
+ <body>
+ 
+-<!-- Thêm phần sidebar ở đây -->
+-<div id="sidebar">
+-    <div th:replace="~{fragments/sidebar}"></div> <!-- Sidebar sẽ được chèn vào đây -->
+-</div>
++<!-- Nhúng phần Header -->
++<div th:replace="~{fragments/header}"></div>
++
++<!-- Nhúng phần Sidebar -->
++<div th:replace="~{fragments/sidebar}"></div>
++
++<!-- CONTENT -->
++<section id="content">
++    <!-- Nhúng phần Navbar -->
++    <div th:replace="~{fragments/navbar}"></div>
++
+ 
+-<main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 content-area">
++    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 content-area">
+     <div class="container mt-5">
+         <h1>Danh sách Bàn</h1>
+ 
+@@ -81,7 +54,7 @@
+                            class="btn btn-warning btn-sm"
+                            onclick="return confirm('Bạn có chắc chắn muốn hủy đặt bàn này?')">Hủy Đặt Bàn</a>
+                         <a th:href="@{/admin/tables/delete/{tableNumber}(tableNumber=${table.tableNumber})}"
+-                           th:if="${table.status == T(com.example.florestaurant.model.RestaurantTable.TableStatus).Availsable}"
++                           th:if="${table.status == T(com.example.florestaurant.model.RestaurantTable.TableStatus).Available}"
+                            class="btn btn-danger btn-sm"
+                            onclick="return confirm('Bạn có chắc chắn muốn xóa bàn này?')">Xóa Bàn</a>
+                     </td>
+@@ -95,5 +68,6 @@
+ 
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
++</section>
+ </body>
+ </html>
