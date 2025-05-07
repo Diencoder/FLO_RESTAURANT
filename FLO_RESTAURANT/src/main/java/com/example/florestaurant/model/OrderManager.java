@@ -24,6 +24,10 @@ public class OrderManager {
     @Column(name = "cus_name")
     private String cusName;
 
+    // Không cần phải khai báo @Column(name = "transaction_id") ở đây nữa
+    // @Column(name = "transaction_id")
+    // private String tranId;
+
     @Column(name = "cus_email")
     private String cusEmail;
 
@@ -45,6 +49,7 @@ public class OrderManager {
     @Column(name = "total_amount")
     private Double totalAmount;
 
+    // Quan hệ với Aamarpay
     @ManyToOne
     @JoinColumn(name = "transaction_id", referencedColumnName = "transaction_id", nullable = true)
     private Aamarpay aamarpay;  // Liên kết với bảng aamarpay qua transaction_id
@@ -56,6 +61,9 @@ public class OrderManager {
     private List<OrderItem> items;  // Thêm thuộc tính items liên kết với OrderItem
 
     public OrderManager() {
+    }
+    public String getTranId() {
+        return this.aamarpay != null ? this.aamarpay.getTransactionId() : null;
     }
 
     public OrderManager(String username, String cusName, String cusEmail, String cusAdd1, String cusCity,

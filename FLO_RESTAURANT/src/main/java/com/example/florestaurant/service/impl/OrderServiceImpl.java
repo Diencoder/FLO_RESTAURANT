@@ -47,10 +47,12 @@ public class OrderServiceImpl implements OrderService {
         // Lưu lịch sử đơn hàng
         saveOrderHistory(username, cartItems);
     }
+
     @Override
     public List<OrderManager> getOrdersByUsername(String username) {
-        return orderManagerRepository.findByUsername(username);  // Truy vấn đơn hàng theo userId
+        return orderManagerRepository.findByUsername(username);  // Truy vấn đơn hàng theo username
     }
+
     @Override
     public Aamarpay savePayment(String tranId, String cusName, double totalAmount) {
         Aamarpay payment = new Aamarpay();
@@ -68,12 +70,12 @@ public class OrderServiceImpl implements OrderService {
                                          String cusAdd1, String cusCity, String cusPhone,
                                          double totalAmount, Aamarpay payment) {
         OrderManager order = new OrderManager();
-        order.setUsername(username);
+        order.setUsername(username);  // Đảm bảo gán username vào đối tượng order
         order.setCusName(cusName);
         order.setCusEmail(cusEmail);
         order.setCusAdd1(cusAdd1);
         order.setCusCity(cusCity);
-        order.setCusPhone(Long.valueOf(cusPhone));
+        order.setCusPhone(Long.valueOf(cusPhone));  // Chuyển đổi số điện thoại sang Long
         order.setPaymentStatus("Pending");
         order.setOrderStatus("Pending");
         order.setOrderDate(new Date());
@@ -81,6 +83,7 @@ public class OrderServiceImpl implements OrderService {
         order.setAamarpay(payment);  // Liên kết với transaction_id trong bảng aamarpay
         return orderManagerRepository.save(order);  // Lưu vào bảng order_manager
     }
+
 
     @Override
     public void saveOrderItems(List<Map<String, Object>> cartItems, OrderManager order, double discountAmount) {
@@ -133,9 +136,13 @@ public class OrderServiceImpl implements OrderService {
             }
         }
 
+        // Đảm bảo username không bị mất khi lưu
+        orderManager.setUsername(orderManager.getUsername());  // Giữ lại username khi lưu
+
         // Lưu hoặc cập nhật đơn hàng
         return orderManagerRepository.save(orderManager);
     }
+
 
     @Override
     public void deleteOrder(Long id) {

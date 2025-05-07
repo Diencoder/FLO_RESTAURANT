@@ -38,6 +38,12 @@
             </div>
 
             <div class="mb-3">
+                <label for="tranId" class="form-label">Mã Giao Dịch:</label>
+                <input type="text" th:value="*{tranId}" id="tranId" class="form-control" readonly />
+            </div>
+
+
+            <div class="mb-3">
                 <label for="cusName" class="form-label">Tên Khách Hàng:</label>
                 <input type="text" th:field="*{cusName}" id="cusName" class="form-control" />
             </div>
@@ -58,6 +64,11 @@
             </div>
 
             <div class="mb-3">
+                <label for="cusCity" class="form-label">Thành Phố Khách Hàng:</label>
+                <input type="text" th:field="*{cusCity}" id="cusCity" class="form-control" />
+            </div>
+
+            <div class="mb-3">
                 <label for="orderDate" class="form-label">Ngày Đặt Hàng:</label>
                 <input type="text" th:field="*{orderDate}" id="orderDate" class="form-control" disabled />
             </div>
@@ -72,12 +83,27 @@
             </div>
 
             <div class="mb-3">
+                <label for="paymentStatus" class="form-label">Trạng Thái Thanh Toán:</label>
+                <select th:field="*{paymentStatus}" id="paymentStatus" class="form-select">
+                    <option value="Paid" th:text="${'Đã Thanh Toán'}">Đã Thanh Toán</option>
+                    <option value="Unpaid" th:text="${'Chưa Thanh Toán'}">Chưa Thanh Toán</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
                 <label for="totalAmount" class="form-label">Tổng Tiền:</label>
                 <input type="number" th:field="*{totalAmount}" id="totalAmount" class="form-control" />
             </div>
 
+            <div class="mb-3">
+                <label for="username" class="form-label">Tên Đăng Nhập:</label>
+                <input type="text" th:field="*{username}" id="username" class="form-control" disabled />
+            </div>
+
             <button type="submit" class="btn btn-primary">Lưu</button>
         </form>
+
+
     </div>
 </section>
 <!-- CONTENT -->

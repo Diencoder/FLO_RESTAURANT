@@ -16,6 +16,7 @@ public interface OrderService {
     // Lấy tất cả đơn hàng
     List<OrderManager> getAllOrders();
     List<OrderManager> getOrdersByUsername(String username);
+
     // Lấy đơn hàng theo id
     OrderManager getOrderById(Long id);
 
@@ -28,7 +29,7 @@ public interface OrderService {
     // Phương thức để lưu thanh toán
     Aamarpay savePayment(String tranId, String cusName, double totalAmount);
 
-    // Phương thức để lưu đơn hàng
+    // Phương thức để lưu chi tiết đơn hàng
     OrderManager saveOrderDetails(String username, String cusName, String cusEmail,
                                   String cusAdd1, String cusCity, String cusPhone,
                                   double totalAmount, Aamarpay payment);
