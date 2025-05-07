@@ -128,20 +128,47 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public OrderManager saveOrder(OrderManager orderManager) {
-        // Nếu order_date là null, giữ nguyên giá trị cũ từ cơ sở dữ liệu
-        if (orderManager.getOrderDate() == null) {
+        // Kiểm tra nếu đơn hàng đã tồn tại
+        if (orderManager.getOrderId() != null) {
+            // Lấy thông tin đơn hàng từ CSDL
             OrderManager existingOrder = orderManagerRepository.findById(orderManager.getOrderId()).orElse(null);
+
             if (existingOrder != null) {
-                orderManager.setOrderDate(existingOrder.getOrderDate()); // Giữ nguyên order_date nếu không thay đổi
+                // Cập nhật thông tin đơn hàng
+                existingOrder.setUsername(orderManager.getUsername());  // Đảm bảo username được gán
+                existingOrder.setCusName(orderManager.getCusName());
+                existingOrder.setCusEmail(orderManager.getCusEmail());
+                existingOrder.setCusAdd1(orderManager.getCusAdd1());
+                existingOrder.setCusCity(orderManager.getCusCity());
+                existingOrder.setCusPhone(orderManager.getCusPhone());
+                existingOrder.setPaymentStatus(orderManager.getPaymentStatus());
+                existingOrder.setOrderStatus(orderManager.getOrderStatus());
+                existingOrder.setTotalAmount(orderManager.getTotalAmount());
+
+                // Kiểm tra và giữ nguyên order_date nếu không thay đổi
+                if (orderManager.getOrderDate() != null) {
+                    existingOrder.setOrderDate(orderManager.getOrderDate());
+                } else {
+                    existingOrder.setOrderDate(existingOrder.getOrderDate());  // Giữ nguyên nếu order_date không thay đổi
+                }
+
+
+
+                // Lưu thông tin cập nhật vào cơ sở dữ liệu
+                return orderManagerRepository.save(existingOrder);
+            } else {
+                throw new IllegalArgumentException("Đơn hàng không tồn tại.");
             }
+        } else {
+            // Nếu đơn hàng mới, gán order_date và username, rồi lưu vào cơ sở dữ liệu
+            orderManager.setOrderDate(new Date());  // Gán thời gian hiện tại nếu đơn hàng mới
+            if (orderManager.getUsername() == null || orderManager.getUsername().isEmpty()) {
+                throw new IllegalArgumentException("Username không thể trống.");
+            }
+            return orderManagerRepository.save(orderManager);  // Lưu đơn hàng mới
         }
-
-        // Đảm bảo username không bị mất khi lưu
-        orderManager.setUsername(orderManager.getUsername());  // Giữ lại username khi lưu
-
-        // Lưu hoặc cập nhật đơn hàng
-        return orderManagerRepository.save(orderManager);
     }
+
 
 
     @Override

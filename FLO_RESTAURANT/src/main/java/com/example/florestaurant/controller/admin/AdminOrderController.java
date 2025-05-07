@@ -34,7 +34,10 @@ public class AdminOrderController {
     @PostMapping("/orders")
     public String saveOrder(@ModelAttribute OrderManager orderManager) {
 
-
+        if (orderManager.getUsername() == null || orderManager.getUsername().isEmpty()) {
+            // Trả về lỗi nếu username không hợp lệ
+            return "redirect:/admin/orders?error=username_empty";
+        }
         // Lưu OrderManager
         orderService.saveOrder(orderManager);
         return "redirect:/admin/orders";  // Quay lại trang danh sách đơn hàng
