@@ -21,7 +21,9 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable()) // Tắt CSRF để dùng form POST dễ hơn
 
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/admin/**").hasRole("ADMIN")// Cho phép tất cả các yêu cầu mà không cần đăng nhập
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        // Cho phép tất cả các yêu cầu mà không cần đăng nhập
+                        .requestMatchers("/myaccount").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/reserve/**").authenticated()
                         .requestMatchers("/**").permitAll()                )
 
