@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sửa Người Dùng</title>
+  <title>Thêm Người Dùng</title>
 
   <!-- Thêm Bootstrap CSS từ CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +23,7 @@
   <div th:replace="~{fragments/navbar}"></div>
 
   <div class="container mt-5">
-    <h1 class="mb-4">Chỉnh Sửa Người Dùng</h1>
+    <h1 class="mb-4">Tạo Mới Người Dùng</h1>
 
     <form th:action="@{/admin/users/save}" method="post" th:object="${user}">
       <!-- Trường ẩn cho id -->
@@ -61,7 +61,7 @@
 
       <div class="mb-3">
         <label for="password" class="form-label">Mật khẩu:</label>
-        <input type="password" class="form-control" id="password" th:field="*{password}" placeholder="Nhập mật khẩu nếu muốn thay đổi" />
+        <input type="password" class="form-control" id="password" th:field="*{password}" placeholder="Nhập mật khẩu" />
       </div>
 
       <!-- Thành phố -->
@@ -74,13 +74,13 @@
       <div class="mb-3">
         <label for="role" class="form-label">Vai trò:</label>
         <select class="form-select" id="role" th:field="*{role}">
-          <option value="ROLE_ADMIN" th:selected="${user.role == 'ROLE_ADMIN'}">ROLE_ADMIN</option>
-          <option value="ROLE_USER" th:selected="${user.role == 'ROLE_USER'}">ROLE_USER</option>
+          <option value="ROLE_ADMIN">ROLE_ADMIN</option>
+          <option value="ROLE_USER">ROLE_USER</option>
         </select>
       </div>
 
       <!-- Nút submit -->
-      <button type="submit" class="btn btn-primary">Cập nhật</button>
+      <button type="submit" class="btn btn-primary">Lưu</button>
     </form>
   </div>
 </section>

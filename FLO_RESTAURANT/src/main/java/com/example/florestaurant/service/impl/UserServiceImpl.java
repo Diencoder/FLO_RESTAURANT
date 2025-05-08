@@ -118,6 +118,34 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
+    public void updateUser(User user) throws Exception {
+        // Kiểm tra xem người dùng có tồn tại trong cơ sở dữ liệu không
+        Optional<User> existingUserOpt = userRepository.findById(user.getId());
+
+        if (existingUserOpt.isPresent()) {
+            User existingUser = existingUserOpt.get();
+
+            // Cập nhật thông tin người dùng, ngoại trừ mật khẩu
+            existingUser.setName(user.getName());
+            existingUser.setEmail(user.getEmail());
+            existingUser.setAdd1(user.getAdd1());
+            existingUser.setCity(user.getCity());
+            existingUser.setPhone(user.getPhone());
+            existingUser.setUsername(user.getUsername());
+            // Cập nhật các trường khác nếu cần
+
+            // Lưu lại thông tin đã cập nhật
+            userRepository.save(existingUser);
+        } else {
+            throw new Exception("Người dùng không tồn tại.");
+        }
+    }
+    @Override
+    public User getUserByUsername(String username) {
+        // Tìm kiếm người dùng theo username
+        return userRepository.findByUsername(username);
+    }
     // Lấy danh sách tất cả người dùng
     @Override
     public List<User> getAllUsers() {

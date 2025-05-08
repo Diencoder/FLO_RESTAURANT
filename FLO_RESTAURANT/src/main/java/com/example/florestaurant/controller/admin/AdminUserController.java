@@ -25,18 +25,37 @@ public class AdminUserController {
         return "admin/manage-users"; // Template hiển thị danh sách người dùng
     }
 
-    // Hiển thị form tạo hoặc sửa người dùng
-    @GetMapping("/form")
-    public String showForm(@RequestParam(required = false) Long id, Model model) {
-        User user = (id != null) ? userService.getUserById(id).orElse(new User()) : new User();
-        model.addAttribute("user", user);  // Đảm bảo User được thêm vào model
-        return "admin/manage-edit-user";  // Trả về template form để tạo hoặc sửa người dùng
+    // Hiển thị form thêm người dùng
+    @GetMapping("/form/create")
+    public String showCreateForm(Model model) {
+        model.addAttribute("user", new User()); // Tạo một đối tượng User mới để thêm người dùng
+        return "admin/manage-create-user"; // Trả về template form để thêm người dùng
+    }
+
+    // Hiển thị form chỉnh sửa người dùng
+    @GetMapping("/form/edit/{id}")
+    public String showEditForm(@PathVariable Long id, Model model) {
+        Optional<User> userOptional = userService.getUserById(id); // Tìm người dùng theo ID
+        if (userOptional.isPresent()) {
+            model.addAttribute("user", userOptional.get()); // Thêm người dùng vào model nếu tìm thấy
+        } else {
+            model.addAttribute("error", "Người dùng không tồn tại"); // Nếu không tìm thấy người dùng, thông báo lỗi
+            return "admin/manage-users"; // Trả về danh sách người dùng
+        }
+        return "admin/manage-edit-user"; // Trả về template form chỉnh sửa người dùng
     }
 
     // Lưu hoặc cập nhật người dùng
     @PostMapping("/save")
     public String saveUser(@ModelAttribute User user, Model model) {
         try {
+            // Kiểm tra nếu mật khẩu trống thì không thay đổi mật khẩu
+            if (user.getPassword() == null || user.getPassword().isEmpty()) {
+                User existingUser = userService.getUserById(user.getId()).orElse(null);
+                if (existingUser != null) {
+                    user.setPassword(existingUser.getPassword()); // Giữ lại mật khẩu cũ nếu không có thay đổi
+                }
+            }
             userService.save(user);  // Gọi service để lưu hoặc cập nhật người dùng
         } catch (Exception e) {
             model.addAttribute("error", "Lỗi khi lưu người dùng: " + e.getMessage());

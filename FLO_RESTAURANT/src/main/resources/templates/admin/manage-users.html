@@ -31,7 +31,7 @@
 
         <!-- Nút tạo người dùng mới cho Admin -->
         <div class="mb-3">
-          <a href="/admin/users/form" class="btn btn-primary">Tạo Người dùng Mới</a>
+          <a href="/admin/users/form/create" class="btn btn-primary">Tạo Người dùng Mới</a>
         </div>
 
         <!-- Bảng Danh sách Người dùng -->
@@ -58,8 +58,10 @@
             <td th:text="${user.city}"></td>
             <td th:text="${user.role}"></td>
             <td>
-              <a th:href="@{/admin/users/form(id=${user.id})}" class="btn btn-warning btn-sm">Sửa</a>
-              <a th:href="@{/admin/users/delete/{id}(id=${user.id})}" class="btn btn-danger btn-sm">Xóa</a>
+              <!-- Chỉnh sửa người dùng -->
+              <a th:href="@{/admin/users/form/edit/{id}(id=${user.id})}" class="btn btn-warning btn-sm">Sửa</a>
+              <!-- Xóa người dùng -->
+              <a th:href="@{/admin/users/delete/{id}(id=${user.id})}" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc chắn muốn xóa người dùng này?');">Xóa</a>
             </td>
           </tr>
           </tbody>

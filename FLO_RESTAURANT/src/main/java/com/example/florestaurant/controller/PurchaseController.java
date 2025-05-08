@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.florestaurant.model.User;
 
@@ -18,8 +19,8 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@SessionAttributes("user")
 public class PurchaseController {
-
     @Autowired
     private OrderService orderService;
     @Autowired
@@ -38,12 +39,15 @@ public class PurchaseController {
                                   HttpSession session,
                                   RedirectAttributes redirectAttributes) {
 
-        // Kiểm tra người dùng đã đăng nhập chưa
-        User user = (User) session.getAttribute("user");
-        if (user == null) {
+        // Kiểm tra người dùng đã đăng nhập chưa (kiểm tra có username trong session không)
+        String username = (String) session.getAttribute("username"); // Lấy username từ session
+        if (username == null) {  // Nếu không có username trong session
             redirectAttributes.addFlashAttribute("message", "Vui lòng đăng nhập để thanh toán!");
             return "redirect:/login";  // Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
         }
+
+        // Lấy thông tin người dùng từ service (ví dụ, bạn có thể lấy user bằng username)
+        User user = userService.getUserByUsername(username);
 
         // Lấy giỏ hàng từ session
         List<Food> cart = cartService.getCart(session);
@@ -70,7 +74,7 @@ public class PurchaseController {
                 (double) session.getAttribute("total_after_discount") : totalAmount;
 
         // Xử lý thanh toán và lưu đơn hàng vào cơ sở dữ liệu
-        orderService.processOrder(tran_id, user.getUsername(), cus_name, cus_email, cus_add1, cus_city, cus_phone,
+        orderService.processOrder(tran_id, username, cus_name, cus_email, cus_add1, cus_city, cus_phone,
                 totalAfterDiscount, discountAmount, cartItems);
 
         // Xóa giỏ hàng sau khi thanh toán thành công
@@ -85,3 +89,4 @@ public class PurchaseController {
         return "layout/confirmation";  // Chuyển đến trang xác nhận
     }
 }
+

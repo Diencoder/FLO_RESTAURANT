@@ -60,7 +60,7 @@ public class MyAccountController {
     public String saveUser(@ModelAttribute User user, HttpSession session, Model model) {
         try {
             // Gọi service để lưu hoặc cập nhật thông tin người dùng
-            userService.save(user);  // Sử dụng phương thức save trong UserService để lưu thông tin
+            userService.updateUser(user);  // Sử dụng phương thức save trong UserService để lưu thông tin
 
             // Cập nhật lại session để đồng bộ thông tin người dùng
             session.setAttribute("user", user);
