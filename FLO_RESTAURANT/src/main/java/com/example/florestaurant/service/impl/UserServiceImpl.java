@@ -142,6 +142,39 @@ public class UserServiceImpl implements UserService {
         }
     }
     @Override
+    public void updateUserManage(User user) throws Exception {
+        // Kiểm tra xem người dùng có tồn tại trong cơ sở dữ liệu không
+        Optional<User> existingUserOpt = userRepository.findById(user.getId());
+
+        if (existingUserOpt.isPresent()) {
+            User existingUser = existingUserOpt.get();
+            String pass = userRepository.findById(user.getId()).get().getPassword(); // ✔️ nếu bạn đã có ID
+            // Cập nhật thông tin người dùng, ngoại trừ mật khẩu
+            existingUser.setName(user.getName());
+            existingUser.setEmail(user.getEmail());
+            // Kiểm tra mật khẩu trong form
+            if (user.getPassword() != null && !user.getPassword().isEmpty()) {
+                // Nếu mật khẩu mới không rỗng, mã hóa và cập nhật mật khẩu mới
+                String encodedPassword = encodeMD5(user.getPassword());
+                existingUser.setPassword(encodedPassword);  // Cập nhật mật khẩu đã mã hóa
+            } else {
+                // Nếu mật khẩu trống, giữ nguyên mật khẩu cũ từ biến pass
+                existingUser.setPassword(pass);  // Giữ mật khẩu cũ
+            }
+            existingUser.setAdd1(user.getAdd1());
+            existingUser.setCity(user.getCity());
+            existingUser.setPhone(user.getPhone());
+            existingUser.setUsername(user.getUsername());
+            existingUser.setRole(user.getRole());
+            // Cập nhật các trường khác nếu cần
+
+            // Lưu lại thông tin đã cập nhật
+            userRepository.save(existingUser);
+        } else {
+            throw new Exception("Người dùng không tồn tại.");
+        }
+    }
+    @Override
     public User getUserByUsername(String username) {
         // Tìm kiếm người dùng theo username
         return userRepository.findByUsername(username);

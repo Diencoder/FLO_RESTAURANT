@@ -46,21 +46,22 @@ public class AdminUserController {
     }
 
     // Lưu hoặc cập nhật người dùng
+    // Lưu hoặc cập nhật người dùng
     @PostMapping("/save")
     public String saveUser(@ModelAttribute User user, Model model) {
         try {
-            // Kiểm tra nếu mật khẩu trống thì không thay đổi mật khẩu
-            if (user.getPassword() == null || user.getPassword().isEmpty()) {
-                User existingUser = userService.getUserById(user.getId()).orElse(null);
-                if (existingUser != null) {
-                    user.setPassword(existingUser.getPassword()); // Giữ lại mật khẩu cũ nếu không có thay đổi
-                }
+            // Nếu là chỉnh sửa, gọi updateUser
+            if (user.getId() != null) {
+                userService.updateUserManage(user);  // Cập nhật người dùng
+            } else {
+                // Nếu là thêm mới, gọi saveUser
+                userService.save(user);
             }
-            userService.save(user);  // Gọi service để lưu hoặc cập nhật người dùng
         } catch (Exception e) {
             model.addAttribute("error", "Lỗi khi lưu người dùng: " + e.getMessage());
             return "admin/manage-edit-user";  // Trả về form nếu có lỗi
         }
+
         return "redirect:/admin/users";  // Chuyển hướng đến danh sách người dùng sau khi lưu thành công
     }
 

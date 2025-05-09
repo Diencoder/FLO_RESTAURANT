@@ -14,6 +14,7 @@ import java.util.List;
 public interface FoodRepository extends JpaRepository<Food, Long> {
 
     List<Food> findByActive(String active); // Nếu bạn vẫn cần dạng List
+    Page<Food> findByActiveIn(List<String> activeStatuses, Pageable pageable);
 
     // ✅ Thêm: Truy vấn món ăn đang hoạt động kèm phân trang
     Page<Food> findByActive(String active, Pageable pageable);

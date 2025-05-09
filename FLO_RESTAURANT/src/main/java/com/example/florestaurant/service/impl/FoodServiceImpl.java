@@ -26,7 +26,8 @@ public class FoodServiceImpl implements FoodService {
     @Override
     @Transactional(readOnly = true)
     public Page<Food> getActiveFoods(Pageable pageable) {
-        return foodRepository.findByActive("Yes", pageable); // Sử dụng đúng phương thức trong repository
+        // Retrieve all foods where active is either "Yes" or "No"
+        return foodRepository.findByActiveIn(List.of("Yes", "No"), pageable);
     }
 
 
