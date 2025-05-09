@@ -23,6 +23,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/admin/**").hasRole("ADMIN")// Cho phép tất cả các yêu cầu mà không cần đăng nhập
                         .requestMatchers("/reserve/**").authenticated()
+                        .requestMatchers("/myaccount").hasAnyRole("USER","ADMIN")
                         .requestMatchers("/**").permitAll()                )
 
                 .logout(logout -> logout
@@ -61,8 +62,7 @@ public class SecurityConfig {
                         sb.append(hex);
                     }
                     return sb.toString();
-                } catch (Exception e) {
-                    throw new RuntimeException("Lỗi mã hóa MD5", e);
+                } catch (Exception e) {throw new RuntimeException("Lỗi mã hóa MD5", e);
                 }
             }
 
